@@ -78,35 +78,29 @@ const projects = (await getCollection('work'))
 			<section class="section with-background with-cta">
 				<header class="section-header">
 					<h3>Background</h3>
-					<p>Take a look below at some of my featured work for clients from the past few years.</p>
 				</header>
 				<div class="content">
 					<p>
-						Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy.
-						Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla
-						pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+						HashiCorp / Senior Solutions Engineer / 2021.09 - Present
 					</p>
 					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis
-						natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel
-						quam elementum pulvinar etiam non.
+						PITTAN / 技術顧問 / 2022.12 - Present
 					</p>
 					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet
-						eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
-						Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl
-						pretium fusce.
+						VMware / Senior Cloud Native Architect / 2020.04 - 2021.09 
 					</p>
-				</div>
-			</section>
-			<section class="section with-background with-cta">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Education</h3>
-				</header>
-				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
+					<p>
+						Pivotal / Senior Solutions Architect / 2017.03 - 2020.03
+					</p>
+					<p>
+						NTT Communications / Tech Lead / 2012.04 - 2017.03
+					</p>
+					<p>
+						R&AC / Infrastructure Engineer / 2008.02 - 2012.03
+					</p>
+					<p>
+						Japan Digital Laboratory / Senior Solutions Engineer / 2007.04 - 2008.02
+					</p>
 				</div>
 			</section>
 			<section class="section with-background with-cta">
@@ -114,7 +108,10 @@ const projects = (await getCollection('work'))
 					<h3>Skills</h3>
 				</header>
 				<div class="content">
-					<p>officia unde omnis</p>
+					<div class="details"><div class="tags">
+						{['Terraform','Vault','Boundary','vSphere','Tanzu','Cloud-native', 'Kubernetes','Cloud Foundry','Illustrator','Photoshop','AfterEffects','Premiere','Facilitation','Education','Broadcasting','Ruby','TypeScript','Next.js','React','',].map((t) => <Pill>{t}</Pill>)}
+					</div></div>
+					
 				</div>
 			</section>
 		</main>
@@ -303,6 +300,15 @@ const projects = (await getCollection('work'))
 	.content :global(a:hover),
 	.content :global(a:focus) {
 		text-decoration-color: currentColor;
+	}
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.details {
+		flex-direction: row;
+		gap: 2.5rem;
 	}
 
 	@media (min-width: 50em) {

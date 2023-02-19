@@ -1,6 +1,5 @@
 ---
 import Icon, { Props as IconProps } from './Icon.astro';
-import ThemeToggle from './ThemeToggle.astro';
 
 const textLinks: { label: string; href: string }[] = [
 	{ label: 'Home', href: '/' },
@@ -61,10 +60,6 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'] }[] = [
 						</a>
 					))
 				}
-			</div>
-
-			<div class="theme-toggle">
-				<ThemeToggle />
 			</div>
 		</div>
 	</div>
