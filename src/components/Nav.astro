@@ -3,7 +3,9 @@ import Icon, { Props as IconProps } from './Icon.astro';
 
 const textLinks: { label: string; href: string }[] = [
 	{ label: 'Home', href: '/' },
+	{ label: 'Portfolio', href: '/portfolio/' },
 	{ label: 'Work', href: '/work/' },
+	{ label: 'Blog', href: '/blog/' },
 ];
 
 const iconLinks: { label: string; href: string; icon: IconProps['icon'] }[] = [
@@ -16,7 +18,7 @@ const iconLinks: { label: string; href: string; icon: IconProps['icon'] }[] = [
 	<div class="menu-header">
 		<a href="/" class="site-title">
 			<Icon icon="penguin" size="1.6em" />
-			portfolio.wells.jp
+			Wells.jp
 		</a>
 		<menu-button>
 			<template>

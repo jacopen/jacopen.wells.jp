@@ -13,10 +13,10 @@ const { align = 'center', tagline, en_name, ja_name, nickname, title } = Astro.p
 
 <header class:list={['hero stack gap-4', align]}>
 	<div class="stack gap-2">
-		{en_name && <h1 class="title">{en_name}</h1>}
-		{title && <h1 class="title">{title}</h1>}
-		{ja_name && <h2 class="title">{ja_name}</h2>}
-		{nickname && <h2 class="title">@{nickname}</h2>}
+		{en_name && <h1 class="text-5xl">{en_name}</h1>}
+		{title && <h1 class="text-5xl">{title}</h1>}
+		{ja_name && <h2 class="text-5xl">{ja_name}</h2>}
+		{nickname && <h2 class="text-5xl ">@{nickname}</h2>}
 		{tagline && <p class="tagline">{tagline}</p>}
 	</div>
 	<slot />
@@ -26,17 +26,6 @@ const { align = 'center', tagline, en_name, ja_name, nickname, title } = Astro.p
 	.hero {
 		font-size: var(--text-md);
 		text-align: center;
-	}
-
-	.title,
-	.tagline {
-		max-width: 70ch;
-		margin-inline: auto;
-	}
-
-	.title {
-		font-size: var(--text-3xl);
-		color: var(--gray-0);
 	}
 
 	@media (min-width: 50em) {
