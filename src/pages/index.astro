@@ -13,16 +13,9 @@ const entries = (await getCollection('blog'))
 
 <BaseLayout>
 	<div class="flex-col gap-20 lg:gap-48">
-		<div class="flex-col mx-20">
-			<header class="hero">
-				<div class="w-20 bg-white rounded-lg">aaa</div>
-			</header>
-		</div>
-		
-
-		<main class="flex-col py-4 mx-20 w-100">
+		<main class="flex-col py-4 md:mx-20 mx-10 w-100">
 			<section class='py-10'>
-				<h2 class=""><a href='/blog' class='text-black '>Wells.jp blog</a></h2>
+				<h2 class=""><a href='/blog' class='text-black'>Wells.jp blog</a></h2>
 				{
 					entries.map((entry) => (
 						<p class=''>
@@ -31,18 +24,13 @@ const entries = (await getCollection('blog'))
 					))
 				}
 			</section>
-			<section class='py-10'>
-				<h2 class="">Cloud Penguins</h2>
-				<p class='test'>test にほんごのてすとです</p>
-			</section>
 			<section id='social' class='py-10'>
 				<h2 class="">Social Media</h2>
-				<ul class='flex flex-row gap-5'>
+				<ul class='flex flex-row flex-wrap gap-5'>
 					<li>Facebook</li>
 					<li>Twitter</li>
 					<li>MissKey</li>
 					<li>Mastodon</li>
-					<li></li>
 				</ul>
 			</section>
 			
@@ -54,7 +42,7 @@ const entries = (await getCollection('blog'))
 
 <style>
 	h2 {
-		@apply text-3xl font-bold py-4;
+		@apply text-2xl font-bold py-4 md:text-4xl;
 	}
 
 	h2:hover {

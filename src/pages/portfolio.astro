@@ -31,8 +31,7 @@ const projects = (await getCollection('work'))
 			<header class="hero">
 				<img
 					alt="Picture of Kazuto Kusama"
-					width="240"
-					height="310"
+					class="md:w-56 md:h-72 w-40 h-40"
 					src="/assets/Kazuto_Kusama.jpg"
 				/>
 				<Hero
@@ -50,34 +49,8 @@ const projects = (await getCollection('work'))
 
 		<main class="wrapper stack gap-20 lg:gap-48">
 			<section class="section with-background with-cta">
-				<header class="section-header stack gap-8 lg:gap-8">
-					<h3 class="text-5xl">Work</h3>
-					<p>Take a look below at some of my featured work for clients from the past few years.</p>
-				</header>
-
-				<div class="gallery">
-					<Grid variant="small">
-						{
-							projects.map((project) => (
-								<li>
-									<PortfolioPreview project={project} />
-								</li>
-							))
-						}
-					</Grid>
-				</div>
-
-				<div class="cta">
-					<CallToAction href="/work/">
-						View All
-						<Icon icon="arrow-right" size="1.2em" />
-					</CallToAction>
-				</div>
-			</section>
-
-			<section class="section with-background with-cta">
 				<header class="section-header">
-					<h3 class="text-5xl">Background</h3>
+					<h3 class="text-4xl">Background</h3>
 				</header>
 				<div class="content">
 					<p>
@@ -105,7 +78,7 @@ const projects = (await getCollection('work'))
 			</section>
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Skills</h3>
+					<h3 class="text-4xl">Skills</h3>
 				</header>
 				<div class="content">
 					<div class="details"><div class="tags">
