@@ -6,22 +6,17 @@ app "wellsjp" {
     "env"     = "dev"
   }
 
-  path = "dist"
-
   #runner {
   #  profile = "kubernetes-01GT3ZC13JSYRRB78N09RGC3XS"
   #}
 
   build {
-    use "pack" {
-      builder = "paketobuildpacks/builder:base"
-      buildpacks = ["https://github.com/paketo-buildpacks/httpd.git"]
-    }
+    use "docker" {}
     registry {
       use "docker" {
-        image = "jacopen/wellsjp"
-        tag   = "1"
-        local = false
+        image        = "jacopen/wellsjp"
+        tag          = "latest"
+        local        = false
         encoded_auth = var.docker-auth
       }
     }
@@ -30,16 +25,20 @@ app "wellsjp" {
   deploy {
     use "kubernetes" {
       probe_path = "/"
+			replicas = 3
+			service_port = 80
     }
   }
 
   release {
     use "kubernetes" {
+			port = 80
       // Sets up a load balancer to access released application
       load_balancer = false
       ingress "http" {
         host = "wellsjp.workload.udcp.run"
         path = "/"
+				path_type = "Prefix"
       }
     }
   }
@@ -47,5 +46,5 @@ app "wellsjp" {
 
 variable "docker-auth" {
   type = string
-  env = ["DOCKER-AUTH"]
+  env  = ["DOCKER-AUTH"]
 }
