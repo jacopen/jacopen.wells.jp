@@ -8,9 +8,9 @@ app "wellsjp" {
 
   path = "dist"
 
-  runner {
-    profile = "kubernetes-01GT3ZC13JSYRRB78N09RGC3XS"
-  }
+  // runner {
+  //   profile = "kubernetes-01GT3ZC13JSYRRB78N09RGC3XS"
+  // }
 
   build {
     use "pack" {
@@ -22,6 +22,7 @@ app "wellsjp" {
         image = "jacopen/wellsjp"
         tag   = "1"
         local = false
+        encoded_auth = var.docker-auth
       }
     }
   }
@@ -42,4 +43,9 @@ app "wellsjp" {
       }
     }
   }
+}
+
+variable "docker-auth" {
+  type = string
+  env = ["DOCKER-AUTH"]
 }
