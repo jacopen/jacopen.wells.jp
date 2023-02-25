@@ -8,9 +8,9 @@ app "wellsjp" {
 
   path = "dist"
 
-  // runner {
-  //   profile = "kubernetes-01GT3ZC13JSYRRB78N09RGC3XS"
-  // }
+  runner {
+    profile = "kubernetes-01GT3ZC13JSYRRB78N09RGC3XS"
+  }
 
   build {
     use "pack" {
