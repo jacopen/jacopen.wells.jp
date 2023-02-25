@@ -6,9 +6,9 @@ app "wellsjp" {
     "env"     = "dev"
   }
 
-  #runner {
-  #  profile = "kubernetes-01GT3ZC13JSYRRB78N09RGC3XS"
-  #}
+  runner {
+    profile = "kubernetes-01GT3ZC13JSYRRB78N09RGC3XS"
+  }
 
   build {
     use "docker" {}
@@ -24,21 +24,21 @@ app "wellsjp" {
 
   deploy {
     use "kubernetes" {
-      probe_path = "/"
-			replicas = 3
-			service_port = 80
+      probe_path   = "/"
+      replicas     = 3
+      service_port = 80
     }
   }
 
   release {
     use "kubernetes" {
-			port = 80
+      port = 80
       // Sets up a load balancer to access released application
       load_balancer = false
       ingress "http" {
-        host = "wellsjp.workload.udcp.run"
-        path = "/"
-				path_type = "Prefix"
+        host      = "wellsjp.workload.udcp.run"
+        path      = "/"
+        path_type = "Prefix"
       }
     }
   }
