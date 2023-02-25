@@ -15,7 +15,7 @@ app "wellsjp" {
   build {
     use "pack" {
       builder = "paketobuildpacks/builder:base"
-      #buildpacks = ["https://github.com/paketo-buildpacks/httpd.git"]
+      buildpacks = ["https://github.com/paketo-buildpacks/httpd.git"]
     }
     registry {
       use "docker" {
