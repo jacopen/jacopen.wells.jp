@@ -24,6 +24,7 @@ app "wellsjp" {
 
   deploy {
     use "kubernetes" {
+			namespace = "default"
       probe_path   = "/"
       replicas     = 3
       service_port = 80
@@ -35,6 +36,7 @@ app "wellsjp" {
       port = 80
       // Sets up a load balancer to access released application
       load_balancer = false
+			namespace = "default"
       ingress "http" {
         host      = "wellsjp.workload.udcp.run"
         path      = "/"
