@@ -1,18 +1,25 @@
 ---
-import { getCollection } from 'astro:content';
-
+import { contentfulClient } from "../lib/contentful";
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 import ContactCTA from '../components/ContactCTA.astro';
+import type { BlogPost } from "../lib/contentful";
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
+const entries = await contentfulClient.getEntries<BlogPost>({
+  content_type: "blogPost",
+});
 
-const projects = (await getCollection('work')).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
+const posts = entries.items.map((item) => {
+  const { title, date, description, slug } = item.fields;
+  return {
+    title,
+    slug,
+    description,
+    date: new Date(date).toLocaleDateString()
+  };
+});
 ---
-
 <BaseLayout
 	title="My Work | Jeanine White"
 	description="Learn about Jeanine White's most recent projects"
@@ -24,13 +31,15 @@ const projects = (await getCollection('work')).sort(
 				align="start"
 			/>
 			<Grid variant="offset">
-				{
-					projects.map((project) => (
-						<li>
-							<PortfolioPreview project={project} />
-						</li>
-					))
-				}
+                {posts.map((post) => (
+                    <li>
+                      <a href={`/blog/${post.slug}/`}>
+                        {post.title}
+                      </a>
+                      <time>{post.date}</time>
+                      <p>{post.description}</p>
+                    </li>
+                  ))}
 			</Grid>
 		</main>
 		<ContactCTA />
