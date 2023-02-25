@@ -38,7 +38,7 @@ app "wellsjp" {
       load_balancer = false
 			namespace = "default"
       ingress "http" {
-        host      = "wellsjp.workload.udcp.run"
+        host      = "wellsjp.workload.udcp.info"
         path      = "/"
         path_type = "Prefix"
       }
