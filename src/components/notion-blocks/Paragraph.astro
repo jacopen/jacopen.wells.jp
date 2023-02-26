@@ -1,0 +1,27 @@
+---
+import * as interfaces from '../../lib/interfaces'
+import { snakeToKebab } from '../../lib/style-helpers'
+import RichText from './RichText.astro'
+import NotionBlocks from '../NotionBlocks.astro'
+import '../../styles/notion-color.css'
+
+export interface Props {
+  block: interfaces.Block
+  headings: interfaces.Block[]
+}
+
+const { block, headings } = Astro.props
+---
+
+<p class="my-3">
+  {
+    block.Paragraph.RichTexts.map((richText: interfaces.RichText) => (
+      <RichText richText={richText} />
+    ))
+  }
+  {
+    block.Paragraph.Children && (
+      <NotionBlocks blocks={block.Paragraph.Children} headings={headings} />
+    )
+  }
+</p>

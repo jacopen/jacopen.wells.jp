@@ -1,0 +1,14 @@
+---
+import { Post } from '../lib/interfaces'
+import { getDateStr } from '../lib/blog-helpers'
+
+export interface Props {
+  post: Post
+}
+
+const { post } = Astro.props
+---
+
+<div class="font-xl">
+  {post.Date ? getDateStr(post.Date) : ''}
+</div>

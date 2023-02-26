@@ -1,0 +1,19 @@
+---
+import { RichText } from '../../../lib/interfaces'
+
+export interface Props {
+  richText: RichText
+}
+
+const { richText } = Astro.props
+---
+
+{
+  richText.Annotation.Bold ? (
+    <b>
+      <slot />
+    </b>
+  ) : (
+    <slot />
+  )
+}

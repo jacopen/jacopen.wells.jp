@@ -1,0 +1,20 @@
+---
+import { Post } from '../lib/interfaces'
+import { getPostLink } from '../lib/blog-helpers'
+
+export interface Props {
+  post: Post
+  enableLink: boolean
+}
+
+const { post, enableLink = true } = Astro.props
+
+let title = post.Title
+if (post.Icon.Emoji) {
+  title = `${post.Icon.Emoji} ${title}`
+}
+---
+
+<h3 class="md:text-4xl text-2xl mt-4 hover:transform hover:duration-100 hover:-translate-y-1">
+  {enableLink ? <a href={getPostLink(post.Slug)} class="text-black">{title}</a> : title}
+</h3>
