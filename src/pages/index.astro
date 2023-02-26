@@ -4,10 +4,19 @@ import { getCollection } from 'astro:content';
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
-
-const entries = (await getCollection('blog'))
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 4);
+import { NUMBER_OF_POSTS_PER_PAGE } from '../server-constants'
+import {
+  getPosts,
+  getRankedPosts,
+  getAllTags,
+  getNumberOfPages,
+} from '../lib/notion/client'
+const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
+  getPosts(NUMBER_OF_POSTS_PER_PAGE),
+  getRankedPosts(),
+  getAllTags(),
+  getNumberOfPages(),
+])
 
 ---
 
@@ -15,22 +24,27 @@ const entries = (await getCollection('blog'))
 	<div class="flex-col gap-20 lg:gap-48">
 		<main class="flex-col py-4 md:mx-20 mx-10 w-100">
 			<section class='py-10'>
-				<h2 class=""><a href='/blog' class='text-black'>Wells.jp blog</a></h2>
+				<h2 class=""><a href='/blog' class='text-black'>Blog</a></h2>
 				{
-					entries.map((entry) => (
-						<p class=''>
-							{entry.data.title}
+					posts.length === 0 ? (
+					  <NoContents contents={posts} />
+					) : (
+					  posts.map((post) => (
+					  	<p class=''>
+							<a href={`/blog/${post.Slug}`}>{post.Title}</a> 
 						</p>
-					))
+					  ))
+					)
 				}
+				
 			</section>
 			<section id='social' class='py-10'>
 				<h2 class="">Social Media</h2>
 				<ul class='flex flex-row flex-wrap gap-5'>
-					<li>Facebook</li>
-					<li>Twitter</li>
-					<li>MissKey</li>
-					<li>Mastodon</li>
+					<li><a href="https://www.facebook.com/jacopen" class="text-white">Facebook</a></li>
+					<li><a href="https://twitter.com/jacopen" class="text-white">Twitter</a></li>
+					<li><a href="https://misskey.io/@jacopen" class="text-white">Misskey</a></li>
+					<li><a href="https://mstdn.jp/@jacopen" class="text-white">Mastodon</a></li>
 				</ul>
 			</section>
 			

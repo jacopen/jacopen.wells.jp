@@ -95,14 +95,14 @@ let ogImage = ''
 
 <BaseLayout>
   <div class="flex flex-wrap justify-center">
-    <main>
-      <div class='w-100 lg:mx-20 mx-10'>
+    <main class='w-full lg:mx-20 mx-10'>
+      <div class='w-full'>
         <PostDate post={post} />
         <PostTags post={post} />
         <PostTitle post={post} enableLink={false} />
         <PostBody blocks={blocks} />
       </div>
-      <footer class='w-100 lg:mx-20 mx-10'>
+      <footer>
         <PostRelativeLink prevPost={prevPost} nextPost={nextPost} />
       </footer>
     </main>
