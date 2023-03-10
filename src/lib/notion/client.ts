@@ -11,6 +11,7 @@ import {
 import type * as responses from './responses'
 import type * as requestParams from './request-params'
 import type {
+  Database,
   Post,
   Block,
   Paragraph,
@@ -45,6 +46,7 @@ import type {
   SelectProperty,
   Emoji,
   FileObject,
+  LinkToPage,
 } from '../interfaces'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import { Client } from '@notionhq/client'
@@ -53,11 +55,12 @@ const client = new Client({
   auth: NOTION_API_SECRET,
 })
 
-let cache: Post[] | null = null
+let postsCache: Post[] | null = null
+let dbCache: Database | null = null
 
 export async function getAllPosts(): Promise<Post[]> {
-  if (cache !== null) {
-    return Promise.resolve(cache)
+  if (postsCache !== null) {
+    return Promise.resolve(postsCache)
   }
 
   const params: requestParams.QueryDatabase = {
@@ -102,10 +105,10 @@ export async function getAllPosts(): Promise<Post[]> {
     params['start_cursor'] = res.next_cursor as string
   }
 
-  cache = results
+  postsCache = results
     .filter((pageObject) => _validPageObject(pageObject))
     .map((pageObject) => _buildPost(pageObject))
-  return cache
+  return postsCache
 }
 
 export async function getPosts(pageSize = 10): Promise<Post[]> {
@@ -131,6 +134,11 @@ export async function getRankedPosts(pageSize = 10): Promise<Post[]> {
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const allPosts = await getAllPosts()
   return allPosts.find((post) => post.Slug === slug) || null
+}
+
+export async function getPostByPageId(pageId: string): Promise<Post | null> {
+  const allPosts = await getAllPosts()
+  return allPosts.find((post) => post.PageId === pageId) || null
 }
 
 export async function getPostsByTag(
@@ -349,6 +357,60 @@ export async function downloadFile(url: URL) {
   return streamPipeline(res.body, createWriteStream(filepath))
 }
 
+export async function getDatabase(): Promise<Database> {
+  if (dbCache !== null) {
+    return Promise.resolve(dbCache)
+  }
+
+  const params: requestParams.RetrieveDatabase = {
+    database_id: DATABASE_ID,
+  }
+
+  const res = (await client.databases.retrieve(
+    params as any // eslint-disable-line @typescript-eslint/no-explicit-any
+  )) as responses.RetrieveDatabaseResponse
+
+  let icon: FileObject | Emoji | null = null
+  if (res.icon) {
+    if (res.icon.type === 'emoji' && 'emoji' in res.icon) {
+      icon = {
+        Type: res.icon.type,
+        Emoji: res.icon.emoji,
+      }
+    } else if (res.icon.type === 'external' && 'external' in res.icon) {
+      icon = {
+        Type: res.icon.type,
+        Url: res.icon.external?.url || '',
+      }
+    } else if (res.icon.type === 'file' && 'file' in res.icon) {
+      icon = {
+        Type: res.icon.type,
+        Url: res.icon.file?.url || '',
+      }
+    }
+  }
+
+  let cover: FileObject | null = null
+  if (res.cover) {
+    cover = {
+      Type: res.cover.type,
+      Url: res.cover.external?.url || res.cover?.file?.url || '',
+    }
+  }
+
+  const database: Database = {
+    Title: res.title.map((richText) => richText.plain_text).join(''),
+    Description: res.description
+      .map((richText) => richText.plain_text)
+      .join(''),
+    Icon: icon,
+    Cover: cover,
+  }
+
+  dbCache = database
+  return database
+}
+
 function _buildBlock(blockObject: responses.BlockObject): Block {
   const block: Block = {
     Id: blockObject.id,
@@ -457,6 +519,7 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
           blockObject.image.file
         ) {
           image.File = {
+            Type: blockObject.image.type,
             Url: blockObject.image.file.url,
             ExpiryTime: blockObject.image.file.expiry_time,
           }
@@ -474,6 +537,7 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
           file.External = { Url: blockObject.file.external.url }
         } else if (blockObject.file.type === 'file' && blockObject.file.file) {
           file.File = {
+            Type: blockObject.file.type,
             Url: blockObject.file.file.url,
             ExpiryTime: blockObject.file.file.expiry_time,
           }
@@ -510,11 +574,28 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
       break
     case 'callout':
       if (blockObject.callout) {
+        let icon: FileObject | Emoji | null = null
+        if (
+          blockObject.callout.icon.type === 'emoji' &&
+          'emoji' in blockObject.callout.icon
+        ) {
+          icon = {
+            Type: blockObject.callout.icon.type,
+            Emoji: blockObject.callout.icon.emoji,
+          }
+        } else if (
+          blockObject.callout.icon.type === 'external' &&
+          'external' in blockObject.callout.icon
+        ) {
+          icon = {
+            Type: blockObject.callout.icon.type,
+            Url: blockObject.callout.icon.external?.url || '',
+          }
+        }
+
         const callout: Callout = {
           RichTexts: blockObject.callout.rich_text.map(_buildRichText),
-          Icon: {
-            Emoji: blockObject.callout.icon.emoji,
-          },
+          Icon: icon,
           Color: blockObject.callout.color,
         }
         block.Callout = callout
@@ -595,6 +676,15 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
           Color: blockObject.table_of_contents.color,
         }
         block.TableOfContents = tableOfContents
+      }
+      break
+    case 'link_to_page':
+      if (blockObject.link_to_page && blockObject.link_to_page.page_id) {
+        const linkToPage: LinkToPage = {
+          Type: blockObject.link_to_page.type,
+          PageId: blockObject.link_to_page.page_id,
+        }
+        block.LinkToPage = linkToPage
       }
       break
   }
@@ -725,10 +815,31 @@ function _validPageObject(pageObject: responses.PageObject): boolean {
 function _buildPost(pageObject: responses.PageObject): Post {
   const prop = pageObject.properties
 
-  const icon = pageObject.icon as responses.Emoji
-  const emoji: Emoji = { Emoji: icon?.emoji || '' }
+  let icon: FileObject | Emoji | null = null
+  if (pageObject.icon) {
+    if (pageObject.icon.type === 'emoji' && 'emoji' in pageObject.icon) {
+      icon = {
+        Type: pageObject.icon.type,
+        Emoji: pageObject.icon.emoji,
+      }
+    } else if (
+      pageObject.icon.type === 'external' &&
+      'external' in pageObject.icon
+    ) {
+      icon = {
+        Type: pageObject.icon.type,
+        Url: pageObject.icon.external?.url || '',
+      }
+    }
+  }
 
-  const cover: FileObject = { Url: pageObject.cover?.external?.url || '' }
+  let cover: FileObject | null = null
+  if (pageObject.cover) {
+    cover = {
+      Type: pageObject.cover.type,
+      Url: pageObject.cover.external?.url || '',
+    }
+  }
 
   let featuredImage: FileObject | null = null
   if (
@@ -737,6 +848,7 @@ function _buildPost(pageObject: responses.PageObject): Post {
     prop.FeaturedImage.files[0].file
   ) {
     featuredImage = {
+      Type: prop.FeaturedImage.type,
       Url: prop.FeaturedImage.files[0].file.url,
       ExpiryTime: prop.FeaturedImage.files[0].file.expiry_time,
     }
@@ -745,7 +857,7 @@ function _buildPost(pageObject: responses.PageObject): Post {
   const post: Post = {
     PageId: pageObject.id,
     Title: prop.Page.title ? prop.Page.title[0].plain_text : '',
-    Icon: emoji,
+    Icon: icon,
     Cover: cover,
     Slug: prop.Slug.rich_text ? prop.Slug.rich_text[0].plain_text : '',
     Date: prop.Date.date ? prop.Date.date.start : '',

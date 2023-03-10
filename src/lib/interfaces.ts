@@ -1,7 +1,14 @@
+export interface Database {
+  Title: string
+  Description: string
+  Icon: FileObject | Emoji | null
+  Cover: FileObject | null
+}
+
 export interface Post {
   PageId: string
   Title: string
-  Icon: Emoji
+  Icon: FileObject | Emoji | null
   Cover: FileObject | null
   Slug: string
   Date: string
@@ -38,6 +45,7 @@ export interface Block {
   Table?: Table
   ColumnList?: ColumnList
   TableOfContents?: TableOfContents
+  LinkToPage?: LinkToPage
 }
 
 export interface Paragraph {
@@ -109,6 +117,7 @@ export interface File {
 }
 
 export interface FileObject {
+  Type: string
   Url: string
   ExpiryTime?: string
 }
@@ -135,7 +144,7 @@ export interface Equation {
 
 export interface Callout {
   RichTexts: RichText[]
-  Icon: Emoji
+  Icon: FileObject | Emoji | null
   Color: string
   Children?: Block[]
 }
@@ -219,6 +228,7 @@ export interface Text {
 }
 
 export interface Emoji {
+  Type: string
   Emoji: string
 }
 
@@ -239,4 +249,9 @@ export interface SelectProperty {
   id: string
   name: string
   color: string
+}
+
+export interface LinkToPage {
+  Type: string
+  PageId: string
 }
