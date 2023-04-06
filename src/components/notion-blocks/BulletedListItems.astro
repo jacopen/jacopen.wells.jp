@@ -1,22 +1,22 @@
 ---
-import * as interfaces from '../../lib/interfaces.ts'
-import { snakeToKebab } from '../../lib/style-helpers.ts'
-import RichText from './RichText.astro'
-import NotionBlocks from '../NotionBlocks.astro'
-import '../../styles/notion-color.css'
+import * as interfaces from "../../lib/interfaces.ts";
+import { snakeToKebab } from "../../lib/style-helpers.ts";
+import RichText from "./RichText.astro";
+import NotionBlocks from "../NotionBlocks.astro";
+import "../../styles/notion-color.css";
 
 export interface Props {
-  block: interfaces.Block
-  headings: interfaces.Block[]
+  block: interfaces.Block;
+  headings: interfaces.Block[];
 }
 
-const { block, headings } = Astro.props
+const { block, headings } = Astro.props;
 ---
 
 <ul>
   {
     block.ListItems.filter(
-      (b: interfaces.Block) => b.Type === 'bulleted_list_item'
+      (b: interfaces.Block) => b.Type === "bulleted_list_item"
     ).map((b: interfaces.Block) => (
       <li class={snakeToKebab(b.BulletedListItem.Color)}>
         {b.BulletedListItem.RichTexts.map((richText: interfaces.RichText) => (

@@ -12,10 +12,9 @@ export const PUBLIC_GA_TRACKING_ID = import.meta.env.PUBLIC_GA_TRACKING_ID
 export const NUMBER_OF_POSTS_PER_PAGE = 10
 export const REQUEST_TIMEOUT_MS = parseInt(
   import.meta.env.REQUEST_TIMEOUT_MS || '10000',
-  10
+  10,
 )
 export const ENABLE_LIGHTBOX = import.meta.env.ENABLE_LIGHTBOX
 
 export const PUBLIC_SITE_TITLE = 'wells.jp'
-export const PUBLIC_SITE_DESCRIPTION =
-  '草間一人の個人サイト'
+export const PUBLIC_SITE_DESCRIPTION = '草間一人の個人サイト'

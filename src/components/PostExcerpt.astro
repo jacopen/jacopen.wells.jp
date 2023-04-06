@@ -1,15 +1,15 @@
 ---
-import { Post } from '../lib/interfaces.ts'
+import { Post } from "../lib/interfaces.ts";
 
 export interface Props {
-  post: Post
+  post: Post;
 }
 
-const { post } = Astro.props
+const { post } = Astro.props;
 ---
 
 <div class="post-excerpt">
-  <p>{post.Excerpt ? post.Excerpt : ''}</p>
+  <p>{post.Excerpt ? post.Excerpt : ""}</p>
 </div>
 
 <style>

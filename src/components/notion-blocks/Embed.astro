@@ -1,21 +1,21 @@
 ---
-import * as interfaces from '../../lib/interfaces.ts'
-import { isTweetURL } from '../../lib/blog-helpers.ts'
-import Bookmark from './Bookmark.astro'
-import TweetEmbed from './TweetEmbed.astro'
+import * as interfaces from "../../lib/interfaces.ts";
+import { isTweetURL } from "../../lib/blog-helpers.ts";
+import Bookmark from "./Bookmark.astro";
+import TweetEmbed from "./TweetEmbed.astro";
 
 export interface Props {
-  block: interfaces.Block
-  urlMap: { [key: string]: string }
+  block: interfaces.Block;
+  urlMap: { [key: string]: string };
 }
 
-const { block, urlMap } = Astro.props
+const { block, urlMap } = Astro.props;
 
-let url: URL
+let url: URL;
 try {
-  url = block.Embed.Url
+  url = block.Embed.Url;
 } catch (err) {
-  console.log(err)
+  console.log(err);
 }
 ---
 

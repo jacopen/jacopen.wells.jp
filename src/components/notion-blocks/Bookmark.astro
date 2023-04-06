@@ -1,34 +1,34 @@
 ---
-import createMetascraper from 'metascraper'
-import metascraperDescription from 'metascraper-description'
-import metascraperImage from 'metascraper-image'
-import metascraperTitle from 'metascraper-title'
-import * as interfaces from '../../lib/interfaces.ts'
+import createMetascraper from "metascraper";
+import metascraperDescription from "metascraper-description";
+import metascraperImage from "metascraper-image";
+import metascraperTitle from "metascraper-title";
+import * as interfaces from "../../lib/interfaces.ts";
 
 export interface Props {
-  block: interfaces.Block
-  urlMap: { [key: string]: string }
+  block: interfaces.Block;
+  urlMap: { [key: string]: string };
 }
 
-const { block, urlMap } = Astro.props
+const { block, urlMap } = Astro.props;
 
-const urlString = (block.Bookmark || block.LinkPreview || block.Embed).Url
+const urlString = (block.Bookmark || block.LinkPreview || block.Embed).Url;
 const metascraper = createMetascraper([
   metascraperDescription(),
   metascraperImage(),
   metascraperTitle(),
-])
+]);
 
-let url: URL
-let metadata: Record<string, string>
+let url: URL;
+let metadata: Record<string, string>;
 try {
-  url = new URL(urlString)
-  const html = urlMap[urlString]
+  url = new URL(urlString);
+  const html = urlMap[urlString];
   if (html) {
-    metadata = await metascraper({ html, url })
+    metadata = await metascraper({ html, url });
   }
 } catch (err) {
-  console.log(err)
+  console.log(err);
 }
 ---
 
