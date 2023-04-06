@@ -90,12 +90,12 @@ const prevPost = allPosts[currentPostIndex + 1];
 const nextPost = allPosts[currentPostIndex - 1];
 
 let ogImage = "";
-// if (post.FeaturedImage && post.FeaturedImage.Url) {
-//   ogImage = new URL(filePath(new URL(post.FeaturedImage.Url)), Astro.site)
-// }
+if (post.FeaturedImage && post.FeaturedImage.Url) {
+  ogImage = new URL(filePath(new URL(post.FeaturedImage.Url)), Astro.site).toString();
+}
 ---
 
-<BaseLayout>
+<BaseLayout title={post.Title} description={post.Excerpt} path={`blog/${slug}`} ogImage={ogImage}>
   <div class="flex flex-wrap justify-center">
     <main class="w-full lg:w-8/12 lg:mx-20 mx-10">
       <div class="leading-7">

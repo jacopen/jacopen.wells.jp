@@ -16,5 +16,6 @@ export const REQUEST_TIMEOUT_MS = parseInt(
 )
 export const ENABLE_LIGHTBOX = import.meta.env.ENABLE_LIGHTBOX
 
-export const PUBLIC_SITE_TITLE = 'wells.jp'
-export const PUBLIC_SITE_DESCRIPTION = '草間一人の個人サイト'
+export const PUBLIC_SITE_TITLE = process.env.PUBLIC_SITE_TITLE || ''
+export const PUBLIC_SITE_DESCRIPTION = process.env.PUBLIC_SITE_DESCRIPTION || ''
+export const SITE_OG_IMAGE = '/default-og-image.png'
