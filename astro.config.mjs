@@ -31,6 +31,7 @@ export default defineConfig({
   site: getSite(),
   base: BASE_PATH,
   integrations: [
+    FeaturedImageDownloader(),
     PublicNotionCopier(),
     tailwind(),
     partytown({
