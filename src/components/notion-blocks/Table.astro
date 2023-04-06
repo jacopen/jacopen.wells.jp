@@ -1,5 +1,5 @@
 ---
-import * as interfaces from '../../lib/interfaces'
+import * as interfaces from '../../lib/interfaces.ts'
 import RichText from './RichText.astro'
 
 export interface Props {
@@ -47,7 +47,11 @@ const { block } = Astro.props
   .table {
     overflow-x: auto;
   }
+  .table table {
+    margin: 0.6rem 0;
+  }
   .table th,
   .table td {
+    text-align: left;
   }
 </style>

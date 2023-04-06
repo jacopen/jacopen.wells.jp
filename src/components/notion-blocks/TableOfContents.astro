@@ -1,6 +1,6 @@
 ---
-import * as interfaces from '../../lib/interfaces'
-import { buildHeadingId } from '../../lib/blog-helpers'
+import * as interfaces from '../../lib/interfaces.ts'
+import { buildHeadingId } from '../../lib/blog-helpers.ts'
 import { snakeToKebab } from '../../lib/style-helpers.ts'
 import '../../styles/notion-color.css'
 
@@ -48,6 +48,7 @@ const { block, headings } = Astro.props
     display: block;
     line-height: 1.8rem;
     font-size: 0.9rem;
+    font-weight: 500;
     text-decoration: underline;
   }
   .table-of-contents > a:hover {

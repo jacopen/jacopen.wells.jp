@@ -1,5 +1,5 @@
 ---
-import { RichText } from '../../../lib/interfaces'
+import { RichText } from '../../../lib/interfaces.ts'
 
 export interface Props {
   richText: RichText
@@ -9,11 +9,17 @@ const { richText } = Astro.props
 ---
 
 {
+  /* prettier-ignore */
   richText.Annotation.Code ? (
-    <code>
-      <slot />
-    </code>
+    <code><slot /></code>
   ) : (
     <slot />
   )
 }
+
+<style>
+  code {
+    color: #eb5757;
+    padding: 0.25rem;
+  }
+</style>

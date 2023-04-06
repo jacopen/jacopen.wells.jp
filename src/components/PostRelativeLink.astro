@@ -1,6 +1,6 @@
 ---
-import { Post } from '../lib/interfaces'
-import { getNavLink, getPostLink } from '../lib/blog-helpers'
+import { Post } from '../lib/interfaces.ts'
+import { getNavLink, getPostLink } from '../lib/blog-helpers.ts'
 import PostTags from './PostTags.astro'
 
 export interface Props {
@@ -12,7 +12,7 @@ const { prevPost, nextPost } = Astro.props
 ---
 
 <div class="post-relative-link">
-  <div class="hover:underline">
+  <div>
     {
       nextPost && (
         <a href={getPostLink(nextPost.Slug)} class="colored">
@@ -23,7 +23,7 @@ const { prevPost, nextPost } = Astro.props
       )
     }
   </div>
-  <div class="hover:underline">
+  <div>
     {
       prevPost && (
         <a href={getPostLink(prevPost.Slug)} class="colored">
@@ -35,7 +35,7 @@ const { prevPost, nextPost } = Astro.props
     }
   </div>
   <div>
-    <a href={getNavLink('/blog')} class="text">▲ Return to list</a>
+    <a href={getNavLink('/')} class="text">↑Top</a>
   </div>
 </div>
 
@@ -56,6 +56,10 @@ const { prevPost, nextPost } = Astro.props
   div.post-relative-link > div > a.text {
     margin-top: 1rem;
     padding: 0.5rem;
+    color: inherit;
+    font-size: 1rem;
+    text-decoration: underline;
+    font-weight: 500;
   }
   div.post-relative-link > div > a.colored {
     padding: 1rem;
@@ -70,7 +74,7 @@ const { prevPost, nextPost } = Astro.props
   }
   div.post-relative-link > div > a.colored > div:nth-child(2) {
     width: auto;
-    padding: 0 0 0.4rem;
+    padding: 0.2rem 0 0.4rem;
     text-align: left;
     font-size: 1rem;
     font-weight: bold;

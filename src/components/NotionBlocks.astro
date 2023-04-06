@@ -1,6 +1,6 @@
 ---
-import * as interfaces from '../lib/interfaces'
-import { isTweetURL, buildURLToHTMLMap } from '../lib/blog-helpers'
+import * as interfaces from '../lib/interfaces.ts'
+import { isTweetURL, buildURLToHTMLMap } from '../lib/blog-helpers.ts'
 import Paragraph from './notion-blocks/Paragraph.astro'
 import Heading1 from './notion-blocks/Heading1.astro'
 import Heading2 from './notion-blocks/Heading2.astro'
@@ -23,6 +23,7 @@ import ToDo from './notion-blocks/ToDo.astro'
 import SyncedBlock from './notion-blocks/SyncedBlock.astro'
 import Toggle from './notion-blocks/Toggle.astro'
 import File from './notion-blocks/File.astro'
+import LinkToPage from './notion-blocks/LinkToPage.astro'
 
 export interface Props {
   blocks: interfaces.Block[]
@@ -159,6 +160,8 @@ const bookmarkURLMap = await buildURLToHTMLMap(bookmarkURLs)
         return <Toggle block={block} headings={headings} />
       case 'file':
         return <File block={block} />
+      case 'link_to_page':
+        return <LinkToPage block={block} />
     }
     return null
   })
