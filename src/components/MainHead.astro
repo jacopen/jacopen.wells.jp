@@ -5,10 +5,10 @@ import {
 } from "../server-constants";
 
 interface Props {
-  title?: string | undefined;
-  description?: string | undefined;
-  url?: string | undefined;
-  ogImage?: string | undefined;
+  title: string;
+  description: string;
+  url?: URL | undefined;
+  ogImage: string;
 }
 
 const {
@@ -22,7 +22,6 @@ const {
 <meta charset="UTF-8" />
 <meta name="description" property="og:description" content={description} />
 <meta name="viewport" content="width=device-width" />
-<meta name="generator" content={Astro.generator} />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="max-image-preview:large" />
 <meta charset="UTF-8" />
