@@ -34,8 +34,8 @@ try {
 
 {
   url && (
-    <div class="bookmark">
-      <a href={url.toString()} target="_blank" rel="noopener noreferrer">
+    <div class="bookmark mb-2">
+      <a href={url.toString()} class="visited:text-gray-900 text-gray-900" target="_blank" rel="noopener noreferrer">
         <div>
           <div>{metadata && metadata.title}</div>
           <div>{metadata && metadata.description}</div>
