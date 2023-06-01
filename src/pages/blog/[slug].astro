@@ -97,7 +97,7 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
 
 <BaseLayout title={post.Title} description={post.Excerpt} path={`blog/${slug}`} ogImage={ogImage}>
   <div class="flex flex-wrap justify-center">
-    <main class="w-full lg:w-8/12 lg:mx-20 mx-10">
+    <main class="w-full lg:w-8/12 max-w-4xl lg:mx-20 mx-10 lg:px-0 px-5">
       <div class="leading-8">
         <PostDate post={post} />
         <PostTags post={post} />
@@ -109,7 +109,7 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
       </footer>
     </main>
 
-    <div class="flex flex-wrap w-full lg:w-8/12 lg:mx-20 mx-10">
+    <div class="flex flex-wrap w-full lg:w-8/12 max-w-4xl lg:mx-20 mx-10">
       <aside class="w-1/2 mt-10">
         <BlogPostsLink
           heading="Posts in the same category"

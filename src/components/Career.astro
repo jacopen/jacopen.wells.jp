@@ -1,0 +1,17 @@
+---
+export interface Props {
+  company: string;
+  title: string;
+  period: string;
+}
+const { company = "", title = "", period = "/", description = "" } = Astro.props;
+---
+
+<div class="mb-8">
+    <h3 class="text-2xl font-semibold">{company}</h3>
+    <h4 class="text-xl font-medium">{title}</h4>
+    <p class="">{period}</p>
+    <p class="">
+        <slot />
+    </p>
+</div>

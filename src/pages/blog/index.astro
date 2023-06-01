@@ -34,7 +34,7 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
           <NoContents contents={posts} />
         ) : (
           posts.map((post) => (
-            <div className={styles.post} key={post.Slug}>
+            <div className={styles.post} key={post.Slug} class="mb-8">
               <PostDate post={post} />
               <PostTags post={post} />
               <PostTitle post={post} />

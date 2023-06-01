@@ -83,7 +83,7 @@ body {
 
 body {
   background-color: var(--gray-999);
-  color: var(--gray-200);
+  color: var(--gray-50);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
@@ -114,7 +114,7 @@ h6 {
   line-height: 1.1;
   font-weight: 700;
   font-family: var(--font-brand);
-  color: var(--gray-100);
+  color: var(--gray-50);
 }
 
 h1 a,
@@ -123,7 +123,7 @@ h3 a,
 h4 a,
 h5 a,
 h6 a{
-  color: var(--gray-100);
+  color: var(--gray-50);
 }
 
 h1 a:visited,
@@ -132,7 +132,7 @@ h3 a:visited,
 h4 a:visited,
 h5 a:visited,
 h6 a:visited{
-  color: var(--gray-100);
+  color: var(--gray-50);
 }
 
 /* Utilities */

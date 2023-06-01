@@ -1,5 +1,11 @@
 ---
 import { getCollection } from "astro:content";
+import PostDate from "../components/PostDate.astro";
+import PostTags from "../components/PostTags.astro";
+import PostTitle from "../components/PostTitle.astro";
+import PostExcerpt from "../components/PostExcerpt.astro";
+import ReadMoreLink from "../components/ReadMoreLink.astro";
+import styles from "../styles/blog.module.css";
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -29,9 +35,13 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
             <NoContents contents={posts} />
           ) : (
             posts.map((post) => (
-              <p class="">
-                <a href={`/blog/${post.Slug}`}>{post.Title}</a>
-              </p>
+              <div className={styles.post} key={post.Slug} class="mb-8">
+                <PostDate post={post} />
+                <PostTags post={post} />
+                <PostTitle post={post} />
+                <PostExcerpt post={post} />
+                <ReadMoreLink post={post} />
+              </div>
             ))
           )
         }
@@ -45,6 +55,9 @@ const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
           </li>
           <li>
             <a href="https://twitter.com/jacopen" class="text-white">Twitter</a>
+          </li>
+          <li>
+            <a href="https://bsky.app/profile/jacopen.wells.jp" class="text-white">Bluesky</a>
           </li>
           <li>
             <a href="https://misskey.io/@jacopen" class="text-white">Misskey</a>

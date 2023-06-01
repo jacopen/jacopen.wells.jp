@@ -1,43 +1,46 @@
 ---
-import type { SelectProperty } from "../../../lib/interfaces";
-import { NUMBER_OF_POSTS_PER_PAGE } from "../../../server-constants";
 import {
-  getPostsByTag,
+  getPostsByPage,
   getRankedPosts,
   getAllTags,
-  getNumberOfPagesByTag,
-} from "../../../lib/notion/client";
-import NoContents from "../../../components/NoContents.astro";
-import PostDate from "../../../components/PostDate.astro";
-import PostTags from "../../../components/PostTags.astro";
-import PostTitle from "../../../components/PostTitle.astro";
-import PostExcerpt from "../../../components/PostExcerpt.astro";
-import ReadMoreLink from "../../../components/ReadMoreLink.astro";
-import Pagination from "../../../components/Pagination.astro";
-import BlogPostsLink from "../../../components/BlogPostsLink.astro";
-import BlogTagsLink from "../../../components/BlogTagsLink.astro";
-import styles from "../../../styles/blog.module.css";
-import "../../../styles/notion-color.css";
+  getNumberOfPages,
+} from '../../../lib/notion/client'
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ContactCTA from "../../../components/ContactCTA.astro";
+import NoContents from '../../../components/NoContents.astro'
+import PostDate from '../../../components/PostDate.astro'
+import PostTags from '../../../components/PostTags.astro'
+import PostTitle from '../../../components/PostTitle.astro'
+import PostFeaturedImage from '../../../components/PostFeaturedImage.astro'
+import PostExcerpt from '../../../components/PostExcerpt.astro'
+import ReadMoreLink from '../../../components/ReadMoreLink.astro'
+import Pagination from '../../../components/Pagination.astro'
+import BlogPostsLink from '../../../components/BlogPostsLink.astro'
+import BlogTagsLink from '../../../components/BlogTagsLink.astro'
+import styles from '../../../styles/blog.module.css'
+import Hero from '../../../components/Hero.astro'
 
 export async function getStaticPaths() {
-  const allTags = await getAllTags();
-  return allTags.map((tag: SelectProperty) => ({ params: { tag: tag.name } }));
+  const numberOfPages = await getNumberOfPages()
+
+  let params = []
+  for (let i = 2; i <= numberOfPages; i++) {
+    params.push({ params: { page: i.toString() } })
+  }
+  return params
 }
 
-const { tag } = Astro.params;
+const { page } = Astro.params
 
 const [posts, rankedPosts, tags, numberOfPages] = await Promise.all([
-  getPostsByTag(tag, NUMBER_OF_POSTS_PER_PAGE),
+  getPostsByPage(parseInt(page, 10)),
   getRankedPosts(),
   getAllTags(),
-  getNumberOfPagesByTag(tag),
-]);
-
-const currentTag = posts[0].Tags.find((t) => t.name === tag);
+  getNumberOfPages(),
+])
 ---
 
-<BaseLayout title={tag} description={`${tag} に関する記事一覧`} path={`blog/tag/${tag}`}>
+  <BaseLayout>
     <div class="flex flex-wrap mx-10 md:mx-10 gap-5">
       <main class="md:w-8/12 w-12/12">
         {

@@ -5,12 +5,9 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 // Component Imports
-import CallToAction from "../components/CallToAction.astro";
-import Grid from "../components/Grid.astro";
 import Hero from "../components/Hero.astro";
-import Icon from "../components/Icon.astro";
 import Pill from "../components/Pill.astro";
-import PortfolioPreview from "../components/PortfolioPreview.astro";
+import Career from "../components/Career.astro";
 
 // Page section components
 import ContactCTA from "../components/ContactCTA.astro";
@@ -52,16 +49,47 @@ const projects = (await getCollection("work"))
           <h3 class="text-4xl">Background</h3>
         </header>
         <div class="content">
-          <p>HashiCorp / Senior Solutions Engineer / 2021.09 - Present</p>
-          <p>PITTAN / 技術顧問 / 2022.12 - Present</p>
-          <p>VMware / Senior Cloud Native Architect / 2020.04 - 2021.09</p>
-          <p>Pivotal / Senior Solutions Architect / 2017.03 - 2020.03</p>
-          <p>NTT Communications / Tech Lead / 2012.04 - 2017.03</p>
-          <p>R&AC / Infrastructure Engineer / 2008.02 - 2012.03</p>
-          <p>
-            Japan Digital Laboratory / Senior Solutions Engineer / 2007.04 -
-            2008.02
-          </p>
+          <Career
+            company="HashiCorp"
+            title="Senior Solutions Engineer"
+            period="2021.09 - Present">
+          </Career>
+          <Career
+            company="PITTAN"
+            title="最高技術戦略アドバイザー"
+            period="2023.04 - Present">
+          </Career>
+          <Career
+            company="一般社団法人クラウドネイティブイノベーターズ協会"
+            title="代表理事"
+            period="2023.06 - Present">
+          </Career>
+          <hr class="mb-4" />
+          <Career
+            company="VMware"
+            title="Senior Cloud Native Architect"
+            period="2020.04 - 2021.09">
+          </Career>
+          <Career
+            company="Pivotal"
+            title="Senior Solutions Architect"
+            period="2017.03 - 2020.03">
+          </Career>
+          <Career
+            company="NTT Communications"
+            title="Tech Lead"
+            period="2012.04 - 2017.03">
+          </Career>
+          <Career
+            company="R&AC"
+            title="Infrastructure Engineer"
+            period="2008.02 - 2012.03">
+          </Career>
+          <Career
+            company="Japan Digital Laboratory"
+            title="Customer Engineer"
+            period="2007.04 - 2008.02">
+          </Career>
         </div>
       </section>
       <section class="section with-background with-cta">

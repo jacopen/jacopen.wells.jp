@@ -1,0 +1,13 @@
+---
+import { PUBLIC_SITE_TITLE } from '../server-constants';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const meta = {
+  title: "お問い合わせ | " + PUBLIC_SITE_TITLE,
+};
+---
+
+<BaseLayout {meta}>
+  <script src="https://ssl.form-mailer.jp/formfiles/js/embed.js"></script>
+  <div class="formmailer-embed" data-form-hash="d10ac711792587" data-form-host="ssl.form-mailer.jp"></div>
+</BaseLayout>
