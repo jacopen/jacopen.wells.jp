@@ -1,16 +1,16 @@
 ---
-import { RichText } from "../../../lib/interfaces.ts";
+import { RichText } from '../../../lib/interfaces.ts'
 
 export interface Props {
-  richText: RichText;
+  richText: RichText
 }
 
-const { richText } = Astro.props;
+const { richText } = Astro.props
 ---
 
 {
   /* prettier-ignore */
-  richText.Href ? (
+  richText.Href && !richText.Mention ? (
     <a href={richText.Href}><slot /></a>
   ) : (
     <slot />

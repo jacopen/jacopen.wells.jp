@@ -1,29 +1,29 @@
 ---
-import { Post } from "../lib/interfaces.ts";
-import { getPostLink } from "../lib/blog-helpers.ts";
+import { Post } from '../lib/interfaces.ts'
+import { getPostLink } from '../lib/blog-helpers.ts'
 
 export interface Props {
-  post: Post;
-  enableLink: boolean;
+  post: Post
+  enableLink: boolean
 }
 
-const { post, enableLink = true } = Astro.props;
+const { post, enableLink = true } = Astro.props
 
-let title = post.Title;
+let title = post.Title
 ---
 
-<h3 class="post-title">
+<h2 class="post-title">
   {
     enableLink ? (
       <a href={getPostLink(post.Slug)}>
-        {post.Icon && post.Icon.Type === "emoji" ? (
+        {post.Icon && post.Icon.Type === 'emoji' ? (
           <>
             <span>{post.Icon.Emoji}</span>
             {title}
           </>
-        ) : post.Icon && post.Icon.Type === "external" ? (
+        ) : post.Icon && post.Icon.Type === 'external' ? (
           <>
-            <img src={post.Icon.Url} />
+            <img src={post.Icon.Url} alt="Post title icon" />
             {title}
           </>
         ) : (
@@ -32,14 +32,14 @@ let title = post.Title;
       </a>
     ) : (
       <>
-        {post.Icon && post.Icon.Type === "emoji" ? (
+        {post.Icon && post.Icon.Type === 'emoji' ? (
           <>
             <span>{post.Icon.Emoji}</span>
             {title}
           </>
-        ) : post.Icon && post.Icon.Type === "external" ? (
+        ) : post.Icon && post.Icon.Type === 'external' ? (
           <>
-            <img src={post.Icon.Url} />
+            <img src={post.Icon.Url} alt="Post title icon" />
             {title}
           </>
         ) : (
@@ -48,10 +48,11 @@ let title = post.Title;
       </>
     )
   }
-</h3>
+</h2>
 
 <style>
   .post-title {
+    margin: 0;
     padding: 0.2rem 0;
     font-size: 2rem;
     font-weight: 700;
