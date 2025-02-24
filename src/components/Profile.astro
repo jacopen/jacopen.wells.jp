@@ -1,78 +1,13 @@
 ---
+import { blogPosts, books, presentations, contributions } from '../data/profile-content';
+
 const nameEn = "Kazuto Kusama";
 const nameJa = "草間 一人";
 const nickname = "jacopen";
-const profile = `PagerDutyのプロダクトエバンジェリストとして、インシデント管理ソリューションの普及・推進に携わり、SREやインシデント対応のプラクティスの積極的な発信を行っている。また、一般社団法人クラウドネイティブイノベーターズ協会 代表理事。クラウドネイティブ技術やプラットフォームエンジニアリングに関する情報発信を行っている`;
 
-const blogPosts = [
-  {
-    url: "https://www.pagerduty.co.jp/blog/11-event-driven-automation-tags/",
-    title: "DevOpsチームのための自動化レシピ集：すぐに使える11の実践例"
-  },
-  {
-    url: "https://www.pagerduty.co.jp/blog/pagerduty-innovation-2025/",
-    title: "2025年の幕開け−より高度な運用管理を実現する、PagerDutyのイノベーション"
-  },
-  {
-    url: "https://www.pagerduty.co.jp/blog/itil-event-management/",
-    title: "ITILにおけるイベント管理～効率化と迅速なインシデント対応を実現するフレームワーク"
-  },
-  {
-    url: "https://www.pagerduty.co.jp/blog/incident-communication-best-practices/",
-    title: "障害時に適切なコミュニケーションを実現するベストプラクティス"
-  },
-  {
-    url: "https://www.pagerduty.co.jp/blog/deploy-pipeline/",
-    title: "CI／CDパイプライン構築に重要なデプロイパイプラインとは？"
-  },
-  {
-    url: "https://qiita.com/jacopen/items/76a31438e33d3791302a",
-    title: "PagerDutyに入社して3週間が経ったので、色々紹介してみる"
-  },
-  {
-    url: "https://qiita.com/jacopen/items/75c0c16de744582d7b8d",
-    title: "PagerDutyに入ってから1年とちょっと経った話"
-  }
-];
-
-const books = [
-  {
-    url: "https://book.impress.co.jp/books/1121101153",
-    title: "入門Terraform クラウド時代のインフラ統合管理"
-  },
-  {
-    url: "https://nextpublishing.jp/book/17823.html",
-    title: "Kubernetes Secret管理入門 HashiCorp Vaultで実現するセキュアな運用"
-  }
-];
-
-const presentations = [
-  {
-    url: "https://speakerdeck.com/jacopen/torasiyuanimaruninarou-kai-fa-zhe-dakarakosodekiru-an-ding-sitasabisuzuo-rinomi-jue",
-    title: "トラシューアニマルになろう ～開発者だからこそできる、安定したサービス作りの秘訣～"
-  },
-  {
-    url: "https://speakerdeck.com/jacopen/anatanoxing-wei-haxin-lai-xing-soretomosheng-chan-xing-sretositenokiyarianinao-muminasamanichuan-etaixuan-ze-zhi",
-    title: "あなたの興味は信頼性？それとも生産性？ SREとしてのキャリアに悩むみなさまに伝えたい選択肢"
-  },
-  {
-    url: "https://speakerdeck.com/jacopen/jian-wei-itarakenohosutomotemu-hontoniyi-li-turehiyuhakouta",
-    title: "間違いだらけのポストモーテム – ホントに役立つレビューはこうだ！"
-  },
-  {
-    url: "https://speakerdeck.com/jacopen/ai-x-insidentoguan-li-dekuo-gerusabisuonasitupu",
-    title: "AI x インシデント管理で拡げるサービスオーナーシップ"
-  }
-];
-const contributions = [
-  {
-    url: "https://example.com/contribution1",
-    title: "寄稿記事1"
-  }
-];
 ---
 
-<div class="container mx-auto p-4">
+<div class="container mx-auto p-4 mt-5">
   <div class="flex items-center">
     <img src="/pen_pen.jpg" alt="草間 一人" class="rounded-full w-48 h-48 mr-4 mb-4" />
     <div class="ml-4">
@@ -88,9 +23,67 @@ const contributions = [
       </div>
     </div>
   </div>
-  <h2 class="text-xl font-bold mt-4">経歴</h2>
-  <p class="text-gray-700">PagerDutyのProduct Evangelistとして、インシデント管理ソリューションに関する情報発信やコミュニティ作りに携わる。過去には通信事業者でプラットフォームエンジニアを務めたのを皮切りに、いくつかの外資系企業でプロフェッショナルサービスやプリセールスエンジニアとしてクラウドネイティブやプラットフォーム製品に携わるなど、10年以上さまざまな形でプラットフォームに関与している。2023年11月より現職。一般社団法人クラウドネイティブイノベーターズ協会 代表理事。Platform Engineering Meetupオーガナイザー。</p>
-  <h2 class="text-xl font-bold mt-4">ブログ</h2>
+  <h2 class="text-2xl font-bold mt-8">経歴</h2>
+  <p class="text-gray-700 mb-8">PagerDutyのProduct Evangelistとして、インシデント管理ソリューションに関する情報発信やコミュニティ作りに携わる。過去には通信事業者でプラットフォームエンジニアを務めたのを皮切りに、いくつかの外資系企業でプロフェッショナルサービスやプリセールスエンジニアとしてクラウドネイティブやプラットフォーム製品に携わるなど、10年以上さまざまな形でプラットフォームに関与している。2023年11月より現職。一般社団法人クラウドネイティブイノベーターズ協会 代表理事。Platform Engineering Meetupオーガナイザー。</p>
+
+  <div class="space-y-2">
+    <div class="border-dotted border-b border-gray-200 pb-4">
+      <h3 class="text-lg font-semibold text-gray-800">PagerDuty</h3>
+      <div class="flex justify-between items-center mt-1">
+        <p class="text-gray-600">Product Evangelist</p>
+        <p class="text-sm text-gray-500">2023/11 - 現在</p>
+      </div>
+    </div>
+
+    <div class="border-dotted border-b border-gray-200 pb-4">
+      <h3 class="text-lg font-semibold text-gray-800">一般社団法人クラウドネイティブイノベーターズ協会</h3>
+      <div class="flex justify-between items-center mt-1">
+        <p class="text-gray-600">代表理事</p>
+        <p class="text-sm text-gray-500">2023/6 - 現在</p>
+      </div>
+    </div>
+
+    <div class="border-dotted border-b border-gray-200 pb-4">
+      <h3 class="text-lg font-semibold text-gray-800">HashiCorp</h3>
+      <div class="flex justify-between items-center mt-1">
+        <p class="text-gray-600">Senior Solutions Engineer</p>
+        <p class="text-sm text-gray-500">2021/9 - 2023/11</p>
+      </div>
+    </div>
+
+    <div class="border-dotted border-b border-gray-200 pb-4">
+      <h3 class="text-lg font-semibold text-gray-800">Pittan</h3>
+      <div class="flex justify-between items-center mt-1">
+        <p class="text-gray-600">技術顧問</p>
+        <p class="text-sm text-gray-500">2023/4 - 2024/2</p>
+      </div>
+    </div>
+
+    <div class="border-dotted border-b border-gray-200 pb-4">
+      <h3 class="text-lg font-semibold text-gray-800">VMware</h3>
+      <div class="flex justify-between items-center mt-1">
+        <p class="text-gray-600">Senior Cloud Native Architect</p>
+        <p class="text-sm text-gray-500">2020/4 - 2021/9</p>
+      </div>
+    </div>
+
+    <div class="border-dotted border-b border-gray-200 pb-4">
+      <h3 class="text-lg font-semibold text-gray-800">Pivotal</h3>
+      <div class="flex justify-between items-center mt-1">
+        <p class="text-gray-600">Senior Solutions Engineer</p>
+        <p class="text-sm text-gray-500">2017/3 - 2020/4</p>
+      </div>
+    </div>
+
+    <div class="border-dotted border-b border-gray-200 pb-4">
+      <h3 class="text-lg font-semibold text-gray-800">NTT Communications</h3>
+      <div class="flex justify-between items-center mt-1">
+        <p class="text-gray-600">Tech Lead</p>
+        <p class="text-sm text-gray-500">2012/4 - 2017/3</p>
+      </div>
+    </div>
+  </div>
+  <h2 class="text-2xl font-bold mt-8">ブログ</h2>
   <ul class="list-disc list-inside">
     {blogPosts.map(post => (
       <li>
@@ -100,7 +93,7 @@ const contributions = [
       </li>
     ))}
   </ul>
-  <h2 class="text-xl font-bold mt-4">プレゼン資料</h2>
+  <h2 class="text-2xl font-bold mt-8">登壇</h2>
   <ul class="list-disc list-inside">
     {presentations.map(presentation => (
       <li>
@@ -110,7 +103,7 @@ const contributions = [
       </li>
     ))}
   </ul>
-  <h2 class="text-xl font-bold mt-4">寄稿</h2>
+  <h2 class="text-2xl font-bold mt-8">寄稿 / メディア記事</h2>
   <ul class="list-disc list-inside">
     {contributions.map(contribution => (
       <li>
@@ -120,7 +113,7 @@ const contributions = [
       </li>
     ))}
   </ul>
-  <h2 class="text-xl font-bold mt-4">書籍</h2>
+  <h2 class="text-2xl font-bold mt-8">書籍</h2>
   <ul class="list-disc list-inside">
     {books.map(book => (
       <li>
