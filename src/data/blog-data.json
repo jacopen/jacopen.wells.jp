@@ -1,0 +1,391 @@
+{
+  "blogPosts": [
+    {
+      "url": "https://www.pagerduty.co.jp/blog/is-your-incident-management-tool-a-single-point-of-failure-the-case-for-a-multi-channel-approach",
+      "title": "インシデント管理ツールが単一障害点になっていませんか？マルチチャネルの重要性",
+      "pubDate": "2025-03-11T01:15:50.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/11-event-driven-automation-tags/",
+      "title": "DevOpsチームのための自動化レシピ集：すぐに使える11の実践例",
+      "pubDate": "2025-03-10T00:00:00.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/what-are-network-sniffers/",
+      "title": "ネットワークスニファーとは？使用目的を理解してインシデントに備える",
+      "pubDate": "2025-02-28T07:08:42.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2025/02/25/090000",
+      "title": "ミートアップ運営や配信チームで活用する秘密基地を作った",
+      "pubDate": "2025-02-25T00:00:00.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/drive-operational-excellence-in-2025-with-pagerduty-innovations/",
+      "title": "2025年の幕開け−より高度な運用管理を実現する、PagerDutyのイノベーション",
+      "pubDate": "2025-02-18T08:30:00.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/pagerduty-innovation-2025/",
+      "title": "2025年の幕開け−より高度な運用管理を実現する、PagerDutyのイノベーション",
+      "pubDate": "2025-02-15T00:00:00.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/event-management/",
+      "title": "ITILにおけるイベント管理～効率化と迅速なインシデント対応を実現するフレームワーク",
+      "pubDate": "2025-02-06T01:41:21.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/outage-communication/",
+      "title": "障害時に適切なコミュニケーションを実現するベストプラクティス",
+      "pubDate": "2025-01-31T04:01:35.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/what-is-a-war-room/",
+      "title": "ウォールームとは？インシデント対応におけるメリットとベストプラクティス",
+      "pubDate": "2025-01-31T03:51:45.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/what-is-a-deployment-pipeline/",
+      "title": "CI／CDパイプライン構築に重要なデプロイパイプラインとは？",
+      "pubDate": "2025-01-22T08:26:19.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2025/01/20/123456",
+      "title": "クラウドネイティブな環境におけるプラットフォームエンジニアリングの実践",
+      "pubDate": "2025-01-20T00:00:00.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2025/01/20/090000",
+      "title": "終わった勉強会は、きっちりと畳もう",
+      "pubDate": "2025-01-20T00:00:00.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/what-is-production-environment/",
+      "title": "本番環境とは？開発環境やステージング環境との違いについても解説",
+      "pubDate": "2025-01-19T22:50:23.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/devrel-trademark",
+      "title": "MOONGIFT社によるDevRel商標登録問題について、異議申立を行った話",
+      "pubDate": "2025-01-15T00:00:00.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/what-is-chaos-testing/",
+      "title": "システムの耐障害性を評価するカオステストとは？",
+      "pubDate": "2024-12-20T02:48:20.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2024/04/19/150530",
+      "title": "テックカンファレンスに参加する理由は「なんとなく」や「ただ楽しいから」で良い",
+      "pubDate": "2024-04-19T06:05:30.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2023/12/31/154406",
+      "title": "2023年のふりかえり。Platform Engineeringから法人設立から転職まで",
+      "pubDate": "2023-12-31T06:44:06.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2023/12/08/223420",
+      "title": "ボランティアメンバーで大規模カンファレンスの高度なハイブリッド配信を行うためにやったこと",
+      "pubDate": "2023-12-08T13:34:20.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2023/12/01/142709",
+      "title": "2023年のPlatform Engineeringを振り返る",
+      "pubDate": "2023-12-01T05:27:09.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2023/11/09/090000",
+      "title": "PagerDutyにProduct Evangelistとして入社しました",
+      "pubDate": "2023-11-09T00:00:00.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2023/11/06/165421",
+      "title": "HashiCorpを退職します",
+      "pubDate": "2023-11-06T07:54:21.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2023/08/10/104417",
+      "title": "それでも僕らがイベントのライブ配信を続ける理由",
+      "pubDate": "2023-08-10T01:44:17.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2023/02/18/123012",
+      "title": "vExpertになりました",
+      "pubDate": "2023-02-18T03:30:12.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2022/12/02/190238",
+      "title": "CloudNative Days Tokyo 2022でMiroを使ったオンラインホワイトボードをやった話",
+      "pubDate": "2022-12-02T10:02:38.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/12/25/012011",
+      "title": "Miroの画面移動が左クリックから右クリックに変更になった話",
+      "pubDate": "2021-12-24T16:20:11.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/12/24/214733",
+      "title": "vSphere環境が崩壊したのでTerraform活用して一から構築した",
+      "pubDate": "2021-12-24T12:47:33.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/12/22/013855",
+      "title": "Consul契機でTerraform動かしてネットワーク機器の設定を自動化する",
+      "pubDate": "2021-12-21T16:38:55.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/12/14/122810",
+      "title": "Vimeoから突然の請求に関する公式回答(最終)",
+      "pubDate": "2021-12-14T03:28:10.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/12/10/083000",
+      "title": "MiroにExcelやSpreadSheetをコピペしたときに付箋にならないようにする",
+      "pubDate": "2021-12-09T23:30:00.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/12/08/080000",
+      "title": "Vimeoで200万円請求話はミスリードなので騙されない方が良い",
+      "pubDate": "2021-12-07T23:00:00.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/12/05/024956",
+      "title": "Miroの操作が直感的じゃないと感じた時はNavigation設定を見直そう",
+      "pubDate": "2021-12-04T17:49:56.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/12/03/083000",
+      "title": "人類はWeb会議に向いていないので、もっとMiroを活用すべき",
+      "pubDate": "2021-12-02T23:30:00.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/09/13/091700",
+      "title": "HashiCorpに入社しました",
+      "pubDate": "2021-09-13T00:17:00.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/09/12/182756",
+      "title": "Tanzu Kubernetes Grid 1.4を新規構築した",
+      "pubDate": "2021-09-12T09:27:56.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/09/10/235652",
+      "title": "VMUG Advantageに登録した",
+      "pubDate": "2021-09-10T14:56:52.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/09/10/032543",
+      "title": "EKS AnywhereをProductionでデプロイした話",
+      "pubDate": "2021-09-09T18:25:43.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/09/07/171710",
+      "title": "VMwareを退職します",
+      "pubDate": "2021-09-07T08:17:10.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/08/18/210231",
+      "title": "Synology上のDockerでPort80,443が使えない件をなんとかする",
+      "pubDate": "2021-08-18T12:02:31.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/05/30/160638",
+      "title": "Auth0でTKGのクラスタを認証できるようにする",
+      "pubDate": "2021-05-30T07:06:38.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/04/01/171250",
+      "title": "近所で桜を撮ってきた",
+      "pubDate": "2021-04-01T08:12:50.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2021/01/19/113455",
+      "title": "TKGのダウンロードやドキュメントにさっくりたどり着く方法",
+      "pubDate": "2021-01-19T02:34:55.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/2020/12/29/005441",
+      "title": "2020年買って良かったもの",
+      "pubDate": "2020-12-28T15:54:41.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    }
+  ],
+  "presentations": [
+    {
+      "url": "https://speakerdeck.com/jacopen/platform-engineeringde-kuraudono-le-sikunai-wojie-xiao-siyou",
+      "title": "Platform Engineeringで クラウドの「楽しくない」を解消しよう",
+      "pubDate": "2025-03-06T05:08:57.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/torasiyuanimaruninarou-kai-fa-zhe-dakarakosodekiru-an-ding-sitasabisuzuo-rinomi-jue",
+      "title": "トラシューアニマルになろう ～開発者だからこそできる、安定したサービス作りの秘訣～",
+      "pubDate": "2025-03-01T00:00:00.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/anatanoxing-wei-haxin-lai-xing-soretomosheng-chan-xing-sretositenokiyarianinao-muminasamanichuan-etaixuan-ze-zhi",
+      "title": "あなたの興味は信頼性？それとも生産性？ SREとしてのキャリアに悩むみなさまに伝えたい選択肢",
+      "pubDate": "2025-02-15T00:00:00.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/jian-wei-itarakenohosutomotemu-hontoniyi-li-turehiyuhakouta",
+      "title": "間違いだらけのポストモーテム – ホントに役立つレビューはこうだ！",
+      "pubDate": "2025-01-20T00:00:00.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/paasnoli-shi-to-apurikesiyonpuratutohuomunokorekara",
+      "title": "PaaSの歴史と、 アプリケーションプラットフォームのこれから",
+      "pubDate": "2025-01-19T05:30:19.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/ai-x-insidentoguan-li-dekuo-gerusabisuonasitupu",
+      "title": "AI x インシデント管理で拡げるサービスオーナーシップ",
+      "pubDate": "2025-01-10T00:00:00.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/10-pagerdutyji-neng-atupudeto",
+      "title": "2024/10 PagerDuty機能アップデート",
+      "pubDate": "2024-10-24T02:50:22.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/gemukaraxue-bu-itibansu-iinsidentodui-ying",
+      "title": "ゲームから学ぶ、いちばん速いインシデント対応",
+      "pubDate": "2024-10-02T09:36:14.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/pek2024-recap",
+      "title": "PEK2024 Recap",
+      "pubDate": "2024-08-29T10:29:43.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/ze-ren-arukai-fa-wo-hurusabisuonasitupugabian-eruenziniaringuwen-hua",
+      "title": "「責任ある開発」を！フルサービスオーナーシップが変えるエンジニアリング文化",
+      "pubDate": "2024-07-16T10:38:43.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/kuraudoneiteibunoben-zhi-karakao-eru-sheng-chan-xing-toxin-lai-xing-noliang-li",
+      "title": "クラウドネイティブの本質から考える、生産性と信頼性の両立",
+      "pubDate": "2024-07-16T10:17:57.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/shou-wodong-kasanaiinsidentodui-ying-zi-dong-hua-dexun-su-zheng-que-nayun-yong-womu-zhi-su",
+      "title": "手を動かさないインシデント対応〜自動化で迅速・正確な運用を目指す〜",
+      "pubDate": "2024-06-05T04:16:43.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/enziniatositenokiyariawozhi-eruzi-zhai-saba",
+      "title": "エンジニアとしてのキャリアを支える自宅サーバー",
+      "pubDate": "2024-05-23T23:02:31.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/grafana-x-pagerduty-better-together",
+      "title": "Grafana x PagerDuty Better Together",
+      "pubDate": "2024-04-26T01:34:09.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/gong-tong-ji-pan-wochao-eyo-jin-platform-engineeringniqu-rizu-mubekili-you",
+      "title": "「共通基盤」を超えよ！ 今、Platform Engineeringに取り組むべき理由",
+      "pubDate": "2024-04-12T01:14:00.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/ironnawai-zi-ironnarorudedong-itemitahua",
+      "title": "いろんな外資、いろんなロールで働いてみた話",
+      "pubDate": "2024-03-07T02:39:24.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/sabisunowei-ji-nili-tixiang-kauridasitupu-insidentokomandanoyi-ge-tozhan-lue",
+      "title": "サービスの危機に立ち向かうリーダーシップ～インシデントコマンダーの役割と戦略～",
+      "pubDate": "2024-02-16T02:53:51.000Z"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/2024nian-noplatform-engineeringhakounaru-natutehosii",
+      "title": "2024年のPlatform Engineeringはこうなる(なってほしい)",
+      "pubDate": "2023-12-31T03:26:42.000Z"
+    }
+  ],
+  "lastUpdated": "2025-03-15T14:40:01.054Z"
+}

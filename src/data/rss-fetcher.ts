@@ -80,13 +80,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
       );
     }
 
-    // 半年以内（180日）のエントリーだけをフィルタリング
-    const sixMonthsAgo = new Date();
-    sixMonthsAgo.setDate(sixMonthsAgo.getDate() - 180);
-
-    allPosts = allPosts.filter((post) => post.pubDate >= sixMonthsAgo);
-
-    // 日付順（新しい順）に並べ替え
+    // 日付順（新しい順）に並べ替え（フィルタリングは行わず全データを保持）
     allPosts.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
 
     return allPosts;
@@ -126,8 +120,8 @@ export async function fetchPresentations(): Promise<Presentation[]> {
     // 日付順（新しい順）に並べ替え
     presentations.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
 
-    // 最新6件を取得
-    return presentations.slice(0, 6);
+    // 全データを返す（制限なし）
+    return presentations;
   } catch (error) {
     console.error("Speakerdeckフィードの取得に失敗しました:", error);
 
