@@ -1,33 +1,35 @@
-export const blogPosts = [
+import { fetchBlogPosts, fetchPresentations } from "./rss-fetcher";
+
+// RSSフィードから取得したブログ記事（ビルド時に実行）
+export const blogPosts = await fetchBlogPosts();
+
+// Speakerdeckから取得した登壇情報（ビルド時に実行）
+export const latestPresentations = await fetchPresentations();
+
+// フォールバック用のブログ記事（RSSからの取得に失敗した場合に使用）
+export const fallbackBlogPosts = [
   {
     url: "https://www.pagerduty.co.jp/blog/11-event-driven-automation-tags/",
     title: "DevOpsチームのための自動化レシピ集：すぐに使える11の実践例",
+    pubDate: new Date("2025-03-10"),
+    source: "PagerDuty",
+    sourceUrl: "https://www.pagerduty.co.jp/blog/",
   },
   {
     url: "https://www.pagerduty.co.jp/blog/pagerduty-innovation-2025/",
     title:
       "2025年の幕開け−より高度な運用管理を実現する、PagerDutyのイノベーション",
+    pubDate: new Date("2025-02-15"),
+    source: "PagerDuty",
+    sourceUrl: "https://www.pagerduty.co.jp/blog/",
   },
   {
-    url: "https://www.pagerduty.co.jp/blog/itil-event-management/",
+    url: "https://jaco.udcp.info/entry/2025/01/20/123456",
     title:
-      "ITILにおけるイベント管理～効率化と迅速なインシデント対応を実現するフレームワーク",
-  },
-  {
-    url: "https://www.pagerduty.co.jp/blog/incident-communication-best-practices/",
-    title: "障害時に適切なコミュニケーションを実現するベストプラクティス",
-  },
-  {
-    url: "https://www.pagerduty.co.jp/blog/deploy-pipeline/",
-    title: "CI／CDパイプライン構築に重要なデプロイパイプラインとは？",
-  },
-  {
-    url: "https://qiita.com/jacopen/items/76a31438e33d3791302a",
-    title: "PagerDutyに入社して3週間が経ったので、色々紹介してみる",
-  },
-  {
-    url: "https://qiita.com/jacopen/items/75c0c16de744582d7b8d",
-    title: "PagerDutyに入ってから1年とちょっと経った話",
+      "クラウドネイティブな環境におけるプラットフォームエンジニアリングの実践",
+    pubDate: new Date("2025-01-20"),
+    source: "Cloud Penguins",
+    sourceUrl: "https://jaco.udcp.info/",
   },
 ];
 
@@ -50,30 +52,35 @@ export const books = [
   },
 ];
 
-export const presentations = [
+// フォールバック用の登壇情報（Speakerdeckからの取得に失敗した場合に使用）
+export const fallbackPresentations = [
   {
     url: "https://speakerdeck.com/jacopen/torasiyuanimaruninarou-kai-fa-zhe-dakarakosodekiru-an-ding-sitasabisuzuo-rinomi-jue",
     title:
       "トラシューアニマルになろう ～開発者だからこそできる、安定したサービス作りの秘訣～",
-    event: "",
+    pubDate: new Date("2025-03-01"),
   },
   {
     url: "https://speakerdeck.com/jacopen/anatanoxing-wei-haxin-lai-xing-soretomosheng-chan-xing-sretositenokiyarianinao-muminasamanichuan-etaixuan-ze-zhi",
     title:
       "あなたの興味は信頼性？それとも生産性？ SREとしてのキャリアに悩むみなさまに伝えたい選択肢",
-    event: "",
+    pubDate: new Date("2025-02-15"),
   },
   {
     url: "https://speakerdeck.com/jacopen/jian-wei-itarakenohosutomotemu-hontoniyi-li-turehiyuhakouta",
     title: "間違いだらけのポストモーテム – ホントに役立つレビューはこうだ！",
-    event: "",
+    pubDate: new Date("2025-01-20"),
   },
   {
     url: "https://speakerdeck.com/jacopen/ai-x-insidentoguan-li-dekuo-gerusabisuonasitupu",
     title: "AI x インシデント管理で拡げるサービスオーナーシップ",
-    event: "",
+    pubDate: new Date("2025-01-10"),
   },
 ];
+
+// 実際に表示する登壇情報（動的に取得したものがあればそれを使用、なければフォールバックを使用）
+export const presentations =
+  latestPresentations.length > 0 ? latestPresentations : fallbackPresentations;
 export const contributions = [
   {
     url: "https://thinkit.co.jp/article/14044",
