@@ -1,0 +1,136 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { blogPosts as rssBlogPosts } from '../data/blog-entries';
+
+interface Props {
+  limit?: number;
+  page?: number;
+  showPagination?: boolean;
+}
+
+const { limit = 0, page = 1, showPagination = false } = Astro.props;
+
+// Markdownブログ記事の取得
+const mdBlogEntries = await getCollection('blog');
+
+// Markdownブログ記事をblogPostsと同じ形式に変換
+const mdBlogPosts = mdBlogEntries
+  .map((entry: CollectionEntry<'blog'>) => {
+    return {
+      url: `/blog/${entry.slug}`,
+      title: entry.data.title,
+      pubDate: entry.data.pubDate,
+      source: 'ブログ',
+      sourceUrl: '/blog',
+    };
+  });
+
+// RSSから取得したブログ記事（既に半年以内でフィルタされている）とMarkdownブログ記事を結合してソート
+const allBlogPosts = [...rssBlogPosts, ...mdBlogPosts]
+  .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
+
+// ページネーション用の変数
+const ITEMS_PER_PAGE = 15; 
+const totalPosts = allBlogPosts.length;
+const totalPages = Math.ceil(totalPosts / ITEMS_PER_PAGE);
+const currentPage = Math.min(Math.max(1, page), totalPages || 1);
+
+// デバッグ情報（開発時のみ）
+console.log('Total posts:', totalPosts);
+console.log('Total pages:', totalPages);
+console.log('Current page:', currentPage);
+console.log('Page type:', typeof page);
+console.log('Current display posts:', (currentPage - 1) * ITEMS_PER_PAGE, 'to', currentPage * ITEMS_PER_PAGE);
+
+// 表示するブログ記事の絞り込み
+const displayPosts = limit > 0 
+  ? allBlogPosts.slice(0, limit) 
+  : allBlogPosts.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
+// 表示用に日付をフォーマットする関数
+function formatDate(date: Date): string {
+  return `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`;
+}
+---
+
+<div class="space-y-4 mt-4">
+  {displayPosts.map(post => (
+    <div class="border-b border-gray-100 pb-3">
+      <div class="flex items-center mb-1 text-sm text-gray-600">
+        <span class="mr-2">{formatDate(post.pubDate)}</span>
+        <a href={post.sourceUrl} class="font-medium" 
+          style={
+            post.source === 'PagerDuty' ? 'color: #25c151;' : 
+            post.source === 'Cloud Penguins' ? 'color: #3498db;' : 
+            'color: #6b7280;'
+          }>
+          {post.source}
+        </a>
+      </div>
+      <a href={post.url} class="text-gray-800 hover:text-blue-600 font-medium text-lg block">
+        {post.title}
+      </a>
+    </div>
+  ))}
+</div>
+
+{showPagination && (
+  <div class="flex justify-center items-center space-x-2 mt-8">
+    <div class="flex flex-wrap justify-center gap-2 w-full">
+      {currentPage > 1 && (
+        <a 
+          href={`/blog?page=${currentPage - 1}`} 
+          class="px-4 py-2 border rounded bg-white text-gray-800 hover:bg-gray-100"
+          data-page={currentPage - 1}
+        >
+          前へ
+        </a>
+      )}
+      
+      {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
+        <a 
+          href={`/blog?page=${pageNum}`} 
+          class={`px-4 py-2 border rounded ${currentPage === pageNum ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 hover:bg-gray-100'}`}
+          data-page={pageNum}
+        >
+          {pageNum}
+        </a>
+      ))}
+      
+      {currentPage < totalPages && (
+        <a 
+          href={`/blog?page=${currentPage + 1}`} 
+          class="px-4 py-2 border rounded bg-white text-gray-800 hover:bg-gray-100"
+          data-page={currentPage + 1}
+        >
+          次へ
+        </a>
+      )}
+    </div>
+  </div>
+)}
+
+<script>
+  // ページネーションリンクのクリックイベント処理
+  document.addEventListener('DOMContentLoaded', () => {
+    const paginationLinks = document.querySelectorAll('a[data-page]');
+    
+    paginationLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = link.getAttribute('data-page');
+        // 強制的にページをリロード
+        window.location.href = `/blog?page=${page}`;
+      });
+    });
+  });
+</script>
+
+{limit > 0 && allBlogPosts.length > limit && (
+  <div class="text-center mt-4">
+    <a href="/blog/page/1" class="text-blue-500 hover:text-blue-700 font-medium">
+      すべての記事を見る →
+    </a>
+  </div>
+)}

@@ -5,6 +5,7 @@ type CustomItem = {
   link: string;
   pubDate: string;
   source?: string;
+  content?: string;
 };
 
 type CustomFeed = {
@@ -23,6 +24,7 @@ type Presentation = {
   url: string;
   title: string;
   pubDate: Date;
+  content: string;
 };
 
 // RSSフィードからブログ記事を取得する関数
@@ -39,9 +41,10 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
     });
 
     // 両方のフィードを並行して取得
-    const [pagerDutyFeed, personalBlogFeed] = await Promise.allSettled([
+    const [pagerDutyFeed, personalBlogFeed, qiitaFeed] = await Promise.allSettled([
       parser.parseURL("https://www.pagerduty.co.jp/author/jacopen/feed/"),
       parser.parseURL("https://jaco.udcp.info/feed"),
+      parser.parseURL("https://qiita.com/jacopen/feed"),
     ]);
 
     let allPosts: BlogPost[] = [];
@@ -79,6 +82,22 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
         personalBlogFeed.reason,
       );
     }
+    // Qiitaの記事を追加
+    if (qiitaFeed.status === "fulfilled") {
+      const qiitaPosts = qiitaFeed.value.items.map((item) => ({
+        url: item.link,
+        title: item.title,
+        pubDate: new Date(item.pubDate || Date.now()),
+        source: "Qiita",
+        sourceUrl: "https://qiita.com/jacopen",
+      }));
+      allPosts = [...allPosts, ...qiitaPosts];
+    } else {
+      console.error(
+        "qiitaのRSSフィードの取得に失敗しました:",
+        qiitaFeed.reason,
+      );
+    }
 
     // 日付順（新しい順）に並べ替え（フィルタリングは行わず全データを保持）
     allPosts.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
@@ -101,6 +120,7 @@ export async function fetchPresentations(): Promise<Presentation[]> {
           ["title", "title"],
           ["link", "link"],
           ["pubDate", "pubDate"],
+          ["content", "content"],
         ],
       },
     });
@@ -115,6 +135,7 @@ export async function fetchPresentations(): Promise<Presentation[]> {
       url: item.link,
       title: item.title,
       pubDate: new Date(item.pubDate || Date.now()),
+      content: item.content ?? "",
     }));
 
     // 日付順（新しい順）に並べ替え

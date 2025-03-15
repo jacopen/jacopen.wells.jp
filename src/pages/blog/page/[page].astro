@@ -1,0 +1,119 @@
+---
+import TwoPaneLayout from '../../../layouts/TwoPaneLayout.astro';
+import { blogPosts as rssBlogPosts } from '../../../data/blog-entries';
+import { getCollection } from 'astro:content';
+
+// Astroの動的ルーティングで必要な関数
+export async function getStaticPaths() {
+  // Markdownブログ記事の取得
+  const mdBlogEntries = await getCollection('blog');
+
+  // Markdownブログ記事をblogPostsと同じ形式に変換
+  const mdBlogPosts = mdBlogEntries
+    .map((entry) => {
+      return {
+        url: `/blog/${entry.slug}`,
+        title: entry.data.title,
+        pubDate: entry.data.pubDate,
+        source: 'ブログ',
+        sourceUrl: '/blog',
+      };
+    });
+
+  // RSSから取得したブログ記事（既に半年以内でフィルタされている）とMarkdownブログ記事を結合してソート
+  const allBlogPosts = [...rssBlogPosts, ...mdBlogPosts]
+    .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
+    
+  // ページネーション用の変数
+  const ITEMS_PER_PAGE = 15;
+  const totalPages = Math.ceil(allBlogPosts.length / ITEMS_PER_PAGE);
+  
+  // 各ページに対応するパラメータを生成
+  return Array.from({ length: totalPages }, (_, i) => {
+    const pageNum = i + 1;
+    const start = i * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+    
+    return {
+      params: { page: pageNum.toString() },
+      props: { 
+        posts: allBlogPosts.slice(start, end),
+        currentPage: pageNum,
+        totalPages: totalPages,
+        totalPosts: allBlogPosts.length
+      }
+    };
+  });
+}
+
+// 動的ルートのパラメータとpropsを受け取る
+const { page } = Astro.params;
+const { posts, currentPage, totalPages, totalPosts } = Astro.props;
+
+// 表示用に日付をフォーマットする関数
+function formatDate(date: Date): string {
+  return `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`;
+}
+---
+
+<TwoPaneLayout title="ブログ記事一覧">
+    <h1 class="text-3xl font-bold mb-6">ブログ記事一覧</h1>
+    
+    <div class="mb-4">
+      <a href="/" class="text-blue-500 hover:text-blue-700">
+        <i class="fas fa-arrow-left mr-1"></i> ホームに戻る
+      </a>
+    </div>
+    
+    <div class="space-y-4 mt-4">
+      {posts.map((post: any) => (
+        <div class="border-b border-gray-100 pb-3">
+          <div class="flex items-center mb-1 text-sm text-gray-600">
+            <span class="mr-2">{formatDate(post.pubDate)}</span>
+            <a href={post.sourceUrl} class="font-medium" 
+              style={
+                post.source === 'PagerDuty' ? 'color: #25c151;' : 
+                post.source === 'Cloud Penguins' ? 'color: #3498db;' : 
+                'color: #6b7280;'
+              }>
+              {post.source}
+            </a>
+          </div>
+          <a href={post.url} class="text-gray-800 hover:text-blue-600 font-medium text-lg block">
+            {post.title}
+          </a>
+        </div>
+      ))}
+    </div>
+    
+    <div class="flex justify-center items-center space-x-2 mt-8">
+      <div class="flex flex-wrap justify-center gap-2 w-full">
+        {currentPage > 1 && (
+          <a 
+            href={`/blog/page/${currentPage - 1}`} 
+            class="px-4 py-2 border rounded bg-white text-gray-800 hover:bg-gray-100"
+          >
+            前へ
+          </a>
+        )}
+        
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
+          <a 
+            href={`/blog/page/${pageNum}`} 
+            class={`px-4 py-2 border rounded ${currentPage === pageNum ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 hover:bg-gray-100'}`}
+          >
+            {pageNum}
+          </a>
+        ))}
+        
+        {currentPage < totalPages && (
+          <a 
+            href={`/blog/page/${currentPage + 1}`} 
+            class="px-4 py-2 border rounded bg-white text-gray-800 hover:bg-gray-100"
+          >
+            次へ
+          </a>
+        )}
+      </div>
+    </div>
+</TwoPaneLayout>
