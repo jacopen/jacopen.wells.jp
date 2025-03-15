@@ -14,7 +14,7 @@ const { title, pubDate, author, tags = [] } = Astro.props;
 const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${pubDate.getDate()}日`;
 ---
 
-<Layout title={title} useTwoPane={true}>
+<Layout title={title} useTwoPane={true} isProfilePage={false}>
     <!-- パンくずリスト -->
     <div class="text-sm mb-6 text-gray-600">
       <a href="/" class="hover:text-blue-600">ホーム</a> &gt; 
