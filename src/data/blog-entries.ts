@@ -218,15 +218,8 @@ export const contributions = [
   },
 ];
 
-// 表示用に半年以内のブログ記事をフィルタリングして提供する
-export const blogPosts = (() => {
-  // 半年（180日）前の日付を計算
-  const sixMonthsAgo = new Date();
-  sixMonthsAgo.setDate(sixMonthsAgo.getDate() - 180);
-  
-  // 半年以内のエントリーだけをフィルタリング
-  return savedBlogPosts.filter(post => post.pubDate >= sixMonthsAgo);
-})();
+// すべてのブログ記事を提供する
+export const blogPosts = savedBlogPosts;
 
 // 表示用に最新6件の登壇情報を提供する
 export const presentations = savedPresentations.slice(0, 6);

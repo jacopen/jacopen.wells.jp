@@ -36,13 +36,6 @@
       "sourceUrl": "https://www.pagerduty.co.jp/blog/"
     },
     {
-      "url": "https://www.pagerduty.co.jp/blog/pagerduty-innovation-2025/",
-      "title": "2025年の幕開け−より高度な運用管理を実現する、PagerDutyのイノベーション",
-      "pubDate": "2025-02-15T00:00:00.000Z",
-      "source": "PagerDuty",
-      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
-    },
-    {
       "url": "https://www.pagerduty.co.jp/blog/event-management/",
       "title": "ITILにおけるイベント管理～効率化と迅速なインシデント対応を実現するフレームワーク",
       "pubDate": "2025-02-06T01:41:21.000Z",
@@ -106,6 +99,27 @@
       "sourceUrl": "https://www.pagerduty.co.jp/blog/"
     },
     {
+      "url": "https://qiita.com/jacopen/items/d9a079868091cc4e1d64",
+      "title": "TerraformでPagerDuty設定入門 その2 - ユーザーとTeamを設定",
+      "pubDate": "2024-12-15T14:40:18.000Z",
+      "source": "Qiita",
+      "sourceUrl": "https://qiita.com/jacopen"
+    },
+    {
+      "url": "https://qiita.com/jacopen/items/a91d040275ebc96f82b4",
+      "title": "TerraformでPagerDuty設定入門 その１",
+      "pubDate": "2024-12-07T17:22:12.000Z",
+      "source": "Qiita",
+      "sourceUrl": "https://qiita.com/jacopen"
+    },
+    {
+      "url": "https://qiita.com/jacopen/items/75c0c16de744582d7b8d",
+      "title": "PagerDutyに入ってから1年とちょっと経った話",
+      "pubDate": "2024-12-01T14:48:58.000Z",
+      "source": "Qiita",
+      "sourceUrl": "https://qiita.com/jacopen"
+    },
+    {
       "url": "https://jaco.udcp.info/entry/2024/04/19/150530",
       "title": "テックカンファレンスに参加する理由は「なんとなく」や「ただ楽しいから」で良い",
       "pubDate": "2024-04-19T06:05:30.000Z",
@@ -118,6 +132,13 @@
       "pubDate": "2023-12-31T06:44:06.000Z",
       "source": "Cloud Penguins",
       "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://qiita.com/jacopen/items/26bf1e4154963b311ad2",
+      "title": "オンプレVMware環境のインシデントをPagerDutyで管理する",
+      "pubDate": "2023-12-15T14:46:21.000Z",
+      "source": "Qiita",
+      "sourceUrl": "https://qiita.com/jacopen"
     },
     {
       "url": "https://jaco.udcp.info/entry/2023/12/08/223420",
@@ -387,5 +408,5 @@
       "pubDate": "2023-12-31T03:26:42.000Z"
     }
   ],
-  "lastUpdated": "2025-03-15T14:40:01.054Z"
+  "lastUpdated": "2025-03-15T15:52:23.156Z"
 }

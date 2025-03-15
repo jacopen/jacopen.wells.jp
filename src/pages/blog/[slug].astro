@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import { marked } from 'marked';
+
+// 動的ルートのパスを生成
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  
+  return blogEntries.map(entry => ({
+    params: { 
+      slug: entry.slug 
+    },
+    props: { 
+      entry 
+    },
+  }));
+}
+
+// ページコンポーネントにpropsとして渡されるデータ
+const { entry } = Astro.props;
+
+// Markdownをレンダリング
+const { Content } = await entry.render();
+---
+
+<BlogPostLayout
+  title={entry.data.title}
+  pubDate={entry.data.pubDate}
+  author={entry.data.author}
+  tags={entry.data.tags}
+>
+  <Content />
+</BlogPostLayout>
