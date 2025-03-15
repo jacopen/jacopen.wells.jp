@@ -6,9 +6,19 @@ interface Props {
   title?: string;
   useTwoPane?: boolean;
   isProfilePage?: boolean;
+  ogDescription?: string;
+  ogType?: string;
+  ogImage?: string;
 }
 
-const { title = profileInfo.nameEn, useTwoPane = false, isProfilePage = false } = Astro.props;
+const { 
+  title = profileInfo.nameEn, 
+  useTwoPane = false, 
+  isProfilePage = false,
+  ogDescription = profileInfo.bio,
+  ogType = "website",
+  ogImage = "/gentoo1.png"
+} = Astro.props;
 const { nameEn, nameJa, nickname } = profileInfo;
 
 // セクションのリンク一覧（2ペーンレイアウト用）
@@ -32,6 +42,21 @@ const sections = [
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		
+		<!-- OGP設定 -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={ogDescription} />
+		<meta property="og:type" content={ogType} />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:image" content={new URL(ogImage, Astro.url)} />
+		<meta property="og:site_name" content={profileInfo.nameEn} />
+		
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@jacopen" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={ogDescription} />
+		<meta name="twitter:image" content={new URL(ogImage, Astro.url)} />
 	</head>
 	<body class="bg-gray-100 text-gray-800 font-sans antialiased">
     <div class="mx-auto max-w-5xl">
@@ -63,7 +88,7 @@ const sections = [
                 
                 {!isProfilePage && (
                   <div class="mb-6 text-center pb-4 border-b border-gray-100">
-                    <img src="/pen_pen.jpg" alt=`{nameJa}` class="rounded-full w-24 h-24 mx-auto mb-2" />
+                    <img src="/gentoo1.png" alt=`{nameJa}` class="rounded-full w-24 h-24 mx-auto mb-2" />
                     <div>
                       <h2 class="text-base font-bold">{nickname}</h2>
                       <p class="text-xs text-gray-600 mb-1">{nameJa}</p>
@@ -96,7 +121,7 @@ const sections = [
               <div class="sticky top-8">
                 {!isProfilePage && (
                   <div class="mb-8 text-center  text-right">
-                    <img src="/pen_pen.jpg" alt="草間 一人" class="rounded-full w-32 h-32 ml-auto mb-4" />
+                    <img src="/gentoo1.png" alt="草間 一人" class="rounded-full w-32 h-32 ml-auto mb-4" />
                     <div class="text-right">
                       <h2 class="text-lg font-bold">{nickname}</h2>
                       <p class="text-sm text-gray-600 mb-1">{nameJa}</p>

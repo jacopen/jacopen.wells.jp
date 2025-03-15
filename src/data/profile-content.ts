@@ -30,6 +30,7 @@ export const skills = [
   // ソフトスキル
   { name: "コミュニティ運営", category: "SoftSkill" },
   { name: "技術エバンジェリズム", category: "SoftSkill" },
+  { name: "テクニカルライティング", category: "SoftSkill" },
   { name: "プレゼンテーション", category: "SoftSkill" },
   { name: "ファシリテーション", category: "SoftSkill" },
   
