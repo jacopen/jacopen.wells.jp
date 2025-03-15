@@ -1,5 +1,5 @@
 ---
-import TwoPaneLayout from "./TwoPaneLayout.astro";
+import Layout from "./Layout.astro";
 
 interface Props {
   title: string;
@@ -14,7 +14,7 @@ const { title, pubDate, author, tags = [] } = Astro.props;
 const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${pubDate.getDate()}日`;
 ---
 
-<TwoPaneLayout title={title}>
+<Layout title={title} useTwoPane={true}>
     <!-- パンくずリスト -->
     <div class="text-sm mb-6 text-gray-600">
       <a href="/" class="hover:text-blue-600">ホーム</a> &gt; 
@@ -47,7 +47,7 @@ const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${
         </a>
       </div>
     </article>
-</TwoPaneLayout>
+</Layout>
 
 <style is:global>
   .prose h1 { font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; }

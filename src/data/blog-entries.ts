@@ -18,6 +18,7 @@ export type Presentation = {
   url: string;
   title: string;
   pubDate: Date;
+  content?: string;
 };
 
 // JSONファイルがない場合の初期データは空の配列とする

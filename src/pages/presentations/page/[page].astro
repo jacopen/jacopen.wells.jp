@@ -1,0 +1,124 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import fs from 'fs/promises';
+import path from 'path';
+
+// Astroの動的ルーティングで必要な関数
+export async function getStaticPaths() {
+  try {
+    // JSONファイルから直接データを読み込む
+    const DATA_FILE_PATH = path.resolve(process.cwd(), "src/data/blog-data.json");
+    const fileData = await fs.readFile(DATA_FILE_PATH, "utf-8");
+    const parsedData = JSON.parse(fileData);
+    
+    // presentationsデータを取得して日付オブジェクトに変換
+    const allPresentations = parsedData.presentations.map((pres: any) => ({
+      ...pres,
+      pubDate: new Date(pres.pubDate)
+    })).sort((a: any, b: any) => b.pubDate.getTime() - a.pubDate.getTime());
+    
+    // ページネーション用の変数
+    const ITEMS_PER_PAGE = 15;
+    const totalPages = Math.ceil(allPresentations.length / ITEMS_PER_PAGE);
+    
+    // 各ページに対応するパラメータを生成
+    return Array.from({ length: totalPages }, (_, i) => {
+      const pageNum = i + 1;
+      const start = i * ITEMS_PER_PAGE;
+      const end = start + ITEMS_PER_PAGE;
+      
+      return {
+        params: { page: pageNum.toString() },
+        props: { 
+          presentations: allPresentations.slice(start, end),
+          currentPage: pageNum,
+          totalPages: totalPages,
+          totalPresentations: allPresentations.length
+        }
+      };
+    });
+  } catch (error) {
+    console.error("Failed to get presentation data:", error);
+    // エラー時のフォールバック
+    return [
+      {
+        params: { page: "1" },
+        props: { 
+          presentations: [],
+          currentPage: 1,
+          totalPages: 1,
+          totalPresentations: 0
+        }
+      }
+    ];
+  }
+}
+
+// 動的ルートのパラメータとpropsを受け取る
+const { page } = Astro.params;
+const { presentations, currentPage, totalPages, totalPresentations } = Astro.props;
+
+// 表示用に日付をフォーマットする関数
+function formatDate(date: Date): string {
+  return `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`;
+}
+---
+
+<Layout title="登壇一覧" useTwoPane={true}>
+    <h1 class="text-3xl font-bold mb-6">登壇一覧</h1>
+    
+    <div class="mb-4">
+      <a href="/" class="text-blue-500 hover:text-blue-700">
+        <i class="fas fa-arrow-left mr-1"></i> ホームに戻る
+      </a>
+    </div>
+    
+    <div class="space-y-4 mt-4">
+      {presentations.map((presentation: any) => (
+        <div class="border-b border-gray-100 pb-3">
+          <div class="flex items-center mb-1 text-sm text-gray-600">
+            <span class="mr-2">{formatDate(presentation.pubDate)}</span>
+          </div>
+          <a href={presentation.url} class="text-gray-800 hover:text-blue-600 font-medium text-lg block mb-2">
+            {presentation.title}
+          </a>
+          {presentation.content && (
+            <div class="text-gray-600 text-sm">
+              {presentation.content}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+    
+    <div class="flex justify-center items-center space-x-2 mt-8">
+      <div class="flex flex-wrap justify-center gap-2 w-full">
+        {currentPage > 1 && (
+          <a 
+            href={`/presentations/page/${currentPage - 1}`} 
+            class="px-4 py-2 border rounded bg-white text-gray-800 hover:bg-gray-100"
+          >
+            前へ
+          </a>
+        )}
+        
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
+          <a 
+            href={`/presentations/page/${pageNum}`} 
+            class={`px-4 py-2 border rounded ${currentPage === pageNum ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 hover:bg-gray-100'}`}
+          >
+            {pageNum}
+          </a>
+        ))}
+        
+        {currentPage < totalPages && (
+          <a 
+            href={`/presentations/page/${currentPage + 1}`} 
+            class="px-4 py-2 border rounded bg-white text-gray-800 hover:bg-gray-100"
+          >
+            次へ
+          </a>
+        )}
+      </div>
+    </div>
+</Layout>

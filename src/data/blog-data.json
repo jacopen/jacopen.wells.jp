@@ -320,93 +320,111 @@
     {
       "url": "https://speakerdeck.com/jacopen/platform-engineeringde-kuraudono-le-sikunai-wojie-xiao-siyou",
       "title": "Platform Engineeringで クラウドの「楽しくない」を解消しよう",
-      "pubDate": "2025-03-06T05:08:57.000Z"
+      "pubDate": "2025-03-06T05:08:57.000Z",
+      "content": "JAWS DAYS 2025で登壇した資料です\r\n\r\nあなたにとってのPlatformのTVPとはWikiかもしれない、の情報元\r\nhttps://teamtopologies.com/key-concepts-content/what-is-a-thinnest-viable-platform-tvp\r\n\r\nPlatform Engineering KaigiのManuel Paisさんセッションアーカイブ\r\nhttps://www.cnia.io/pek2024/sessions/b425872b-4a02-49ab-858a-3fffeebe866d/\r\n\r\ndeeeetさんセッションアーカイブ\r\nhttps://www.cnia.io/pek2024/sessions/768e0788-00cc-4055-88d2-27e32730b035/"
     },
     {
       "url": "https://speakerdeck.com/jacopen/torasiyuanimaruninarou-kai-fa-zhe-dakarakosodekiru-an-ding-sitasabisuzuo-rinomi-jue",
       "title": "トラシューアニマルになろう ～開発者だからこそできる、安定したサービス作りの秘訣～",
-      "pubDate": "2025-03-01T00:00:00.000Z"
+      "pubDate": "2025-02-14T01:23:10.000Z",
+      "content": "Developers Summit 2025で登壇した資料です\r\n\r\n障害対応のイマが分かる年に一度の祭典 PagerDuty on Tour Tokyo 2025、参加申し込み受付中です！\r\nhttps://www.pagerduty.co.jp/pagerdutyontourtokyo/?cpcode=mktg-jacopen"
     },
     {
       "url": "https://speakerdeck.com/jacopen/anatanoxing-wei-haxin-lai-xing-soretomosheng-chan-xing-sretositenokiyarianinao-muminasamanichuan-etaixuan-ze-zhi",
-      "title": "あなたの興味は信頼性？それとも生産性？ SREとしてのキャリアに悩むみなさまに伝えたい選択肢",
-      "pubDate": "2025-02-15T00:00:00.000Z"
-    },
-    {
-      "url": "https://speakerdeck.com/jacopen/jian-wei-itarakenohosutomotemu-hontoniyi-li-turehiyuhakouta",
-      "title": "間違いだらけのポストモーテム – ホントに役立つレビューはこうだ！",
-      "pubDate": "2025-01-20T00:00:00.000Z"
+      "title": "あなたの興味は信頼性？それとも生産性？ SREとしてのキャリアに悩むみなさまに伝えたい選択肢 ",
+      "pubDate": "2025-01-27T08:08:10.000Z",
+      "content": "SRE Kaigi 2025で発表した資料です"
     },
     {
       "url": "https://speakerdeck.com/jacopen/paasnoli-shi-to-apurikesiyonpuratutohuomunokorekara",
       "title": "PaaSの歴史と、 アプリケーションプラットフォームのこれから",
-      "pubDate": "2025-01-19T05:30:19.000Z"
+      "pubDate": "2025-01-19T05:30:19.000Z",
+      "content": "2024年6月に開催した、最後のPaaS勉強会でお話しした資料です。\r\nPaaSが世の中に登場してから今までの流れを、PaaS勉強会の経緯を絡めながら解説しました。"
     },
     {
       "url": "https://speakerdeck.com/jacopen/ai-x-insidentoguan-li-dekuo-gerusabisuonasitupu",
       "title": "AI x インシデント管理で拡げるサービスオーナーシップ",
-      "pubDate": "2025-01-10T00:00:00.000Z"
+      "pubDate": "2024-12-02T14:24:27.000Z",
+      "content": "Fullstack AI Dev & Raycast Summit feat. Satoshi Nakajima\r\nで登壇した資料です"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/jian-wei-itarakenohosutomotemu-hontoniyi-li-turehiyuhakouta",
+      "title": "間違いだらけのポストモーテム - ホントに役立つレビューはこうだ!",
+      "pubDate": "2024-12-01T14:52:46.000Z",
+      "content": "CloudNative Days Winter 2024で登壇した資料です"
     },
     {
       "url": "https://speakerdeck.com/jacopen/10-pagerdutyji-neng-atupudeto",
       "title": "2024/10 PagerDuty機能アップデート",
-      "pubDate": "2024-10-24T02:50:22.000Z"
+      "pubDate": "2024-10-24T02:50:22.000Z",
+      "content": "<div type=\"html\"/>"
     },
     {
       "url": "https://speakerdeck.com/jacopen/gemukaraxue-bu-itibansu-iinsidentodui-ying",
       "title": "ゲームから学ぶ、いちばん速いインシデント対応",
-      "pubDate": "2024-10-02T09:36:14.000Z"
+      "pubDate": "2024-10-02T09:36:14.000Z",
+      "content": "Cloud Operator Days Tokyo 2024で発表した資料です"
     },
     {
       "url": "https://speakerdeck.com/jacopen/pek2024-recap",
       "title": "PEK2024 Recap",
-      "pubDate": "2024-08-29T10:29:43.000Z"
+      "pubDate": "2024-08-29T10:29:43.000Z",
+      "content": "Platform Engineering Kaigi 2024を振り返る資料です"
     },
     {
       "url": "https://speakerdeck.com/jacopen/ze-ren-arukai-fa-wo-hurusabisuonasitupugabian-eruenziniaringuwen-hua",
       "title": "「責任ある開発」を！フルサービスオーナーシップが変えるエンジニアリング文化",
-      "pubDate": "2024-07-16T10:38:43.000Z"
+      "pubDate": "2024-07-16T10:38:43.000Z",
+      "content": "Developer eXperience Day 2024で登壇した資料です"
     },
     {
       "url": "https://speakerdeck.com/jacopen/kuraudoneiteibunoben-zhi-karakao-eru-sheng-chan-xing-toxin-lai-xing-noliang-li",
       "title": "クラウドネイティブの本質から考える、生産性と信頼性の両立",
-      "pubDate": "2024-07-16T10:17:57.000Z"
+      "pubDate": "2024-07-16T10:17:57.000Z",
+      "content": "開発生産性カンファレンス2024でお話しした資料です"
     },
     {
       "url": "https://speakerdeck.com/jacopen/shou-wodong-kasanaiinsidentodui-ying-zi-dong-hua-dexun-su-zheng-que-nayun-yong-womu-zhi-su",
       "title": "手を動かさないインシデント対応〜自動化で迅速・正確な運用を目指す〜",
-      "pubDate": "2024-06-05T04:16:43.000Z"
+      "pubDate": "2024-06-05T04:16:43.000Z",
+      "content": "インシデントマネジメント 事態収拾のための取り組みに迫る Lunch LT でお話しした資料です"
     },
     {
       "url": "https://speakerdeck.com/jacopen/enziniatositenokiyariawozhi-eruzi-zhai-saba",
       "title": "エンジニアとしてのキャリアを支える自宅サーバー",
-      "pubDate": "2024-05-23T23:02:31.000Z"
+      "pubDate": "2024-05-23T23:02:31.000Z",
+      "content": "ツナカン(TUNA-JP Conference) #12 で発表した資料です"
     },
     {
       "url": "https://speakerdeck.com/jacopen/grafana-x-pagerduty-better-together",
       "title": "Grafana x PagerDuty Better Together",
-      "pubDate": "2024-04-26T01:34:09.000Z"
+      "pubDate": "2024-04-26T01:34:09.000Z",
+      "content": "Grafana Meetup Japan #1\r\nでお話しした資料です"
     },
     {
       "url": "https://speakerdeck.com/jacopen/gong-tong-ji-pan-wochao-eyo-jin-platform-engineeringniqu-rizu-mubekili-you",
       "title": "「共通基盤」を超えよ！ 今、Platform Engineeringに取り組むべき理由",
-      "pubDate": "2024-04-12T01:14:00.000Z"
+      "pubDate": "2024-04-12T01:14:00.000Z",
+      "content": "OpenShift.Runで登壇した資料です。"
     },
     {
       "url": "https://speakerdeck.com/jacopen/ironnawai-zi-ironnarorudedong-itemitahua",
       "title": "いろんな外資、いろんなロールで働いてみた話",
-      "pubDate": "2024-03-07T02:39:24.000Z"
+      "pubDate": "2024-03-07T02:39:24.000Z",
+      "content": "Findyのイベント「元CircleCI Databricks PagerDutyのエンジニアに聞く外資系への挑戦とリアル」で話した資料です"
     },
     {
       "url": "https://speakerdeck.com/jacopen/sabisunowei-ji-nili-tixiang-kauridasitupu-insidentokomandanoyi-ge-tozhan-lue",
       "title": "サービスの危機に立ち向かうリーダーシップ～インシデントコマンダーの役割と戦略～",
-      "pubDate": "2024-02-16T02:53:51.000Z"
+      "pubDate": "2024-02-16T02:53:51.000Z",
+      "content": "Developers Summit 2024で発表した資料です"
     },
     {
       "url": "https://speakerdeck.com/jacopen/2024nian-noplatform-engineeringhakounaru-natutehosii",
       "title": "2024年のPlatform Engineeringはこうなる(なってほしい)",
-      "pubDate": "2023-12-31T03:26:42.000Z"
+      "pubDate": "2023-12-31T03:26:42.000Z",
+      "content": "Forkwellさん主催の「今から予測する2024年のPlatform Engineering」で登壇した資料です\r\nhttps://forkwell.connpass.com/event/303922/"
     }
   ],
-  "lastUpdated": "2025-03-15T15:52:23.156Z"
+  "lastUpdated": "2025-03-15T16:12:23.825Z"
 }
