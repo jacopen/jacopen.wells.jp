@@ -62,13 +62,13 @@ function formatDate(date: Date): string {
         <a href={post.sourceUrl} class="font-medium" 
           style={
             post.source === 'PagerDuty' ? 'color: #25c151;' : 
-            post.source === 'Cloud Penguins' ? 'color: #3498db;' : 
+            post.source === 'Cloud Penguins' ? 'color: #1d4ed8;' : 
             'color: #6b7280;'
           }>
           {post.source}
         </a>
       </div>
-      <a href={post.url} class="text-gray-800 hover:text-blue-600 font-medium text-lg block">
+      <a href={post.url} class="text-gray-800 hover:text-green-700 font-medium text-lg block">
         {post.title}
       </a>
     </div>
@@ -91,7 +91,7 @@ function formatDate(date: Date): string {
       {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
         <a 
           href={`/blog?page=${pageNum}`} 
-          class={`px-4 py-2 border rounded ${currentPage === pageNum ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 hover:bg-gray-100'}`}
+          class={`px-4 py-2 border rounded ${currentPage === pageNum ? 'bg-green-600 text-white' : 'bg-white text-gray-800 hover:bg-gray-100'}`}
           data-page={pageNum}
         >
           {pageNum}
@@ -129,7 +129,7 @@ function formatDate(date: Date): string {
 
 {limit > 0 && allBlogPosts.length > limit && (
   <div class="text-center mt-4">
-    <a href="/blog/page/1" class="text-blue-500 hover:text-blue-700 font-medium">
+    <a href="/blog/page/1" class="text-green-600 hover:text-green-800 font-medium">
       すべての記事を見る →
     </a>
   </div>

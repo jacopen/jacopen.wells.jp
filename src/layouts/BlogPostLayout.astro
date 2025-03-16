@@ -24,12 +24,12 @@ const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${
 >
     <!-- パンくずリスト -->
     <div class="text-sm mb-6 text-gray-600">
-      <a href="/" class="hover:text-blue-600">ホーム</a> &gt; 
-      <a href="/#blog" class="hover:text-blue-600">ブログ</a> &gt; 
+      <a href="/" class="hover:text-green-700">ホーム</a> &gt; 
+      <a href="/#blog" class="hover:text-green-700">ブログ</a> &gt; 
       <span class="text-gray-800">{title}</span>
     </div>
 
-    <article class="bg-white p-6 rounded-lg shadow-sm">
+    <article class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-400">
       <h1 class="text-3xl font-bold mb-2">{title}</h1>
       
       <div class="flex items-center text-gray-600 mb-6">
@@ -38,7 +38,7 @@ const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${
         {tags.length > 0 && (
           <div class="flex flex-wrap">
             {tags.map(tag => (
-              <span class="bg-gray-100 text-gray-700 px-2 py-1 text-xs rounded mr-2 mb-1">{tag}</span>
+              <span class="bg-green-50 text-green-700 px-2 py-1 text-xs rounded mr-2 mb-1">{tag}</span>
             ))}
           </div>
         )}
@@ -49,7 +49,7 @@ const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${
       </div>
 
       <div class="mt-10 pt-6 border-t border-gray-200">
-        <a href="/#blog" class="text-blue-600 hover:text-blue-800">
+        <a href="/#blog" class="text-green-700 hover:text-green-900">
           &larr; ブログ一覧に戻る
         </a>
       </div>
@@ -63,10 +63,10 @@ const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${
   .prose p { margin-top: 1rem; margin-bottom: 1rem; }
   .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-top: 1rem; margin-bottom: 1rem; }
   .prose ol { list-style-type: decimal; padding-left: 1.25rem; margin-top: 1rem; margin-bottom: 1rem; }
-  .prose a { color: #2563eb; }
-  .prose a:hover { color: #1e40af; }
-  .prose blockquote { border-left: 4px solid #d1d5db; padding-left: 1rem; font-style: italic; margin-top: 1rem; margin-bottom: 1rem; }
-  .prose pre { background-color: #f3f4f6; padding: 1rem; border-radius: 0.25rem; overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem; }
-  .prose code { background-color: #f3f4f6; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
+  .prose a { color: #15803d; }
+  .prose a:hover { color: #166534; }
+  .prose blockquote { border-left: 4px solid #86efac; padding-left: 1rem; font-style: italic; margin-top: 1rem; margin-bottom: 1rem; }
+  .prose pre { background-color: #f0fdf4; padding: 1rem; border-radius: 0.25rem; overflow-x: auto; margin-top: 1rem; margin-bottom: 1rem; }
+  .prose code { background-color: #f0fdf4; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
   .prose img { max-width: 100%; border-radius: 0.25rem; margin-top: 1rem; margin-bottom: 1rem; }
 </style>
