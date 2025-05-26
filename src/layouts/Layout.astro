@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { profileInfo } from '../data/profile-content';
+import GTM from '../components/GTM.astro';
 
 interface Props {
   title?: string;
@@ -38,6 +39,8 @@ const sections = [
 <!doctype html>
 <html lang="en">
 	<head>
+		<GTM />
+		
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
