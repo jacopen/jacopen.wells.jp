@@ -1,6 +1,34 @@
 {
   "blogPosts": [
     {
+      "url": "https://www.pagerduty.co.jp/blog/pagerduty-on-tour-tokyo-2025-report03",
+      "title": "【PagerDuty on Tour Tokyo 2025開催レポート】第三弾「テクニカルセッション編」",
+      "pubDate": "2025-05-15T22:30:00.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/incident-response-guide-jp/",
+      "title": "あのOps Guidesインシデント対応ガイドが、ついに公式日本語化！",
+      "pubDate": "2025-04-25T04:39:48.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/incident-postmortem/",
+      "title": "インシデントの再発を防ぐ効果的なポストモーテムとは？",
+      "pubDate": "2025-04-18T02:01:53.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/how-to-build-an-engineering-team/",
+      "title": "優れたエンジニアリングチームの構築方法～チームの力を最大化するポイント",
+      "pubDate": "2025-03-21T05:54:55.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
       "url": "https://www.pagerduty.co.jp/blog/is-your-incident-management-tool-a-single-point-of-failure-the-case-for-a-multi-channel-approach",
       "title": "インシデント管理ツールが単一障害点になっていませんか？マルチチャネルの重要性",
       "pubDate": "2025-03-11T01:15:50.000Z",
@@ -318,6 +346,12 @@
   ],
   "presentations": [
     {
+      "url": "https://speakerdeck.com/jacopen/jin-ri-karahazimerupuratutohuomuenziniaringu",
+      "title": "今日からはじめるプラットフォームエンジニアリング",
+      "pubDate": "2025-04-25T11:10:09.000Z",
+      "content": "UV Studyで登壇した資料です"
+    },
+    {
       "url": "https://speakerdeck.com/jacopen/platform-engineeringde-kuraudono-le-sikunai-wojie-xiao-siyou",
       "title": "Platform Engineeringで クラウドの「楽しくない」を解消しよう",
       "pubDate": "2025-03-06T05:08:57.000Z",
@@ -426,5 +460,5 @@
       "content": "Forkwellさん主催の「今から予測する2024年のPlatform Engineering」で登壇した資料です\r\nhttps://forkwell.connpass.com/event/303922/"
     }
   ],
-  "lastUpdated": "2025-03-15T16:12:23.825Z"
+  "lastUpdated": "2025-05-26T06:04:09.719Z"
 }
