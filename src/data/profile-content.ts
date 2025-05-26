@@ -116,6 +116,33 @@ export const communities = [
   
 ];
 
+// 認定資格情報
+export const certifications = [
+  { 
+    name: "DASA Accredited Trainer Badge - DASA Platform Engineering 2025", 
+    issuer: "DASA", 
+    date: "2025/5",
+    credentialId: "", 
+    url: "https://www.credential.net/d76ff036-137d-4627-89fc-1e261c687296#acc.G7V28WpJ",
+    category: "Platform Engineering"
+  },
+  { 
+    name: "DASA Platform Engineering", 
+    issuer: "DASA", 
+    date: "2025/5",
+    credentialId: "", 
+    url: "https://www.credential.net/94c87b71-f45e-4df4-94e0-16afd347b478#acc.wpkLgeSQ",
+    category: "Platform Engineering"
+  },
+  // 他の資格があれば追加
+  // { 
+  //   name: "AWS Certified Solutions Architect", 
+  //   issuer: "Amazon Web Services", 
+  //   date: "2020/05",
+  //   category: "Cloud"
+  // }
+];
+
 // エクスポート - blog-entries.tsから取得したデータをそのまま使用
 export { blogPosts, books, contributions };
 

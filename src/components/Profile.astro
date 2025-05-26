@@ -1,5 +1,5 @@
 ---
-import { books, presentations, contributions, profileInfo, skills, communities, careers } from '../data/profile-content';
+import { books, presentations, contributions, profileInfo, skills, communities, careers, certifications } from '../data/profile-content';
 import BlogList from './BlogList.astro';
 
 const { nameEn, nameJa, nickname, titlePagerDuty, titleCNIA, bio } = profileInfo;
@@ -192,6 +192,38 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     ))}
   </div>
+</div>
+
+<h2 id="certifications" class="text-2xl font-bold mt-8">認定資格</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+  {certifications.map(cert => (
+    <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-200">
+      <div class="flex items-start justify-between mb-3">
+        <div class="flex-1">
+          <h3 class="text-lg font-bold text-gray-800 mb-1">{cert.name}</h3>
+          <p class="text-gray-600 text-sm">{cert.issuer}</p>
+        </div>
+        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full ml-3">
+          {cert.category}
+        </span>
+      </div>
+      
+      <div class="flex items-center justify-between">
+        <span class="text-gray-500 text-sm">{cert.date}</span>
+        {cert.url && (
+          <a href={cert.url} class="text-green-600 hover:text-green-800 text-sm font-medium">
+            証明書を見る <i class="fas fa-external-link-alt"></i>
+          </a>
+        )}
+      </div>
+      
+      {cert.credentialId && (
+        <div class="mt-2 text-xs text-gray-400">
+          ID: {cert.credentialId}
+        </div>
+      )}
+    </div>
+  ))}
 </div>
 
 <h2 id="contributions" class="text-2xl font-bold mt-8">寄稿 / メディア記事</h2>
