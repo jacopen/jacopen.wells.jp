@@ -66,6 +66,11 @@ export const careers = [
     period: "2023/6 - 現在"
   },
   {
+    company: "ファインディ株式会社", 
+    position: "技術アドバイザー", 
+    period: "2025/3 - 現在"
+  },
+  {
     company: "HashiCorp", 
     position: "Senior Solutions Engineer", 
     period: "2021/9 - 2023/11"
