@@ -66,6 +66,10 @@ const sections = [
 		<!-- RSS/Atom フィード -->
 		<link rel="alternate" type="application/rss+xml" title={`${profileInfo.nameEn} - ブログ (RSS)`} href="/feed.xml" />
 		<link rel="alternate" type="application/atom+xml" title={`${profileInfo.nameEn} - ブログ (Atom)`} href="/atom.xml" />
+		
+		<!-- SEO関連 -->
+		<link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+		<meta name="robots" content="index, follow" />
 	</head>
 	<body class="bg-white text-gray-800 font-sans antialiased">
     <div class="mx-auto max-w-5xl">
