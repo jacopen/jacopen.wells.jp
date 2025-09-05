@@ -32,6 +32,7 @@ Personal portfolio website of ${profileInfo.nameEn} (${profileInfo.nameJa}) - @$
 ### Current Roles
 - ${profileInfo.titlePagerDuty}
 - ${profileInfo.titleCNIA}
+- ${profileInfo.titleSRE}
 
 ### Bio
 ${profileInfo.bio}

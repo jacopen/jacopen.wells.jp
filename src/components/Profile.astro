@@ -2,7 +2,7 @@
 import { books, presentations, contributions, profileInfo, skills, communities, careers, certifications } from '../data/profile-content';
 import BlogList from './BlogList.astro';
 
-const { nameEn, nameJa, nickname, titlePagerDuty, titleCNIA, bio } = profileInfo;
+const { nameEn, nameJa, nickname, titlePagerDuty, titleCNIA, titleSRE, bio } = profileInfo;
 
 // カテゴリに応じた色を定義
 const categoryColors: Record<string, string> = {
@@ -51,6 +51,7 @@ const sortedCategories = Object.keys(skillsByCategory).sort(
       <p class="text-2xl text-gray-600 mb-2">@{nickname}</p>
       <p class="text-gray-700 mb-1">{titlePagerDuty}</p>
       <p class="text-gray-700 mb-4">{titleCNIA}</p>
+      <p class="text-gray-700 mb-4">{titleSRE}</p>
       <div class="flex space-x-4 justify-center md:justify-start">
         <a href="https://x.com/jacopen" class="text-green-600 hover:text-green-800"><i class="fab fa-x"></i> @jacopen</a>
         <a href="https://www.facebook.com/jacopen" class="text-green-600 hover:text-green-800"><i class="fab fa-facebook"></i> Facebook</a>
