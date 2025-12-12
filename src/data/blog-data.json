@@ -1,6 +1,83 @@
 {
   "blogPosts": [
     {
+      "url": "https://www.pagerduty.co.jp/blog/4-new-ways-event-orchestration/",
+      "title": "Event Orchestrationでインシデント管理を改善する4つの新しい方法",
+      "pubDate": "2025-12-09T09:40:04.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://jaco.udcp.info/entry/to-become-a-conference-staff",
+      "title": "カンファレンスのスタッフになるべき理由、そして気をつけること",
+      "pubDate": "2025-12-04T11:03:51.000Z",
+      "source": "Cloud Penguins",
+      "sourceUrl": "https://jaco.udcp.info/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/product-update-nov2025/",
+      "title": "PagerDuty製品アップデート情報(2025年11月)",
+      "pubDate": "2025-11-26T01:46:27.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/when-the-internet-blinked-how-pagerduty-stayed-resilient-during-the-october-20-outage/",
+      "title": "インターネットがまばたいた日：10月20日の大規模障害を乗り越えたPagerDutyの強靭性",
+      "pubDate": "2025-10-31T04:39:35.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/product-launch-2025-h2/",
+      "title": "PagerDuty 2025年下半期リリース：顧客の声から生まれた150以上の新機能、AIエージェント",
+      "pubDate": "2025-10-27T06:15:30.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/reducing-coordination-costs-in-incident-response/",
+      "title": "インシデント対応で膨らむ調整コストとは？削減の3つの実践策",
+      "pubDate": "2025-09-18T08:01:59.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/incident-response-transformed-by-generative-ai/",
+      "title": "生成AIで変わるインシデント対応｜人的コストの最適化と判断スピードの両立を実現する",
+      "pubDate": "2025-09-02T01:53:09.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/introducing-product-tour",
+      "title": "PagerDuty各機能の活用方法が分かりやすく！ Product Tourのご紹介",
+      "pubDate": "2025-08-12T01:32:28.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/3-ways-to-use-finops-automation-for-cloud-cost-optimization/",
+      "title": "FinOpsオートメーションでクラウドコスト最適化を実現する3つの方法",
+      "pubDate": "2025-07-22T23:44:04.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/aiops-in-higher-education/",
+      "title": "高等教育機関におけるオペレーショナル・レジリエンスの構築 〜AIOpsの活用〜",
+      "pubDate": "2025-07-22T23:37:54.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/pagerduty-advance-and-amazon-q-business-announce-general-availability-of-their-ai-powered-integration/",
+      "title": "PagerDutyとAmazon Q Business連携 – AIでインシデント対応がもっと賢く、もっと速く",
+      "pubDate": "2025-07-11T02:12:38.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
       "url": "https://www.pagerduty.co.jp/blog/pagerduty-on-tour-tokyo-2025-report03",
       "title": "【PagerDuty on Tour Tokyo 2025開催レポート】第三弾「テクニカルセッション編」",
       "pubDate": "2025-05-15T22:30:00.000Z",
@@ -346,6 +423,24 @@
   ],
   "presentations": [
     {
+      "url": "https://speakerdeck.com/jacopen/aishi-dai-noinsidentodui-ying-shi-dai-woqie-riba-keru-zu-zhi-akitekutiya",
+      "title": "AI時代のインシデント対応 〜時代を切り抜ける、組織アーキテクチャ〜",
+      "pubDate": "2025-11-24T16:04:32.000Z",
+      "content": "アーキテクチャConference 2025で登壇した資料です。AI時代、増え続けるインシデントに対して、AIを活用すれば良い感じになるのでは？って安直に考えたりしていませんか？でもそれは「甘え」です。それよりも先にやるべきこと。それは「組織アーキテクチャ」の見直しです。"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/ai-niyotutesisutemuzhang-hai-kazeng-eru-ai-esientoshi-dai-takarakosobi-yao-na-insitentotonoxiang-kihe-ifang",
+      "title": "AI によってシステム障害が増える!? ～AI エージェント時代だからこそ必要な、インシデントとの向き合い方～",
+      "pubDate": "2025-06-30T17:34:05.000Z",
+      "content": "AWS Summit 2025で発表した資料です。\r\n\r\n資料内の動画URL\r\nhttps://youtu.be/mZ_SLpwFHcs?si=dDg7_VgaBx22JnNd\r\nhttps://youtu.be/CG7DqWmwYgg?si=mALU7l1HZ8u6wDqP\r\nhttps://youtu.be/PmC735-3c2I?si=qeXcnFLkLdTUXeG2"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/insidentodui-ying-nibi-yao-tonaruainoli-yong-patantopagerdutynoguan-xi",
+      "title": "インシデント対応に必要となるAIの利用パターンとPagerDutyの関係",
+      "pubDate": "2025-06-13T16:08:49.000Z",
+      "content": "ゆるSRE勉強会 #11 で発表した資料です"
+    },
+    {
       "url": "https://speakerdeck.com/jacopen/jin-ri-karahazimerupuratutohuomuenziniaringu",
       "title": "今日からはじめるプラットフォームエンジニアリング",
       "pubDate": "2025-04-25T11:10:09.000Z",
@@ -460,5 +555,5 @@
       "content": "Forkwellさん主催の「今から予測する2024年のPlatform Engineering」で登壇した資料です\r\nhttps://forkwell.connpass.com/event/303922/"
     }
   ],
-  "lastUpdated": "2025-05-26T06:04:09.719Z"
+  "lastUpdated": "2025-12-12T13:59:45.104Z"
 }
