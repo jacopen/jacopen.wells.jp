@@ -1,6 +1,8 @@
 ---
 import Layout from "./Layout.astro";
 
+import ShareButtons from "../components/ShareButtons.astro";
+
 interface Props {
   title: string;
   pubDate: Date;
@@ -71,6 +73,9 @@ const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${
       <div class="prose prose-lg max-w-none">
         <slot />
       </div>
+      
+      <!-- Share Buttons -->
+      <ShareButtons title={title} url={Astro.url} />
     </div>
 
     <!-- Article Footer -->

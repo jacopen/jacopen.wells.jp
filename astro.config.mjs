@@ -6,6 +6,7 @@ import sanity from "@sanity/astro";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://jacopen.wells.jp",
   vite: {
     plugins: [tailwindcss()],
   },
