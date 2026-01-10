@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
+import { sanityClient } from 'sanity:client';
 import { blogPosts as rssBlogPosts } from '../data/blog-entries';
 
 interface Props {
@@ -11,23 +11,20 @@ interface Props {
 
 const { limit = 0, page = 1, showPagination = false } = Astro.props;
 
-// Markdownブログ記事の取得
-const mdBlogEntries = await getCollection('blog');
+// Sanityからブログ記事の取得
+const posts = await sanityClient.fetch(`*[_type == "post"] | order(publishedAt desc)`);
 
-// Markdownブログ記事をblogPostsと同じ形式に変換
-const mdBlogPosts = mdBlogEntries
-  .map((entry: CollectionEntry<'blog'>) => {
-    return {
-      url: `/blog/${entry.slug}`,
-      title: entry.data.title,
-      pubDate: entry.data.pubDate,
-      source: 'ブログ',
-      sourceUrl: '/blog',
-    };
-  });
+// Sanityブログ記事をblogPostsと同じ形式に変換
+const sanityBlogPosts = posts.map((post: any) => ({
+    url: `/blog/${post.slug.current}`,
+    title: post.title,
+    pubDate: new Date(post.publishedAt),
+    source: 'ブログ',
+    sourceUrl: '/blog',
+  }));
 
-// RSSから取得したブログ記事（既に半年以内でフィルタされている）とMarkdownブログ記事を結合してソート
-const allBlogPosts = [...rssBlogPosts, ...mdBlogPosts]
+// RSSから取得したブログ記事（既に半年以内でフィルタされている）とSanityブログ記事を結合してソート
+const allBlogPosts = [...rssBlogPosts, ...sanityBlogPosts]
   .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
 
 // ページネーション用の変数

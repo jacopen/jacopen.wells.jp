@@ -1,6 +1,20 @@
 {
   "blogPosts": [
     {
+      "url": "https://www.pagerduty.co.jp/blog/ai-agent-generative-ai-incident-response/",
+      "title": "AIエージェントと生成AIで変わるインシデント対応｜自動化と迅速化のポイント",
+      "pubDate": "2025-12-22T08:19:20.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/product-update-dec2025/",
+      "title": "PagerDuty製品アップデート情報(2025年12月)",
+      "pubDate": "2025-12-21T04:04:17.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
       "url": "https://www.pagerduty.co.jp/blog/4-new-ways-event-orchestration/",
       "title": "Event Orchestrationでインシデント管理を改善する4つの新しい方法",
       "pubDate": "2025-12-09T09:40:04.000Z",
@@ -555,5 +569,5 @@
       "content": "Forkwellさん主催の「今から予測する2024年のPlatform Engineering」で登壇した資料です\r\nhttps://forkwell.connpass.com/event/303922/"
     }
   ],
-  "lastUpdated": "2025-12-12T13:59:45.104Z"
+  "lastUpdated": "2026-01-10T12:36:44.807Z"
 }

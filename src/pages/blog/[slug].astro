@@ -1,18 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
+import { sanityClient } from "sanity:client";
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
 import { marked } from 'marked';
 
 // 動的ルートのパスを生成
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
+  const posts = await sanityClient.fetch(`*[_type == "post"]`);
   
-  return blogEntries.map(entry => ({
+  return posts.map(post => ({
     params: { 
-      slug: entry.slug 
+      slug: post.slug.current 
     },
     props: { 
-      entry 
+      entry: post 
     },
   }));
 }
@@ -21,14 +21,14 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 
 // Markdownをレンダリング
-const { Content } = await entry.render();
+const contentHtml = await marked.parse(entry.body);
 ---
 
 <BlogPostLayout
-  title={entry.data.title}
-  pubDate={entry.data.pubDate}
-  author={entry.data.author}
-  tags={entry.data.tags}
+  title={entry.title}
+  pubDate={new Date(entry.publishedAt)}
+  author={entry.author}
+  tags={entry.tags}
 >
-  <Content />
+  <div set:html={contentHtml} class="prose max-w-none" />
 </BlogPostLayout>
