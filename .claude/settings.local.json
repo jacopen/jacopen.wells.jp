@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Skill(frontend-design)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(git diff:*)",
+      "Bash(git push:*)"
     ]
   },
   "enableAllProjectMcpServers": false
