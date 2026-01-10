@@ -1,30 +1,34 @@
-import type { APIRoute } from 'astro';
-import { getCollection } from 'astro:content';
-import { blogPosts as rssBlogPosts } from '../data/blog-entries';
-import { profileInfo } from '../data/profile-content';
+import type { APIRoute } from "astro";
+import { sanityClient } from "sanity:client";
+import { blogPosts as rssBlogPosts } from "../data/blog-entries";
+import { profileInfo } from "../data/profile-content";
 
 export const GET: APIRoute = async () => {
-  // Markdownブログ記事の取得
-  const mdBlogEntries = await getCollection('blog');
+  // Sanityからブログ記事の取得
+  const posts = await sanityClient.fetch(
+    `*[_type == "post"] | order(publishedAt desc)`
+  );
 
-  // Markdownブログ記事をblogPostsと同じ形式に変換
-  const mdBlogPosts = mdBlogEntries.map((entry) => ({
-    url: `https://jacopen.wells.jp/blog/${entry.slug}`,
-    title: entry.data.title,
-    pubDate: entry.data.pubDate,
-    source: 'ブログ',
-    sourceUrl: 'https://jacopen.wells.jp/blog',
-    description: entry.data.description || '',
+  // Sanityブログ記事をblogPostsと同じ形式に変換
+  const sanityBlogPosts = posts.map((post: any) => ({
+    url: `https://jacopen.wells.jp/blog/${post.slug.current}`,
+    title: post.title,
+    pubDate: new Date(post.publishedAt),
+    source: "ブログ",
+    sourceUrl: "https://jacopen.wells.jp/blog",
+    description: post.description || "",
   }));
 
   // RSSブログ記事のURLを絶対URLに変換
   const absoluteRssBlogPosts = rssBlogPosts.map((post) => ({
     ...post,
-    url: post.url.startsWith('http') ? post.url : `https://jacopen.wells.jp${post.url}`,
+    url: post.url.startsWith("http")
+      ? post.url
+      : `https://jacopen.wells.jp${post.url}`,
   }));
 
   // 全ブログ記事を結合してソート
-  const allBlogPosts = [...absoluteRssBlogPosts, ...mdBlogPosts]
+  const allBlogPosts = [...absoluteRssBlogPosts, ...sanityBlogPosts]
     .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime())
     .slice(0, 20); // 最新20件に制限
 
@@ -56,14 +60,14 @@ ${allBlogPosts
       <source url="${post.sourceUrl}">${post.source}</source>
     </item>`
   )
-  .join('\n')}
+  .join("\n")}
   </channel>
 </rss>`;
 
   return new Response(rssContent, {
     headers: {
-      'Content-Type': 'application/rss+xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600', // 1時間キャッシュ
+      "Content-Type": "application/rss+xml; charset=utf-8",
+      "Cache-Control": "public, max-age=3600", // 1時間キャッシュ
     },
   });
 };

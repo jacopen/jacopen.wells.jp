@@ -1,27 +1,28 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import { blogPosts as rssBlogPosts } from '../../../data/blog-entries';
-import { getCollection } from 'astro:content';
+
+import { sanityClient } from 'sanity:client';
 
 // Astroの動的ルーティングで必要な関数
 export async function getStaticPaths() {
-  // Markdownブログ記事の取得
-  const mdBlogEntries = await getCollection('blog');
+  // Sanityからブログ記事の取得
+  const sanityPosts = await sanityClient.fetch(`*[_type == "post"] | order(publishedAt desc)`);
 
-  // Markdownブログ記事をblogPostsと同じ形式に変換
-  const mdBlogPosts = mdBlogEntries
-    .map((entry) => {
+  // Sanityブログ記事をblogPostsと同じ形式に変換
+  const sanityBlogPosts = sanityPosts
+    .map((post: any) => {
       return {
-        url: `/blog/${entry.slug}`,
-        title: entry.data.title,
-        pubDate: entry.data.pubDate,
+        url: `/blog/${post.slug.current}`,
+        title: post.title,
+        pubDate: new Date(post.publishedAt),
         source: 'ブログ',
         sourceUrl: '/blog',
       };
     });
 
-  // RSSから取得したブログ記事（既に半年以内でフィルタされている）とMarkdownブログ記事を結合してソート
-  const allBlogPosts = [...rssBlogPosts, ...mdBlogPosts]
+  // RSSから取得したブログ記事（既に半年以内でフィルタされている）とSanityブログ記事を結合してソート
+  const allBlogPosts = [...rssBlogPosts, ...sanityBlogPosts]
     .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
     
   // ページネーション用の変数
