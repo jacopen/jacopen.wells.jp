@@ -24,20 +24,20 @@ export async function getStaticPaths() {
   // RSSから取得したブログ記事（既に半年以内でフィルタされている）とSanityブログ記事を結合してソート
   const allBlogPosts = [...rssBlogPosts, ...sanityBlogPosts]
     .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
-    
+
   // ページネーション用の変数
   const ITEMS_PER_PAGE = 15;
   const totalPages = Math.ceil(allBlogPosts.length / ITEMS_PER_PAGE);
-  
+
   // 各ページに対応するパラメータを生成
   return Array.from({ length: totalPages }, (_, i) => {
     const pageNum = i + 1;
     const start = i * ITEMS_PER_PAGE;
     const end = start + ITEMS_PER_PAGE;
-    
+
     return {
       params: { page: pageNum.toString() },
-      props: { 
+      props: {
         posts: allBlogPosts.slice(start, end),
         currentPage: pageNum,
         totalPages: totalPages,
@@ -55,66 +55,146 @@ const { posts, currentPage, totalPages, totalPosts } = Astro.props;
 function formatDate(date: Date): string {
   return `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}`;
 }
+
+// ソースごとのスタイル設定
+const sourceStyles: Record<string, { bg: string; text: string; border: string }> = {
+  'PagerDuty': { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200' },
+  'Cloud Penguins': { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200' },
+  'Qiita': { bg: 'bg-lime-50', text: 'text-lime-700', border: 'border-lime-200' },
+  'ブログ': { bg: 'bg-stone-50', text: 'text-stone-600', border: 'border-stone-200' },
+};
+
+function getSourceStyle(source: string) {
+  return sourceStyles[source] || { bg: 'bg-stone-50', text: 'text-stone-600', border: 'border-stone-200' };
+}
 ---
 
 <Layout title="ブログ記事一覧" useTwoPane={true} isProfilePage={false}>
-    <h1 class="text-3xl font-bold mb-6">ブログ記事一覧</h1>
-    
-    <div class="mb-4">
-      <a href="/" class="text-green-600 hover:text-green-800">
-        <i class="fas fa-arrow-left mr-1"></i> ホームに戻る
+  <!-- Page Header -->
+  <div class="mb-8">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-sm text-stone-500 mb-4">
+      <a href="/" class="hover:text-green-600 transition-colors duration-200">
+        <i class="fas fa-home"></i>
+      </a>
+      <i class="fas fa-chevron-right text-xs text-stone-300"></i>
+      <span class="text-stone-700 font-medium">ブログ</span>
+    </nav>
+
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-bold text-stone-800 tracking-tight" style="font-family: var(--font-display);">
+          ブログ記事一覧
+        </h1>
+        <p class="mt-2 text-stone-500">
+          全 <span class="font-semibold text-green-600">{totalPosts}</span> 件の記事
+        </p>
+      </div>
+
+      <a
+        href="/"
+        class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-stone-600 hover:text-green-700 bg-stone-50 hover:bg-green-50 rounded-xl border border-stone-200 hover:border-green-200 transition-all duration-200"
+      >
+        <i class="fas fa-arrow-left text-xs"></i>
+        ホームに戻る
       </a>
     </div>
-    
-    <div class="space-y-4 mt-4">
-      {posts.map((post: any) => (
-        <div class="border-b border-gray-100 pb-3">
-          <div class="flex items-center mb-1 text-sm text-gray-600">
-            <span class="mr-2">{formatDate(post.pubDate)}</span>
-            <a href={post.sourceUrl} class="font-medium" 
-              style={
-                post.source === 'PagerDuty' ? 'color: #25c151;' : 
-                post.source === 'Cloud Penguins' ? 'color: #1d4ed8;' : 
-                'color: #6b7280;'
-              }>
-              {post.source}
-            </a>
+  </div>
+
+  <!-- Blog Posts -->
+  <div class="space-y-3">
+    {posts.map((post: any, index: number) => (
+      <article
+        class="group relative bg-white rounded-xl border border-stone-100 hover:border-green-200 hover:shadow-md transition-all duration-300 overflow-hidden"
+        style={`animation-delay: ${index * 50}ms`}
+      >
+        <a href={post.url} class="block p-4 sm:p-5">
+          <div class="flex flex-col sm:flex-row sm:items-start gap-3">
+            <!-- Date and Source Badge -->
+            <div class="flex items-center gap-3 sm:flex-col sm:items-start sm:gap-2 sm:w-28 shrink-0">
+              <time class="text-sm text-stone-400 font-medium tabular-nums">
+                {formatDate(post.pubDate)}
+              </time>
+              <span
+                class={`inline-flex items-center px-2.5 py-1 text-xs font-semibold rounded-full border ${getSourceStyle(post.source).bg} ${getSourceStyle(post.source).text} ${getSourceStyle(post.source).border}`}
+              >
+                {post.source}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <div class="flex-1 min-w-0">
+              <h3 class="text-stone-800 group-hover:text-green-700 font-semibold text-base sm:text-lg leading-snug transition-colors duration-200" style="font-family: var(--font-display);">
+                {post.title}
+              </h3>
+            </div>
+
+            <!-- Arrow Icon -->
+            <div class="hidden sm:flex items-center justify-center w-8 h-8 rounded-lg bg-stone-50 text-stone-400 group-hover:bg-green-50 group-hover:text-green-600 transition-all duration-200 shrink-0 self-center">
+              <i class="fas fa-arrow-right text-sm transform group-hover:translate-x-0.5 transition-transform duration-200"></i>
+            </div>
           </div>
-          <a href={post.url} class="text-gray-800 hover:text-green-700 font-medium text-lg block">
-            {post.title}
-          </a>
-        </div>
-      ))}
-    </div>
-    
-    <div class="flex justify-center items-center space-x-2 mt-8">
-      <div class="flex flex-wrap justify-center gap-2 w-full">
+        </a>
+
+        <!-- Hover accent line -->
+        <div class="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-green-400 to-emerald-500 group-hover:w-full transition-all duration-500"></div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Pagination -->
+  {totalPages > 1 && (
+    <nav class="flex justify-center items-center mt-10" aria-label="ページネーション">
+      <div class="inline-flex items-center gap-1 p-1.5 bg-stone-50 rounded-2xl border border-stone-100">
         {currentPage > 1 && (
-          <a 
-            href={`/blog/page/${currentPage - 1}`} 
-            class="px-4 py-2 border rounded bg-white text-gray-800 hover:bg-gray-100"
+          <a
+            href={`/blog/page/${currentPage - 1}`}
+            class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-stone-600 hover:text-green-700 hover:bg-white rounded-xl transition-all duration-200"
+            aria-label="前のページ"
           >
-            前へ
+            <i class="fas fa-chevron-left text-xs"></i>
+            <span class="hidden sm:inline">前へ</span>
           </a>
         )}
-        
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
-          <a 
-            href={`/blog/page/${pageNum}`} 
-            class={`px-4 py-2 border rounded ${currentPage === pageNum ? 'bg-green-600 text-white' : 'bg-white text-gray-800 hover:bg-gray-100'}`}
-          >
-            {pageNum}
-          </a>
-        ))}
-        
+
+        <div class="flex items-center gap-1 px-2">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
+            <a
+              href={`/blog/page/${pageNum}`}
+              class={`flex items-center justify-center w-10 h-10 text-sm font-semibold rounded-xl transition-all duration-200 ${
+                currentPage === pageNum
+                  ? 'bg-green-600 text-white shadow-md shadow-green-200'
+                  : 'text-stone-600 hover:bg-white hover:text-green-700 hover:shadow-sm'
+              }`}
+              aria-current={currentPage === pageNum ? 'page' : undefined}
+            >
+              {pageNum}
+            </a>
+          ))}
+        </div>
+
         {currentPage < totalPages && (
-          <a 
-            href={`/blog/page/${currentPage + 1}`} 
-            class="px-4 py-2 border rounded bg-white text-gray-800 hover:bg-gray-100"
+          <a
+            href={`/blog/page/${currentPage + 1}`}
+            class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-stone-600 hover:text-green-700 hover:bg-white rounded-xl transition-all duration-200"
+            aria-label="次のページ"
           >
-            次へ
+            <span class="hidden sm:inline">次へ</span>
+            <i class="fas fa-chevron-right text-xs"></i>
           </a>
         )}
       </div>
-    </div>
+    </nav>
+  )}
+
+  <!-- Mobile Home Link -->
+  <div class="sm:hidden mt-8 text-center">
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-stone-600 hover:text-green-700 bg-stone-50 hover:bg-green-50 rounded-xl border border-stone-200 hover:border-green-200 transition-all duration-200"
+    >
+      <i class="fas fa-arrow-left text-xs"></i>
+      ホームに戻る
+    </a>
+  </div>
 </Layout>

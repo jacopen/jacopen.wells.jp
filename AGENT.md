@@ -13,6 +13,14 @@ This is a personal portfolio website for Kazuto Kusama (@jacopen) built with Ast
 - `npm run preview` - Preview built site locally
 - `npm run new-blog` - Interactive script to create new blog posts in src/content/blog/
 
+## Version Control
+
+This repository uses [Jujutsu (jj)](https://github.com/martinvonz/jj) for version control, integrated with the underlying Git repository.
+
+- **Preferred Tool**: Use `jj` for all version control operations (commit, log, diff, etc.).
+- **Branching**: Use `jj new` to create new changes.
+- **Pushing**: Use `jj git push` to push changes to the remote.
+
 ## Architecture & Data Flow
 
 ### Content Sources
