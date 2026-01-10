@@ -1,10 +1,25 @@
 import type { APIRoute } from 'astro';
 import { profileInfo, skills, careers, communities, certifications } from '../data/profile-content';
-import { blogPosts, presentations } from '../data/blog-entries';
+import { blogPosts as rssBlogPosts, presentations } from '../data/blog-entries';
+import { sanityClient } from 'sanity:client';
 
 export const GET: APIRoute = async () => {
   const siteUrl = 'https://jacopen.wells.jp';
-  
+
+  // Sanityからブログ記事を取得
+  const sanityPosts = await sanityClient.fetch(`*[_type == "post"] | order(publishedAt desc)`);
+  const sanityBlogPosts = sanityPosts.map((post: any) => ({
+    url: `/blog/${post.slug.current}`,
+    title: post.title,
+    pubDate: new Date(post.publishedAt),
+    source: 'ブログ',
+    sourceUrl: '/blog',
+  }));
+
+  // RSSブログ記事とSanityブログ記事をマージしてソート
+  const blogPosts = [...rssBlogPosts, ...sanityBlogPosts]
+    .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+
   // 最新の統計情報を計算
   const totalBlogPosts = blogPosts.length;
   const totalPresentations = presentations.length;

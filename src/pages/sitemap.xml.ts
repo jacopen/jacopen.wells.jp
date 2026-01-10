@@ -49,9 +49,9 @@ export const GET: APIRoute = async () => {
     priority: "0.7",
   }));
 
-  // ブログページネーションのURL生成（全ブログ投稿数を使用）
+  // ブログページネーションのURL生成（Sanity記事も含めた全投稿数を使用）
   const postsPerPage = 10;
-  const totalBlogPages = Math.ceil(blogPosts.length / postsPerPage);
+  const totalBlogPages = Math.ceil((blogPosts.length + posts.length) / postsPerPage);
   const blogPaginationUrls = Array.from({ length: totalBlogPages }, (_, i) => ({
     url: `${siteUrl}/blog/page/${i + 1}`,
     lastmod: currentDate,
