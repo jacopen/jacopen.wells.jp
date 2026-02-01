@@ -1,48 +1,107 @@
-# Astro Starter Kit: Basics
+# jacopen.wells.jp
 
-```sh
-npm create astro@latest -- --template basics
+Kazuto Kusama (@jacopen) のポートフォリオサイトです。
+
+**URL**: https://jacopen.wells.jp
+
+## 技術スタック
+
+- [Astro](https://astro.build/) 5.x - 静的サイトジェネレーター
+- [TailwindCSS](https://tailwindcss.com/) 4.x - CSSフレームワーク
+- [Sanity](https://www.sanity.io/) - ヘッドレスCMS（ブログ記事管理）
+
+## プロジェクト構造
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
-│   └── favicon.svg
+├── public/              # 静的アセット
+├── sanity/              # Sanity CMS設定
+├── scripts/             # ユーティリティスクリプト
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── assets/          # 画像等のアセット
+│   ├── components/      # Astroコンポーネント
+│   ├── content/         # コンテンツコレクション（ブログ記事）
+│   ├── data/            # データファイル・RSSフェッチャー
+│   ├── layouts/         # レイアウトコンポーネント
+│   ├── pages/           # ルーティング
+│   └── styles/          # グローバルスタイル
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## コマンド
 
-## 🧞 Commands
+| コマンド | 説明 |
+|:--|:--|
+| `npm install` | 依存関係のインストール |
+| `npm run dev` | 開発サーバー起動 (localhost:4321) |
+| `npm run build` | 本番ビルド (./dist/) |
+| `npm run preview` | ビルドしたサイトのプレビュー |
+| `npm run new-blog` | 新しいブログ記事を作成 |
 
-All commands are run from the root of the project, from a terminal:
+## 主な機能
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### コンテンツ
 
-## 👀 Want to learn more?
+- **プロフィール**: スキル、経歴、コミュニティ活動、書籍、コントリビューション
+- **ブログ**: ローカルMarkdown記事 + Sanity CMSからの記事
+- **プレゼンテーション**: 登壇資料一覧
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### RSS集約
+
+複数のRSSフィードから記事を自動取得してビルド時に統合：
+- PagerDuty ブログ
+- 個人ブログ
+- Qiita
+
+### 生成ファイル
+
+- `/feed.xml` - RSS 2.0フィード
+- `/atom.xml` - Atomフィード
+- `/sitemap.xml` - サイトマップ
+- `/llms.txt` - LLM向けコンテンツ情報
+- `/robots.txt`
+
+## 開発
+
+### ブログ記事の作成
+
+```sh
+npm run new-blog
+```
+
+対話形式で新しいブログ記事のテンプレートを `src/content/blog/` に作成します。
+
+### プロフィール情報の更新
+
+`src/data/profile-content.ts` でスキル、経歴、コミュニティ活動などのプロフィール情報を管理しています。
+
+### Sanity CMS
+
+ブログ記事の一部はSanity CMSで管理しています。Sanity Studioは `sanity/` ディレクトリにあります。
+
+```sh
+cd sanity
+npm install
+npm run dev
+```
+
+## バージョン管理
+
+このリポジトリは [Jujutsu (jj)](https://github.com/martinvonz/jj) でのバージョン管理を推奨しています。
+
+```sh
+jj new          # 新しい変更を作成
+jj git push     # リモートにプッシュ
+```
+
+通常のGitコマンドも使用可能です。
+
+## 環境変数
+
+`.env.example` を参考に `.env` ファイルを作成してください。
+
+```sh
+cp .env.example .env
+```
+
+Sanity CMSを使用する場合は、プロジェクトID等の設定が必要です。
