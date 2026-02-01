@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { profileInfo } from '../data/profile-content';
+
+const { nameEn, nameJa, nickname } = profileInfo;
+
+// 登壇用プロフィール文（3パターン）
+const profileLong = `PagerDutyのProduct Evangelistとして、インシデント管理を起点とした運用文化の改善を支援している。
+
+通信事業者でプラットフォームエンジニアとしてキャリアをスタートし、社内向けPaaSの構築・運用に従事。その後、Pivotal、VMware、HashiCorpといったクラウドネイティブ領域をリードする外資系ベンダーで、ソリューションエンジニアやアーキテクトとして、数多くの企業のプラットフォーム構築やDevOps導入を支援してきた。
+
+技術コミュニティへの貢献にも力を入れており、日本最大級のクラウドネイティブカンファレンス「CloudNative Days」の立ち上げから運営に携わり、2019年から2023年までCo-Chairを務めた。現在はPlatform Engineering Meetupのオーガナイザーとして、プラットフォームエンジニアリングの普及活動を推進している。
+
+一般社団法人クラウドネイティブイノベーターズ協会 代表理事、一般社団法人SREコネクト 理事。`;
+
+const profileMedium = `PagerDuty Product Evangelist。通信事業者でプラットフォームエンジニアとしてキャリアをスタートし、Pivotal、VMware、HashiCorpでソリューションエンジニア・アーキテクトとして活動。CloudNative Days Co-Chair（2019-2023）、Platform Engineering Meetupオーガナイザー。一般社団法人クラウドネイティブイノベーターズ協会 代表理事、一般社団法人SREコネクト 理事。`;
+
+const profileShort = `PagerDuty Product Evangelist。Platform Engineering Meetupオーガナイザー。クラウドネイティブイノベーターズ協会 代表理事。`;
+
+// コピー用のスクリプトで使用するためのIDマッピング
+const profiles = [
+  { id: 'long', label: '500文字版', description: '経歴や活動を詳しく紹介', text: profileLong, charCount: profileLong.length },
+  { id: 'medium', label: '200文字版', description: '主要な情報を凝縮', text: profileMedium, charCount: profileMedium.length },
+  { id: 'short', label: '100文字版', description: '最小限の紹介', text: profileShort, charCount: profileShort.length },
+];
+---
+
+<Layout title={`プロフィール文 - ${nameEn}`} useTwoPane={true}>
+  <div class="animate-fade-in-up">
+    <!-- ページヘッダー -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-stone-900 flex items-center gap-3" style="font-family: var(--font-display);">
+        <span class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
+          <i class="fas fa-id-card"></i>
+        </span>
+        登壇・寄稿用プロフィール文
+      </h1>
+      <p class="text-stone-600 mt-4">
+        登壇や寄稿の際にご利用いただけるプロフィール文です。用途に合わせてコピーしてお使いください。
+      </p>
+    </div>
+
+    <!-- プロフィール写真セクション -->
+    <div class="mb-8 p-6 bg-white rounded-2xl border border-stone-100 shadow-sm">
+      <h2 class="text-lg font-bold text-stone-800 mb-4 flex items-center gap-2" style="font-family: var(--font-display);">
+        <i class="fas fa-camera text-green-500"></i>
+        プロフィール写真
+      </h2>
+      <div class="flex flex-col sm:flex-row gap-6 items-start">
+        <div class="relative group">
+          <img
+            src="/pen_pen.jpg"
+            alt={nameJa}
+            class="w-32 h-32 rounded-xl object-cover shadow-md"
+          />
+        </div>
+        <div class="flex-1">
+          <p class="text-stone-600 text-sm mb-3">
+            右クリックまたは長押しで画像を保存できます。
+          </p>
+          <a
+            href="/pen_pen.jpg"
+            download="jacopen_profile.jpg"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors text-sm font-medium"
+          >
+            <i class="fas fa-download"></i>
+            写真をダウンロード
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- プロフィール文セクション -->
+    <div class="space-y-6">
+      {profiles.map((profile) => (
+        <div class="p-6 bg-white rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-lg font-bold text-stone-800 flex items-center gap-2" style="font-family: var(--font-display);">
+                <i class="fas fa-file-lines text-green-500"></i>
+                {profile.label}
+              </h2>
+              <p class="text-stone-500 text-sm mt-1">{profile.description}（{profile.charCount}文字）</p>
+            </div>
+            <button
+              class="copy-button inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
+              data-profile-id={profile.id}
+            >
+              <i class="fas fa-copy"></i>
+              コピー
+            </button>
+          </div>
+          <div
+            id={`profile-${profile.id}`}
+            class="p-4 bg-stone-50 rounded-xl text-stone-700 leading-relaxed whitespace-pre-wrap border border-stone-100"
+          >
+            {profile.text}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- 基本情報 -->
+    <div class="mt-8 p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-100">
+      <h2 class="text-lg font-bold text-green-800 mb-4 flex items-center gap-2" style="font-family: var(--font-display);">
+        <i class="fas fa-info-circle"></i>
+        基本情報
+      </h2>
+      <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+        <div class="flex gap-2">
+          <dt class="text-stone-500 w-24 shrink-0">氏名</dt>
+          <dd class="text-stone-800 font-medium">{nameJa}（{nameEn}）</dd>
+        </div>
+        <div class="flex gap-2">
+          <dt class="text-stone-500 w-24 shrink-0">ID</dt>
+          <dd class="text-stone-800 font-medium">@{nickname}</dd>
+        </div>
+        <div class="flex gap-2">
+          <dt class="text-stone-500 w-24 shrink-0">所属</dt>
+          <dd class="text-stone-800 font-medium">PagerDuty</dd>
+        </div>
+        <div class="flex gap-2">
+          <dt class="text-stone-500 w-24 shrink-0">役職</dt>
+          <dd class="text-stone-800 font-medium">Product Evangelist</dd>
+        </div>
+        <div class="flex gap-2 sm:col-span-2">
+          <dt class="text-stone-500 w-24 shrink-0">X (Twitter)</dt>
+          <dd class="text-stone-800 font-medium">
+            <a href="https://x.com/jacopen" class="text-green-600 hover:underline">https://x.com/jacopen</a>
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- トップページへ戻るリンク -->
+    <div class="mt-8 text-center">
+      <a href="/" class="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-medium">
+        <i class="fas fa-arrow-left"></i>
+        トップページに戻る
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const copyButtons = document.querySelectorAll('.copy-button');
+
+    copyButtons.forEach(button => {
+      button.addEventListener('click', async () => {
+        const profileId = button.getAttribute('data-profile-id');
+        const profileElement = document.getElementById(`profile-${profileId}`);
+
+        if (profileElement) {
+          const text = profileElement.textContent || '';
+
+          try {
+            await navigator.clipboard.writeText(text.trim());
+
+            // ボタンの表示を一時的に変更
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check"></i> コピーしました';
+            button.classList.remove('bg-green-600', 'hover:bg-green-700');
+            button.classList.add('bg-emerald-500');
+
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.classList.remove('bg-emerald-500');
+              button.classList.add('bg-green-600', 'hover:bg-green-700');
+            }, 2000);
+          } catch (err) {
+            console.error('コピーに失敗しました:', err);
+            alert('コピーに失敗しました。手動でコピーしてください。');
+          }
+        }
+      });
+    });
+  });
+</script>

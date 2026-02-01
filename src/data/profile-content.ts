@@ -56,7 +56,7 @@ export const profileInfo = {
   titlePagerDuty: "PagerDuty　プロダクトエバンジェリスト",
   titleCNIA: "一般社団法人クラウドネイティブイノベーターズ協会　代表理事",
   titleSRE: "一般社団法人SREコネクト　理事",
-  bio: "PagerDutyのProduct Evangelistとして、インシデント管理ソリューションに関する情報発信やコミュニティ作りに携わる。過去には通信事業者でプラットフォームエンジニアを務めたのを皮切りに、いくつかの外資系企業でプロフェッショナルサービスやプリセールスエンジニアとしてクラウドネイティブやプラットフォーム製品に携わるなど、10年以上さまざまな形でプラットフォームに関与している。2023年11月より現職。一般社団法人クラウドネイティブイノベーターズ協会 代表理事、一般社団法人SREコネクト 理事、Platform Engineering Meetupオーガナイザー。",
+  bio: "Platform EngineeringとDevOpsの実践知を、エンジニアリングとエバンジェリズムの両面から届けています。Pivotal、VMware、HashiCorpなど複数の外資ベンダーでの経験を通じて培った「開発者体験を高めるプラットフォーム設計」の知見と、CloudNative DaysやPlatform Engineering Meetupの運営で得た「コミュニティを通じた技術普及」のノウハウが強みです。現在はPagerDutyのProduct Evangelistとして、インシデント管理を起点により良い運用文化の構築を支援しています。",
 };
 
 // 経歴情報
