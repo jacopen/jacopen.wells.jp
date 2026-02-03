@@ -132,6 +132,11 @@ export const communities = [
       "日本初のPlatform Engineeringのコミュニティ。2023年3月よりアクティブに開催中",
   },
   {
+    name: "クラウドネイティブ会議",
+    url: "https://kaigi.cloudnativedays.jp/",
+    activity: "共同実行委員長",
+  },
+  {
     name: "CloudNative Days",
     url: "https://cloudnativedays.jp/",
     activity:
