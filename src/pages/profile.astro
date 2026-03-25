@@ -46,25 +46,56 @@ const profiles = [
         <i class="fas fa-camera text-green-500"></i>
         プロフィール写真
       </h2>
-      <div class="flex flex-col sm:flex-row gap-6 items-start">
-        <div class="relative group">
+      <p class="text-stone-600 text-sm mb-4">
+        右クリックまたは長押しで画像を保存できます。ダウンロードボタンからも取得できます。
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="flex flex-col items-center gap-3">
           <img
-            src="/pen_pen.jpg"
-            alt={nameJa}
+            src="/square.jpg"
+            alt={`${nameJa} 顔写真`}
             class="w-32 h-32 rounded-xl object-cover shadow-md"
           />
+          <span class="text-stone-600 text-sm font-medium">顔写真</span>
+          <a
+            href="/square.jpg"
+            download="jacopen_photo.jpg"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors text-sm font-medium"
+          >
+            <i class="fas fa-download"></i>
+            ダウンロード
+          </a>
         </div>
-        <div class="flex-1">
-          <p class="text-stone-600 text-sm mb-3">
-            右クリックまたは長押しで画像を保存できます。
-          </p>
+        <div class="flex flex-col items-center gap-3">
+          <img
+            src="/gentoo1.png"
+            alt={`${nameJa} イラスト`}
+            class="w-32 h-32 rounded-xl object-cover shadow-md"
+          />
+          <span class="text-stone-600 text-sm font-medium">イラスト</span>
+          <a
+            href="/gentoo1.png"
+            download="jacopen_illustration.png"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors text-sm font-medium"
+          >
+            <i class="fas fa-download"></i>
+            ダウンロード
+          </a>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img
+            src="/pen_pen.jpg"
+            alt={`${nameJa} 顔写真+イラスト`}
+            class="w-32 h-32 rounded-xl object-cover shadow-md"
+          />
+          <span class="text-stone-600 text-sm font-medium">顔写真+イラスト</span>
           <a
             href="/pen_pen.jpg"
             download="jacopen_profile.jpg"
             class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors text-sm font-medium"
           >
             <i class="fas fa-download"></i>
-            写真をダウンロード
+            ダウンロード
           </a>
         </div>
       </div>

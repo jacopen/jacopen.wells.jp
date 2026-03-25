@@ -1,6 +1,27 @@
 {
   "blogPosts": [
     {
+      "url": "https://www.pagerduty.co.jp/blog/product-update-mar2026/",
+      "title": "PagerDuty製品アップデート情報(2026年3月)",
+      "pubDate": "2026-03-18T05:39:20.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/product-update-feb2026/",
+      "title": "PagerDuty製品アップデート情報(2026年2月)",
+      "pubDate": "2026-02-20T07:58:54.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/product-update-jan2026/",
+      "title": "PagerDuty製品アップデート情報(2026年1月)",
+      "pubDate": "2026-01-22T02:00:00.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
       "url": "https://www.pagerduty.co.jp/blog/ai-agent-generative-ai-incident-response/",
       "title": "AIエージェントと生成AIで変わるインシデント対応｜自動化と迅速化のポイント",
       "pubDate": "2025-12-22T08:19:20.000Z",
@@ -437,6 +458,30 @@
   ],
   "presentations": [
     {
+      "url": "https://speakerdeck.com/jacopen/puratutohuomuenziniaringuhaaishi-dai-nokai-fa-zhe-wodoujiu-unoka",
+      "title": "プラットフォームエンジニアリングはAI時代の開発者をどう救うのか",
+      "pubDate": "2026-03-17T10:31:32.000Z",
+      "content": "SoftBank Tech Night #18で登壇した資料です\r\nhttps://techplay.jp/event/992449"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/openclawtehui-suzu-zhi-yun-ying",
+      "title": "OpenClawで回す組織運営",
+      "pubDate": "2026-03-05T16:32:50.000Z",
+      "content": "とあるクローズドのOpenClaw勉強会で話した資料です"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/aishi-dai-nokai-fa-toplatform-engineeringnituitekao-eru",
+      "title": "AI時代の開発とPlatform Engineeringについて考える",
+      "pubDate": "2026-02-07T18:22:53.000Z",
+      "content": "Platform Engineering Meetup #13で発表した資料です\r\nhttps://platformengineering.connpass.com/event/358498/"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/srenoshi-shi-wozi-dong-hua-suruji-niyatuteokitai5tunopointo",
+      "title": "SREの仕事を自動化する際にやっておきたい5つのポイント",
+      "pubDate": "2026-01-26T04:09:54.000Z",
+      "content": "AEON TECH HUB #23でお話しした資料です\r\nhttps://aeon.connpass.com/event/379256/"
+    },
+    {
       "url": "https://speakerdeck.com/jacopen/aishi-dai-noinsidentodui-ying-shi-dai-woqie-riba-keru-zu-zhi-akitekutiya",
       "title": "AI時代のインシデント対応 〜時代を切り抜ける、組織アーキテクチャ〜",
       "pubDate": "2025-11-24T16:04:32.000Z",
@@ -569,5 +614,5 @@
       "content": "Forkwellさん主催の「今から予測する2024年のPlatform Engineering」で登壇した資料です\r\nhttps://forkwell.connpass.com/event/303922/"
     }
   ],
-  "lastUpdated": "2026-01-10T12:36:44.807Z"
+  "lastUpdated": "2026-03-25T11:17:31.624Z"
 }
