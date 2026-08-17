@@ -82,6 +82,11 @@ export const careers = [
     period: "2025/3 - 現在",
   },
   {
+    company: "株式会社 未来機械",
+    position: "技術アドバイザー",
+    period: "2026/3 - 現在",
+  },
+  {
     company: "HashiCorp",
     position: "Senior Solutions Engineer",
     period: "2021/9 - 2023/11",
@@ -135,6 +140,12 @@ export const communities = [
     name: "クラウドネイティブ会議",
     url: "https://kaigi.cloudnativedays.jp/",
     activity: "共同実行委員長",
+  },
+  {
+    name: "自鯖缶",
+    url: "https://jisaba.sh/",
+    activity:
+      "自宅サーバーに情熱を注ぐ人たちのためのカンファレンス。2026年11月開催。事務局長を務める",
   },
   {
     name: "CloudNative Days",
