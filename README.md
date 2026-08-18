@@ -85,17 +85,6 @@ npm install
 npm run dev
 ```
 
-## バージョン管理
-
-このリポジトリは [Jujutsu (jj)](https://github.com/martinvonz/jj) でのバージョン管理を推奨しています。
-
-```sh
-jj new          # 新しい変更を作成
-jj git push     # リモートにプッシュ
-```
-
-通常のGitコマンドも使用可能です。
-
 ## 環境変数
 
 `.env.example` を参考に `.env` ファイルを作成してください。
