@@ -164,6 +164,15 @@ export const books = [
 // 寄稿/メディア記事データ（変更なし）
 export const contributions = [
   {
+    url: "https://www.youtube.com/watch?v=bifQwjbdb1A",
+    title: "なぜエンジニアは絶対に技術カンファレンスに行くべきなのか。",
+  },
+  {
+    url: "https://www.youtube.com/watch?v=rg8mabGgFvc",
+    title:
+      "【ルームツアー!?】都内某所に怪しいサーバー部屋があると聞いたので潜入した結果 【自宅鯖界隈】",
+  },
+  {
     url: "https://levtech.jp/media/detail_953/",
     title: "趣味で25年続けた自宅サーバーが、手を動かす場所を守ってくれた話",
   },
