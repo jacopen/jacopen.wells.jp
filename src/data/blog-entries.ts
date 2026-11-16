@@ -164,6 +164,15 @@ export const books = [
 // 寄稿/メディア記事データ（変更なし）
 export const contributions = [
   {
+    url: "https://levtech.jp/media/detail_953/",
+    title: "趣味で25年続けた自宅サーバーが、手を動かす場所を守ってくれた話",
+  },
+  {
+    url: "https://levtech.jp/media/detail_947/",
+    title:
+      "仮想化、Docker、Kubernetes、AI。自宅サーバーは25年で何が変わったのか",
+  },
+  {
     url: "https://thinkit.co.jp/article/14044",
     title:
       "Kubernetes、PaaS、Serverlessのどれを選ぶのか？ 機能比較と使い分けのポイント",
