@@ -20,7 +20,6 @@ Kazuto Kusama (@jacopen) のポートフォリオサイトです。
 ├── src/
 │   ├── assets/          # 画像等のアセット
 │   ├── components/      # Astroコンポーネント
-│   ├── content/         # コンテンツコレクション（ブログ記事）
 │   ├── data/            # データファイル・RSSフェッチャー
 │   ├── layouts/         # レイアウトコンポーネント
 │   ├── pages/           # ルーティング
@@ -36,19 +35,19 @@ Kazuto Kusama (@jacopen) のポートフォリオサイトです。
 | `npm run dev` | 開発サーバー起動 (localhost:4321) |
 | `npm run build` | 本番ビルド (./dist/) |
 | `npm run preview` | ビルドしたサイトのプレビュー |
-| `npm run new-blog` | 新しいブログ記事を作成 |
+| `npm run update-feeds` | RSSの新着を `src/data/blog-data.json` に追記 |
 
 ## 主な機能
 
 ### コンテンツ
 
 - **プロフィール**: スキル、経歴、コミュニティ活動、書籍、コントリビューション
-- **ブログ**: ローカルMarkdown記事 + Sanity CMSからの記事
+- **ブログ**: Sanity CMSの記事 + RSSで集約した外部記事
 - **プレゼンテーション**: 登壇資料一覧
 
 ### RSS集約
 
-複数のRSSフィードから記事を自動取得してビルド時に統合：
+複数のRSSフィードから記事を取得し、`src/data/blog-data.json` にキャッシュ。GitHub Actionsが毎日 `npm run update-feeds` を実行して新着をコミットする。本番ビルドでも最新フィードをメモリ上でマージする：
 - PagerDuty ブログ
 - 個人ブログ
 - Qiita
@@ -65,11 +64,15 @@ Kazuto Kusama (@jacopen) のポートフォリオサイトです。
 
 ### ブログ記事の作成
 
+Sanity Studioで記事を作成します。次回のビルドでサイトに反映されます。
+
+### RSSキャッシュの更新
+
 ```sh
-npm run new-blog
+npm run update-feeds
 ```
 
-対話形式で新しいブログ記事のテンプレートを `src/content/blog/` に作成します。
+RSSフィードの新着を `src/data/blog-data.json` に追記します。通常はGitHub Actions（`.github/workflows/update-feeds.yml`）が毎日実行します。
 
 ### プロフィール情報の更新
 
@@ -77,7 +80,7 @@ npm run new-blog
 
 ### Sanity CMS
 
-ブログ記事の一部はSanity CMSで管理しています。Sanity Studioは `sanity/` ディレクトリにあります。
+ブログ記事はSanity CMSで管理しています。Sanity Studioは `sanity/` ディレクトリにあります。
 
 ```sh
 cd sanity

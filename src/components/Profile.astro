@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { books, presentations, contributions, profileInfo, skills, communities, careers, certifications } from '../data/profile-content';
 import BlogList from './BlogList.astro';
 
@@ -6,14 +7,14 @@ const { nameEn, nameJa, nickname, titlePagerDuty, titleCNIA, titleSRE, bio } = p
 
 // カテゴリに応じたスタイルクラスを定義
 const categoryStyles: Record<string, { bg: string; text: string; border: string; icon: string }> = {
-  Platform: { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200", icon: "fa-cloud" },
-  DevOps: { bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200", icon: "fa-infinity" },
-  Incident: { bg: "bg-rose-50", text: "text-rose-700", border: "border-rose-200", icon: "fa-bell" },
-  Infrastructure: { bg: "bg-green-50", text: "text-green-700", border: "border-green-200", icon: "fa-server" },
-  SoftSkill: { bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200", icon: "fa-comments" },
-  Language: { bg: "bg-violet-50", text: "text-violet-700", border: "border-violet-200", icon: "fa-code" },
-  Design: { bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200", icon: "fa-palette" },
-  Other: { bg: "bg-stone-50", text: "text-stone-600", border: "border-stone-200", icon: "fa-star" }
+  Platform: { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200", icon: "cloud" },
+  DevOps: { bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200", icon: "infinity" },
+  Incident: { bg: "bg-rose-50", text: "text-rose-700", border: "border-rose-200", icon: "bell" },
+  Infrastructure: { bg: "bg-green-50", text: "text-green-700", border: "border-green-200", icon: "server" },
+  SoftSkill: { bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200", icon: "comments" },
+  Language: { bg: "bg-violet-50", text: "text-violet-700", border: "border-violet-200", icon: "code" },
+  Design: { bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200", icon: "palette" },
+  Other: { bg: "bg-stone-50", text: "text-stone-600", border: "border-stone-200", icon: "star" }
 };
 
 // カテゴリの日本語名
@@ -81,15 +82,15 @@ const sortedCategories = Object.keys(skillsByCategory).sort(
       <!-- Titles -->
       <div class="mt-4 space-y-1">
         <p class="text-stone-600 flex items-center justify-center md:justify-start gap-2">
-          <i class="fas fa-building text-green-500 w-5"></i>
+          <Icon name="fa6-solid:building" class="text-green-500 w-5" />
           {titlePagerDuty}
         </p>
         <p class="text-stone-600 flex items-center justify-center md:justify-start gap-2">
-          <i class="fas fa-cloud text-green-500 w-5"></i>
+          <Icon name="fa6-solid:cloud" class="text-green-500 w-5" />
           {titleCNIA}
         </p>
         <p class="text-stone-600 flex items-center justify-center md:justify-start gap-2">
-          <i class="fas fa-shield text-green-500 w-5"></i>
+          <Icon name="fa6-solid:shield" class="text-green-500 w-5" />
           {titleSRE}
         </p>
       </div>
@@ -97,17 +98,17 @@ const sortedCategories = Object.keys(skillsByCategory).sort(
       <!-- Social Links -->
       <div class="flex gap-3 mt-5 justify-center md:justify-start">
         <a href="https://x.com/jacopen" class="group flex items-center gap-2 px-4 py-2 rounded-xl bg-stone-50 text-stone-600 hover:bg-stone-900 hover:text-white transition-all duration-200">
-          <i class="fab fa-x-twitter"></i>
+          <Icon name="fa6-brands:x-twitter" />
           <span class="text-sm font-medium">@jacopen</span>
         </a>
         <a href="https://www.facebook.com/jacopen" class="p-2.5 rounded-xl bg-stone-50 text-stone-500 hover:bg-blue-500 hover:text-white transition-all duration-200" aria-label="Facebook">
-          <i class="fab fa-facebook text-lg"></i>
+          <Icon name="fa6-brands:facebook" class="text-lg" />
         </a>
         <a href="https://github.com/jacopen" class="p-2.5 rounded-xl bg-stone-50 text-stone-500 hover:bg-stone-900 hover:text-white transition-all duration-200" aria-label="GitHub">
-          <i class="fab fa-github text-lg"></i>
+          <Icon name="fa6-brands:github" class="text-lg" />
         </a>
         <a href="https://www.linkedin.com/in/jacopen/" class="p-2.5 rounded-xl bg-stone-50 text-stone-500 hover:bg-blue-600 hover:text-white transition-all duration-200" aria-label="LinkedIn">
-          <i class="fab fa-linkedin text-lg"></i>
+          <Icon name="fa6-brands:linkedin" class="text-lg" />
         </a>
       </div>
     </div>
@@ -121,9 +122,9 @@ const sortedCategories = Object.keys(skillsByCategory).sort(
 
 <div class="mt-4 text-right animate-fade-in-up delay-100">
   <a href="/profile" class="inline-flex items-center gap-2 text-green-600 hover:text-green-700 text-sm font-medium group">
-    <i class="fas fa-id-card"></i>
+    <Icon name="fa6-solid:id-card" />
     登壇・寄稿用プロフィール文
-    <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+    <Icon name="fa6-solid:arrow-right" class="text-xs group-hover:translate-x-1 transition-transform" />
   </a>
 </div>
 
@@ -134,7 +135,7 @@ const sortedCategories = Object.keys(skillsByCategory).sort(
 <section class="animate-fade-in-up delay-200">
   <h2 id="blog" class="flex items-center gap-3 text-2xl font-bold text-stone-900" style="font-family: var(--font-display);">
     <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
-      <i class="fas fa-pen-to-square"></i>
+      <Icon name="fa6-solid:pen-to-square" />
     </span>
     ブログ
   </h2>
@@ -147,7 +148,7 @@ const sortedCategories = Object.keys(skillsByCategory).sort(
 <section id="career" class="animate-fade-in-up">
   <h2 class="flex items-center gap-3 text-2xl font-bold text-stone-900 mb-8" style="font-family: var(--font-display);">
     <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
-      <i class="fas fa-briefcase"></i>
+      <Icon name="fa6-solid:briefcase" />
     </span>
     経歴
   </h2>
@@ -167,7 +168,7 @@ const sortedCategories = Object.keys(skillsByCategory).sort(
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <h3 class="text-lg font-bold text-stone-800" style="font-family: var(--font-display);">{career.company}</h3>
               <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full border border-green-100 whitespace-nowrap">
-                <i class="fas fa-calendar-alt text-xs"></i>
+                <Icon name="fa6-solid:calendar-days" class="text-xs" />
                 {career.period}
               </span>
             </div>
@@ -183,7 +184,7 @@ const sortedCategories = Object.keys(skillsByCategory).sort(
             class="inline-flex items-center gap-2 px-5 py-2.5 bg-green-50 text-green-700 rounded-xl hover:bg-green-100 transition-all duration-200 font-medium"
           >
             <span id="timeline-toggle-text">もっと見る</span>
-            <i id="timeline-toggle-icon" class="fas fa-chevron-down transition-transform duration-300"></i>
+            <Icon id="timeline-toggle-icon" name="fa6-solid:chevron-down" class="transition-transform duration-300" />
           </button>
         </div>
       )}
@@ -232,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="animate-fade-in-up">
   <h2 id="presentations" class="flex items-center gap-3 text-2xl font-bold text-stone-900 mb-6" style="font-family: var(--font-display);">
     <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
-      <i class="fas fa-microphone"></i>
+      <Icon name="fa6-solid:microphone" />
     </span>
     登壇
   </h2>
@@ -255,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <p class="text-stone-500 text-sm mt-1 line-clamp-1">{presentation.content}</p>
             )}
           </div>
-          <i class="fas fa-arrow-right text-stone-300 group-hover:text-green-500 group-hover:translate-x-1 transition-all shrink-0"></i>
+          <Icon name="fa6-solid:arrow-right" class="text-stone-300 group-hover:text-green-500 group-hover:translate-x-1 transition-all shrink-0" />
         </div>
       </a>
     ))}
@@ -264,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="text-center mt-6">
     <a href="/presentations/page/1" class="inline-flex items-center gap-2 px-5 py-2.5 text-green-600 hover:text-green-700 font-medium group">
       全ての登壇を見る
-      <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+      <Icon name="fa6-solid:arrow-right" class="group-hover:translate-x-1 transition-transform" />
     </a>
   </div>
 </section>
@@ -275,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <section id="skills" class="animate-fade-in-up">
   <h2 class="flex items-center gap-3 text-2xl font-bold text-stone-900 mb-6" style="font-family: var(--font-display);">
     <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
-      <i class="fas fa-code"></i>
+      <Icon name="fa6-solid:code" />
     </span>
     スキル
   </h2>
@@ -286,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return (
         <div class={`p-5 rounded-2xl ${style.bg} border ${style.border}`}>
           <h3 class={`flex items-center gap-2 text-sm font-semibold ${style.text} mb-3`}>
-            <i class={`fas ${style.icon}`}></i>
+            <Icon name={`fa6-solid:${style.icon}`} />
             {categoryNames[category] || category}
           </h3>
           <div class="flex flex-wrap gap-2">
@@ -308,7 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="animate-fade-in-up">
   <h2 id="certifications" class="flex items-center gap-3 text-2xl font-bold text-stone-900 mb-6" style="font-family: var(--font-display);">
     <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
-      <i class="fas fa-award"></i>
+      <Icon name="fa6-solid:award" />
     </span>
     認定資格
   </h2>
@@ -328,13 +329,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="flex items-center justify-between mt-4 pt-4 border-t border-stone-100">
           <span class="text-stone-400 text-sm flex items-center gap-1.5">
-            <i class="fas fa-calendar-check"></i>
+            <Icon name="fa6-solid:calendar-check" />
             {cert.date}
           </span>
           {cert.url && (
             <a href={cert.url} class="text-green-600 hover:text-green-700 text-sm font-medium flex items-center gap-1.5 group-hover:gap-2 transition-all">
               証明書を見る
-              <i class="fas fa-external-link-alt text-xs"></i>
+              <Icon name="fa6-solid:arrow-up-right-from-square" class="text-xs" />
             </a>
           )}
         </div>
@@ -353,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="animate-fade-in-up">
   <h2 id="contributions" class="flex items-center gap-3 text-2xl font-bold text-stone-900 mb-6" style="font-family: var(--font-display);">
     <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
-      <i class="fas fa-newspaper"></i>
+      <Icon name="fa6-solid:newspaper" />
     </span>
     寄稿 / メディア記事
   </h2>
@@ -365,10 +366,10 @@ document.addEventListener('DOMContentLoaded', function() {
         class="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-100 hover:border-green-200 hover:shadow-sm transition-all duration-200 group"
       >
         <span class="w-8 h-8 flex items-center justify-center rounded-lg bg-stone-50 text-stone-400 group-hover:bg-green-50 group-hover:text-green-500 transition-colors shrink-0">
-          <i class="fas fa-file-lines"></i>
+          <Icon name="fa6-solid:file-lines" />
         </span>
         <span class="text-stone-700 group-hover:text-green-700 transition-colors flex-1">{contribution.title}</span>
-        <i class="fas fa-arrow-right text-stone-300 group-hover:text-green-500 group-hover:translate-x-1 transition-all shrink-0"></i>
+        <Icon name="fa6-solid:arrow-right" class="text-stone-300 group-hover:text-green-500 group-hover:translate-x-1 transition-all shrink-0" />
       </a>
     ))}
   </div>
@@ -380,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="animate-fade-in-up">
   <h2 id="books" class="flex items-center gap-3 text-2xl font-bold text-stone-900 mb-6" style="font-family: var(--font-display);">
     <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
-      <i class="fas fa-book"></i>
+      <Icon name="fa6-solid:book" />
     </span>
     書籍
   </h2>
@@ -392,10 +393,10 @@ document.addEventListener('DOMContentLoaded', function() {
         class="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-100 hover:border-green-200 hover:shadow-sm transition-all duration-200 group"
       >
         <span class="w-8 h-8 flex items-center justify-center rounded-lg bg-amber-50 text-amber-500 group-hover:bg-green-50 group-hover:text-green-500 transition-colors shrink-0">
-          <i class="fas fa-book-open"></i>
+          <Icon name="fa6-solid:book-open" />
         </span>
         <span class="text-stone-700 group-hover:text-green-700 transition-colors flex-1">{book.title}</span>
-        <i class="fas fa-arrow-right text-stone-300 group-hover:text-green-500 group-hover:translate-x-1 transition-all shrink-0"></i>
+        <Icon name="fa6-solid:arrow-right" class="text-stone-300 group-hover:text-green-500 group-hover:translate-x-1 transition-all shrink-0" />
       </a>
     ))}
   </div>
@@ -407,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="animate-fade-in-up">
   <h2 id="communities" class="flex items-center gap-3 text-2xl font-bold text-stone-900 mb-6" style="font-family: var(--font-display);">
     <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
-      <i class="fas fa-users"></i>
+      <Icon name="fa6-solid:users" />
     </span>
     コミュニティ活動
   </h2>
@@ -426,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <p class="text-stone-500 mt-2">{community.activity}</p>
           </div>
           <span class="shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-stone-50 text-stone-400 group-hover:bg-green-50 group-hover:text-green-500 transition-colors">
-            <i class="fas fa-arrow-right"></i>
+            <Icon name="fa6-solid:arrow-right" />
           </span>
         </div>
       </a>
@@ -440,7 +441,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <section id="contact" class="animate-fade-in-up">
   <h2 class="flex items-center gap-3 text-2xl font-bold text-stone-900 mb-6" style="font-family: var(--font-display);">
     <span class="w-10 h-10 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
-      <i class="fas fa-envelope"></i>
+      <Icon name="fa6-solid:envelope" />
     </span>
     講演・寄稿依頼・お問い合わせ
   </h2>
@@ -449,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- Speaking Topics -->
     <div class="p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-100">
       <h3 class="text-lg font-semibold text-green-800 mb-4 flex items-center gap-2" style="font-family: var(--font-display);">
-        <i class="fas fa-microphone-lines"></i>
+        <Icon name="fa6-solid:microphone-lines" />
         講演・寄稿・セッション依頼について
       </h3>
       <p class="text-stone-600 mb-5">以下のテーマでの講演・寄稿・セッションを承っております:</p>
@@ -457,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="grid md:grid-cols-2 gap-6">
         <div class="p-4 bg-white/60 rounded-xl">
           <h4 class="font-semibold text-stone-800 mb-3 flex items-center gap-2">
-            <i class="fas fa-cloud text-green-500"></i>
+            <Icon name="fa6-solid:cloud" class="text-green-500" />
             プラットフォーム・インフラ
           </h4>
           <ul class="space-y-2 text-stone-600 text-sm">
@@ -469,7 +470,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <div class="p-4 bg-white/60 rounded-xl">
           <h4 class="font-semibold text-stone-800 mb-3 flex items-center gap-2">
-            <i class="fas fa-sitemap text-green-500"></i>
+            <Icon name="fa6-solid:sitemap" class="text-green-500" />
             運用・組織
           </h4>
           <ul class="space-y-2 text-stone-600 text-sm">
@@ -481,7 +482,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
 
       <p class="text-sm text-stone-500 mt-5 flex items-center gap-2">
-        <i class="fas fa-info-circle"></i>
+        <Icon name="fa6-solid:circle-info" />
         オンライン・オフライン問わず対応可能です。内容や規模についてもお気軽にご相談ください。
       </p>
     </div>
@@ -489,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- Contact CTA -->
     <div class="p-6 bg-white rounded-2xl border border-stone-200 shadow-sm">
       <h3 class="text-lg font-semibold text-stone-800 mb-3 flex items-center gap-2" style="font-family: var(--font-display);">
-        <i class="fas fa-paper-plane text-stone-400"></i>
+        <Icon name="fa6-solid:paper-plane" class="text-stone-400" />
         お問い合わせ
       </h3>
       <p class="text-stone-600 mb-5">
@@ -500,7 +501,7 @@ document.addEventListener('DOMContentLoaded', function() {
           href="https://jacopen.notion.site/1ffb074bc48180bd98dfead5eb7ad7b2?pvs=105"
           class="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 font-medium"
         >
-          <i class="fas fa-external-link-alt"></i>
+          <Icon name="fa6-solid:arrow-up-right-from-square" />
           お問い合わせフォームはこちら
         </a>
       </div>

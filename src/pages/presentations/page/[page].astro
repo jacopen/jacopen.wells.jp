@@ -1,57 +1,23 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Layout from '../../../layouts/Layout.astro';
-import fs from 'fs/promises';
-import path from 'path';
+import { allPresentations } from '../../../data/blog-entries';
 
 // Astroの動的ルーティングで必要な関数
 export async function getStaticPaths() {
-  try {
-    // JSONファイルから直接データを読み込む
-    const DATA_FILE_PATH = path.resolve(process.cwd(), "src/data/blog-data.json");
-    const fileData = await fs.readFile(DATA_FILE_PATH, "utf-8");
-    const parsedData = JSON.parse(fileData);
-    
-    // presentationsデータを取得して日付オブジェクトに変換
-    const allPresentations = parsedData.presentations.map((pres: any) => ({
-      ...pres,
-      pubDate: new Date(pres.pubDate)
-    })).sort((a: any, b: any) => b.pubDate.getTime() - a.pubDate.getTime());
-    
-    // ページネーション用の変数
-    const ITEMS_PER_PAGE = 15;
-    const totalPages = Math.ceil(allPresentations.length / ITEMS_PER_PAGE);
-    
-    // 各ページに対応するパラメータを生成
-    return Array.from({ length: totalPages }, (_, i) => {
-      const pageNum = i + 1;
-      const start = i * ITEMS_PER_PAGE;
-      const end = start + ITEMS_PER_PAGE;
-      
-      return {
-        params: { page: pageNum.toString() },
-        props: { 
-          presentations: allPresentations.slice(start, end),
-          currentPage: pageNum,
-          totalPages: totalPages,
-          totalPresentations: allPresentations.length
-        }
-      };
-    });
-  } catch (error) {
-    console.error("Failed to get presentation data:", error);
-    // エラー時のフォールバック
-    return [
-      {
-        params: { page: "1" },
-        props: { 
-          presentations: [],
-          currentPage: 1,
-          totalPages: 1,
-          totalPresentations: 0
-        }
-      }
-    ];
-  }
+  const ITEMS_PER_PAGE = 15;
+  const totalPages = Math.max(1, Math.ceil(allPresentations.length / ITEMS_PER_PAGE));
+
+  // 各ページに対応するパラメータを生成
+  return Array.from({ length: totalPages }, (_, i) => ({
+    params: { page: (i + 1).toString() },
+    props: {
+      presentations: allPresentations.slice(i * ITEMS_PER_PAGE, (i + 1) * ITEMS_PER_PAGE),
+      currentPage: i + 1,
+      totalPages,
+      totalPresentations: allPresentations.length,
+    },
+  }));
 }
 
 // 動的ルートのパラメータとpropsを受け取る
@@ -69,7 +35,7 @@ function formatDate(date: Date): string {
     
     <div class="mb-4">
       <a href="/" class="text-green-600 hover:text-green-800">
-        <i class="fas fa-arrow-left mr-1"></i> ホームに戻る
+        <Icon name="fa6-solid:arrow-left" class="mr-1" /> ホームに戻る
       </a>
     </div>
     

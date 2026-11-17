@@ -12,7 +12,7 @@ type CustomFeed = {
   items: CustomItem[];
 };
 
-type BlogPost = {
+export type BlogPost = {
   url: string;
   title: string;
   pubDate: Date;
@@ -20,12 +20,26 @@ type BlogPost = {
   sourceUrl: string;
 };
 
-type Presentation = {
+export type Presentation = {
   url: string;
   title: string;
   pubDate: Date;
-  content: string;
+  content?: string;
 };
+
+// 既存データに、URLが重複しない新着だけを追加して新しい順に並べる。
+// フィードから消えた過去の項目を失わないよう、既存データは削除しない。
+export function mergeByUrl<T extends { url: string; pubDate: Date }>(
+  existing: T[],
+  incoming: T[],
+): { items: T[]; added: number } {
+  const knownUrls = new Set(existing.map((item) => item.url));
+  const added = incoming.filter((item) => !knownUrls.has(item.url));
+  const items = [...existing, ...added].sort(
+    (a, b) => b.pubDate.getTime() - a.pubDate.getTime(),
+  );
+  return { items, added: added.length };
+}
 
 // RSSフィードからブログ記事を取得する関数
 export async function fetchBlogPosts(): Promise<BlogPost[]> {

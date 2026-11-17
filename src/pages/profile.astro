@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Layout from '../layouts/Layout.astro';
 import { profileInfo } from '../data/profile-content';
 
@@ -31,7 +32,7 @@ const profiles = [
     <div class="mb-8">
       <h1 class="text-3xl font-bold text-stone-900 flex items-center gap-3" style="font-family: var(--font-display);">
         <span class="w-12 h-12 flex items-center justify-center rounded-xl bg-green-100 text-green-600">
-          <i class="fas fa-id-card"></i>
+          <Icon name="fa6-solid:id-card" />
         </span>
         登壇・寄稿用プロフィール文
       </h1>
@@ -43,7 +44,7 @@ const profiles = [
     <!-- プロフィール写真セクション -->
     <div class="mb-8 p-6 bg-white rounded-2xl border border-stone-100 shadow-sm">
       <h2 class="text-lg font-bold text-stone-800 mb-4 flex items-center gap-2" style="font-family: var(--font-display);">
-        <i class="fas fa-camera text-green-500"></i>
+        <Icon name="fa6-solid:camera" class="text-green-500" />
         プロフィール写真
       </h2>
       <p class="text-stone-600 text-sm mb-4">
@@ -62,7 +63,7 @@ const profiles = [
             download="jacopen_photo.jpg"
             class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors text-sm font-medium"
           >
-            <i class="fas fa-download"></i>
+            <Icon name="fa6-solid:download" />
             ダウンロード
           </a>
         </div>
@@ -78,7 +79,7 @@ const profiles = [
             download="jacopen_illustration.png"
             class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors text-sm font-medium"
           >
-            <i class="fas fa-download"></i>
+            <Icon name="fa6-solid:download" />
             ダウンロード
           </a>
         </div>
@@ -94,7 +95,7 @@ const profiles = [
             download="jacopen_profile.jpg"
             class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors text-sm font-medium"
           >
-            <i class="fas fa-download"></i>
+            <Icon name="fa6-solid:download" />
             ダウンロード
           </a>
         </div>
@@ -108,7 +109,7 @@ const profiles = [
           <div class="flex items-center justify-between mb-4">
             <div>
               <h2 class="text-lg font-bold text-stone-800 flex items-center gap-2" style="font-family: var(--font-display);">
-                <i class="fas fa-file-lines text-green-500"></i>
+                <Icon name="fa6-solid:file-lines" class="text-green-500" />
                 {profile.label}
               </h2>
               <p class="text-stone-500 text-sm mt-1">{profile.description}（{profile.charCount}文字）</p>
@@ -117,7 +118,7 @@ const profiles = [
               class="copy-button inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
               data-profile-id={profile.id}
             >
-              <i class="fas fa-copy"></i>
+              <Icon name="fa6-solid:copy" />
               コピー
             </button>
           </div>
@@ -134,7 +135,7 @@ const profiles = [
     <!-- 基本情報 -->
     <div class="mt-8 p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-100">
       <h2 class="text-lg font-bold text-green-800 mb-4 flex items-center gap-2" style="font-family: var(--font-display);">
-        <i class="fas fa-info-circle"></i>
+        <Icon name="fa6-solid:circle-info" />
         基本情報
       </h2>
       <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
@@ -166,7 +167,7 @@ const profiles = [
     <!-- トップページへ戻るリンク -->
     <div class="mt-8 text-center">
       <a href="/" class="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-medium">
-        <i class="fas fa-arrow-left"></i>
+        <Icon name="fa6-solid:arrow-left" />
         トップページに戻る
       </a>
     </div>
@@ -190,7 +191,7 @@ const profiles = [
 
             // ボタンの表示を一時的に変更
             const originalHTML = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-check"></i> コピーしました';
+            button.textContent = '✓ コピーしました';
             button.classList.remove('bg-green-600', 'hover:bg-green-700');
             button.classList.add('bg-emerald-500');
 

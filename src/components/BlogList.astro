@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import type { CollectionEntry } from 'astro:content';
 import { sanityClient } from 'sanity:client';
 import { blogPosts as rssBlogPosts } from '../data/blog-entries';
@@ -85,7 +86,7 @@ function getSourceStyle(source: string) {
 
           <!-- Arrow Icon -->
           <div class="hidden sm:flex items-center justify-center w-8 h-8 rounded-lg bg-stone-50 text-stone-400 group-hover:bg-green-50 group-hover:text-green-600 transition-all duration-200 shrink-0 self-center">
-            <i class="fas fa-arrow-right text-sm transform group-hover:translate-x-0.5 transition-transform duration-200"></i>
+            <Icon name="fa6-solid:arrow-right" class="text-sm transform group-hover:translate-x-0.5 transition-transform duration-200" />
           </div>
         </div>
       </a>
@@ -106,7 +107,7 @@ function getSourceStyle(source: string) {
           data-page={currentPage - 1}
           aria-label="前のページ"
         >
-          <i class="fas fa-chevron-left text-xs"></i>
+          <Icon name="fa6-solid:chevron-left" class="text-xs" />
           <span class="hidden sm:inline">前へ</span>
         </a>
       )}
@@ -136,7 +137,7 @@ function getSourceStyle(source: string) {
           aria-label="次のページ"
         >
           <span class="hidden sm:inline">次へ</span>
-          <i class="fas fa-chevron-right text-xs"></i>
+          <Icon name="fa6-solid:chevron-right" class="text-xs" />
         </a>
       )}
     </div>
@@ -163,7 +164,7 @@ function getSourceStyle(source: string) {
   <div class="text-center mt-8">
     <a href="/blog/page/1" class="inline-flex items-center gap-2 px-6 py-3 text-green-700 hover:text-green-800 font-semibold bg-green-50 hover:bg-green-100 rounded-xl border border-green-200 hover:border-green-300 transition-all duration-200 group" style="font-family: var(--font-display);">
       <span>すべての記事を見る</span>
-      <i class="fas fa-arrow-right text-sm transform group-hover:translate-x-1 transition-transform duration-200"></i>
+      <Icon name="fa6-solid:arrow-right" class="text-sm transform group-hover:translate-x-1 transition-transform duration-200" />
     </a>
   </div>
 )}

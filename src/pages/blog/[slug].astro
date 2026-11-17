@@ -29,6 +29,7 @@ const contentHtml = await marked.parse(entry.body);
   pubDate={new Date(entry.publishedAt)}
   author={entry.author}
   tags={entry.tags}
+  description={entry.description}
 >
   <div set:html={contentHtml} class="prose max-w-none" />
 </BlogPostLayout>

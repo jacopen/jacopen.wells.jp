@@ -1,4 +1,9 @@
 ---
+import { Icon } from 'astro-icon/components';
+import '@fontsource-variable/outfit';
+import '@fontsource-variable/source-sans-3';
+import '@fontsource-variable/noto-sans-jp';
+import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
 import { profileInfo } from '../data/profile-content';
 import GTM from '../components/GTM.astro';
@@ -10,6 +15,8 @@ interface Props {
   ogDescription?: string;
   ogType?: string;
   ogImage?: string;
+  // 構造化データ(JSON-LD)。ページ固有のものを渡す
+  jsonLd?: Record<string, unknown>;
 }
 
 const {
@@ -18,22 +25,29 @@ const {
   isProfilePage = false,
   ogDescription = profileInfo.bio,
   ogType = "website",
-  ogImage = "/gentoo1.png"
+  ogImage,
+  jsonLd,
 } = Astro.props;
+
+// 正規URL（クエリ文字列を含めない）
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+// 既定のアイコン画像は正方形なので、専用のOG画像がないページは小さいカードで表示する
+const ogImageUrl = new URL(ogImage ?? "/gentoo1.png", Astro.site);
+const twitterCard = ogImage ? "summary_large_image" : "summary";
 const { nameEn, nameJa, nickname } = profileInfo;
 
 // セクションのリンク一覧（2ペーンレイアウト用）
 const sections = [
-  { id: "profile", title: "プロフィール", href: "/#profile", icon: "fa-user" },
-  { id: "blog", title: "ブログ", href: "/#blog", icon: "fa-pen-to-square" },
-  { id: "career", title: "経歴", href: "/#career", icon: "fa-briefcase" },
-  { id: "presentations", title: "登壇", href: "/#presentations", icon: "fa-microphone" },
-  { id: "skills", title: "スキル", href: "/#skills", icon: "fa-code" },
-  { id: "certifications", title: "認定資格", href: "/#certifications", icon: "fa-award" },
-  { id: "contributions", title: "寄稿 / メディア", href: "/#contributions", icon: "fa-newspaper" },
-  { id: "books", title: "書籍", href: "/#books", icon: "fa-book" },
-  { id: "communities", title: "コミュニティ", href: "/#communities", icon: "fa-users" },
-  { id: "contact", title: "お問い合わせ", href: "/#contact", icon: "fa-envelope" }
+  { id: "profile", title: "プロフィール", href: "/#profile", icon: "user" },
+  { id: "blog", title: "ブログ", href: "/#blog", icon: "pen-to-square" },
+  { id: "career", title: "経歴", href: "/#career", icon: "briefcase" },
+  { id: "presentations", title: "登壇", href: "/#presentations", icon: "microphone" },
+  { id: "skills", title: "スキル", href: "/#skills", icon: "code" },
+  { id: "certifications", title: "認定資格", href: "/#certifications", icon: "award" },
+  { id: "contributions", title: "寄稿 / メディア", href: "/#contributions", icon: "newspaper" },
+  { id: "books", title: "書籍", href: "/#books", icon: "book" },
+  { id: "communities", title: "コミュニティ", href: "/#communities", icon: "users" },
+  { id: "contact", title: "お問い合わせ", href: "/#contact", icon: "envelope" }
 ];
 ---
 <!doctype html>
@@ -46,22 +60,23 @@ const sections = [
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<meta name="description" content={ogDescription} />
+		<link rel="canonical" href={canonicalUrl} />
 
 		<!-- OGP設定 -->
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={ogDescription} />
 		<meta property="og:type" content={ogType} />
-		<meta property="og:url" content={Astro.url} />
-		<meta property="og:image" content={new URL(ogImage, Astro.url)} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={ogImageUrl} />
 		<meta property="og:site_name" content={profileInfo.nameEn} />
 
 		<!-- Twitter Card -->
-		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:card" content={twitterCard} />
 		<meta name="twitter:site" content="@jacopen" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={ogDescription} />
-		<meta name="twitter:image" content={new URL(ogImage, Astro.url)} />
+		<meta name="twitter:image" content={ogImageUrl} />
 
 		<!-- RSS/Atom フィード -->
 		<link rel="alternate" type="application/rss+xml" title={`${profileInfo.nameEn} - ブログ (RSS)`} href="/feed.xml" />
@@ -70,6 +85,10 @@ const sections = [
 		<!-- SEO関連 -->
 		<link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 		<meta name="robots" content="index, follow" />
+
+		{jsonLd && (
+			<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />
+		)}
 	</head>
 	<body class="min-h-screen">
     <div class="mx-auto max-w-6xl">
@@ -83,7 +102,7 @@ const sections = [
                 class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-stone-200 text-stone-700 hover:border-green-300 hover:text-green-700 transition-all duration-200 shadow-sm"
                 aria-label="メニューを開く"
               >
-                <i class="fas fa-bars text-lg"></i>
+                <Icon name="fa6-solid:bars" class="text-lg" />
                 <span class="font-medium">メニュー</span>
               </button>
 
@@ -104,7 +123,7 @@ const sections = [
                 <div class="flex justify-between items-center mb-6">
                   <h3 class="text-lg font-bold text-stone-800" style="font-family: var(--font-display);">ナビゲーション</h3>
                   <button id="mobile-menu-close" class="p-2 rounded-lg text-stone-500 hover:text-stone-700 hover:bg-stone-100 transition-colors">
-                    <i class="fas fa-times text-lg"></i>
+                    <Icon name="fa6-solid:xmark" class="text-lg" />
                   </button>
                 </div>
 
@@ -121,10 +140,10 @@ const sections = [
                       </div>
                     </div>
                     <div class="flex gap-3 mt-4 pt-4 border-t border-green-200/50">
-                      <a href="https://x.com/jacopen" class="p-2 rounded-lg bg-white text-stone-600 hover:text-green-600 hover:shadow-md transition-all duration-200" aria-label="X (Twitter)"><i class="fab fa-x-twitter text-lg"></i></a>
-                      <a href="https://www.facebook.com/jacopen" class="p-2 rounded-lg bg-white text-stone-600 hover:text-blue-600 hover:shadow-md transition-all duration-200" aria-label="Facebook"><i class="fab fa-facebook text-lg"></i></a>
-                      <a href="https://github.com/jacopen" class="p-2 rounded-lg bg-white text-stone-600 hover:text-stone-900 hover:shadow-md transition-all duration-200" aria-label="GitHub"><i class="fab fa-github text-lg"></i></a>
-                      <a href="https://www.linkedin.com/in/jacopen/" class="p-2 rounded-lg bg-white text-stone-600 hover:text-blue-700 hover:shadow-md transition-all duration-200" aria-label="LinkedIn"><i class="fab fa-linkedin text-lg"></i></a>
+                      <a href="https://x.com/jacopen" class="p-2 rounded-lg bg-white text-stone-600 hover:text-green-600 hover:shadow-md transition-all duration-200" aria-label="X (Twitter)"><Icon name="fa6-brands:x-twitter" class="text-lg" /></a>
+                      <a href="https://www.facebook.com/jacopen" class="p-2 rounded-lg bg-white text-stone-600 hover:text-blue-600 hover:shadow-md transition-all duration-200" aria-label="Facebook"><Icon name="fa6-brands:facebook" class="text-lg" /></a>
+                      <a href="https://github.com/jacopen" class="p-2 rounded-lg bg-white text-stone-600 hover:text-stone-900 hover:shadow-md transition-all duration-200" aria-label="GitHub"><Icon name="fa6-brands:github" class="text-lg" /></a>
+                      <a href="https://www.linkedin.com/in/jacopen/" class="p-2 rounded-lg bg-white text-stone-600 hover:text-blue-700 hover:shadow-md transition-all duration-200" aria-label="LinkedIn"><Icon name="fa6-brands:linkedin" class="text-lg" /></a>
                     </div>
                   </div>
                 )}
@@ -135,7 +154,7 @@ const sections = [
                       href={section.href}
                       class="flex items-center gap-3 py-3 px-4 text-stone-700 hover:text-green-700 hover:bg-green-50 rounded-xl transition-all duration-200 group"
                     >
-                      <i class={`fas ${section.icon} w-5 text-center text-stone-400 group-hover:text-green-500 transition-colors`}></i>
+                      <Icon name={`fa6-solid:${section.icon}`} class="w-5 text-center text-stone-400 group-hover:text-green-500 transition-colors" />
                       <span class="font-medium">{section.title}</span>
                     </a>
                   ))}
@@ -151,7 +170,7 @@ const sections = [
               <div class="sticky top-8">
                 {!isProfilePage && (
                   <div class="mb-8 animate-fade-in-up">
-                    <a href="/" class="block">
+                    <a href="/" class="block w-fit ml-auto">
                       <div class="relative group">
                         <div class="absolute -inset-1 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full opacity-20 group-hover:opacity-30 blur transition-opacity duration-300"></div>
                         <img
@@ -167,16 +186,16 @@ const sections = [
                       <p class="text-sm text-stone-500">{nameEn}</p>
                       <div class="flex gap-2 mt-4 justify-end">
                         <a href="https://x.com/jacopen" class="p-2.5 rounded-xl bg-stone-50 text-stone-500 hover:text-stone-900 hover:bg-stone-100 transition-all duration-200" aria-label="X (Twitter)">
-                          <i class="fab fa-x-twitter"></i>
+                          <Icon name="fa6-brands:x-twitter" />
                         </a>
                         <a href="https://www.facebook.com/jacopen" class="p-2.5 rounded-xl bg-stone-50 text-stone-500 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200" aria-label="Facebook">
-                          <i class="fab fa-facebook"></i>
+                          <Icon name="fa6-brands:facebook" />
                         </a>
                         <a href="https://github.com/jacopen" class="p-2.5 rounded-xl bg-stone-50 text-stone-500 hover:text-stone-900 hover:bg-stone-100 transition-all duration-200" aria-label="GitHub">
-                          <i class="fab fa-github"></i>
+                          <Icon name="fa6-brands:github" />
                         </a>
                         <a href="https://www.linkedin.com/in/jacopen/" class="p-2.5 rounded-xl bg-stone-50 text-stone-500 hover:text-blue-700 hover:bg-blue-50 transition-all duration-200" aria-label="LinkedIn">
-                          <i class="fab fa-linkedin"></i>
+                          <Icon name="fa6-brands:linkedin" />
                         </a>
                       </div>
                     </div>
@@ -192,7 +211,7 @@ const sections = [
                     >
                       <span class="font-medium text-sm">{section.title}</span>
                       <span class="w-8 h-8 flex items-center justify-center rounded-lg bg-stone-50 text-stone-400 group-hover:bg-green-50 group-hover:text-green-600 transition-all duration-200">
-                        <i class={`fas ${section.icon} text-sm`}></i>
+                        <Icon name={`fa6-solid:${section.icon}`} class="text-sm" />
                       </span>
                     </a>
                   ))}
@@ -200,7 +219,7 @@ const sections = [
 
                 <!-- Decorative element -->
                 <div class="mt-8 h-px bg-gradient-to-r from-transparent via-stone-200 to-transparent"></div>
-                <p class="mt-4 text-xs text-stone-400 text-right">&copy; 2024 {nameEn}</p>
+                <p class="mt-4 text-xs text-stone-400 text-right">&copy; {new Date().getFullYear()} {nameEn}</p>
               </div>
             </aside>
 

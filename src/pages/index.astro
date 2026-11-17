@@ -1,8 +1,35 @@
 ---
 import Profile from '../components/Profile.astro';
 import Layout from '../layouts/Layout.astro';
+import { profileInfo, careers } from '../data/profile-content';
+
+const siteUrl = Astro.site!;
+// 検索エンジン向けの人物情報
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  mainEntity: {
+    "@type": "Person",
+    "@id": new URL("/#person", siteUrl).href,
+    name: profileInfo.nameJa,
+    alternateName: [profileInfo.nameEn, profileInfo.nickname],
+    url: siteUrl.href,
+    image: new URL("/square.jpg", siteUrl).href,
+    description: profileInfo.bio,
+    jobTitle: careers[0].position,
+    worksFor: { "@type": "Organization", name: careers[0].company },
+    sameAs: [
+      "https://x.com/jacopen",
+      "https://github.com/jacopen",
+      "https://www.linkedin.com/in/jacopen/",
+      "https://www.facebook.com/jacopen",
+      "https://speakerdeck.com/jacopen",
+      "https://qiita.com/jacopen",
+    ],
+  },
+};
 ---
 
-<Layout useTwoPane={true} isProfilePage={true}>
+<Layout useTwoPane={true} isProfilePage={true} jsonLd={personJsonLd}>
 	<Profile />
 </Layout>
