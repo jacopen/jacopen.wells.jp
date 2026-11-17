@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { profileInfo, skills, careers, communities, certifications } from '../data/profile-content';
-import { blogPosts as rssBlogPosts, presentations } from '../data/blog-entries';
+import { blogPosts as rssBlogPosts, allPresentations as presentations } from '../data/blog-entries';
 import { sanityClient } from 'sanity:client';
 
 export const GET: APIRoute = async () => {

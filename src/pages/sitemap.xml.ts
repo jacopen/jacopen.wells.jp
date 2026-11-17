@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { sanityClient } from "sanity:client";
-import { blogPosts, presentations } from "../data/blog-entries";
+import { blogPosts, allPresentations } from "../data/blog-entries";
 
 export const GET: APIRoute = async () => {
   const siteUrl = "https://jacopen.wells.jp";
@@ -50,7 +50,7 @@ export const GET: APIRoute = async () => {
   }));
 
   // ブログページネーションのURL生成（Sanity記事も含めた全投稿数を使用）
-  const postsPerPage = 10;
+  const postsPerPage = 15; // 一覧ページの1ページあたりの件数と揃える
   const totalBlogPages = Math.ceil((blogPosts.length + posts.length) / postsPerPage);
   const blogPaginationUrls = Array.from({ length: totalBlogPages }, (_, i) => ({
     url: `${siteUrl}/blog/page/${i + 1}`,
@@ -60,7 +60,7 @@ export const GET: APIRoute = async () => {
   }));
 
   // プレゼンテーションページネーションのURL生成
-  const totalPresentationPages = Math.ceil(presentations.length / postsPerPage);
+  const totalPresentationPages = Math.ceil(allPresentations.length / postsPerPage);
   const presentationPaginationUrls = Array.from(
     { length: totalPresentationPages },
     (_, i) => ({

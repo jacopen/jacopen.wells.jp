@@ -11,25 +11,26 @@ This is a personal portfolio website for Kazuto Kusama (@jacopen) built with Ast
 - `npm run dev` - Start development server at localhost:4321
 - `npm run build` - Build production site to ./dist/
 - `npm run preview` - Preview built site locally
-- `npm run new-blog` - Interactive script to create new blog posts in src/content/blog/
+- `npm run update-feeds` - Fetch RSS feeds and append new entries to `src/data/blog-data.json`
 
 ## Architecture & Data Flow
 
 ### Content Sources
-- **Static blog posts**: Markdown files in `src/content/blog/` with frontmatter schema validation
+- **Blog posts**: Managed in Sanity (project `wza0icfm`, Studio config in `sanity/`). The `body` field holds Markdown, rendered with `marked` in `src/pages/blog/[slug].astro`. There are no local Markdown posts
 - **External content**: RSS feeds aggregated via `src/data/rss-fetcher.ts` and cached in `src/data/blog-data.json`
 - **Profile data**: Centralized in `src/data/profile-content.ts` (skills, career, communities, books, contributions)
 
 ### RSS Aggregation System
-The site automatically fetches content from multiple RSS sources during build:
-- `src/data/rss-fetcher.ts` - Fetches from PagerDuty, personal blog, and Qiita feeds
-- `src/data/blog-entries.ts` - Merges RSS data with existing cached data in blog-data.json
-- Data is deduped by URL and sorted by publication date
-- RSS data is refreshed on every build but cached to avoid losing content if feeds are unavailable
+External posts and talks come from RSS feeds and are cached in `src/data/blog-data.json`:
+- `src/data/rss-fetcher.ts` - Fetches PagerDuty, personal blog, Qiita, and SpeakerDeck feeds; `mergeByUrl` dedupes by URL and sorts by date
+- `scripts/update-feeds.ts` (`npm run update-feeds`) - The only thing that writes `blog-data.json`. Existing entries are never removed, so items that drop off a feed are kept
+- `.github/workflows/update-feeds.yml` - Runs the script daily and commits new entries to main
+- `src/data/blog-entries.ts` - Reads the cached JSON. In production builds it also merges the live feeds in memory (no file write); `npm run dev` uses the cache only
 
-### Content Collections
-- Blog content uses Astro's content collections with schema validation in `src/content/config.ts`
-- External RSS content bypasses collections and is handled directly via TypeScript modules
+### Icons & Fonts
+- Icons use `astro-icon` with Font Awesome 6 sets: `<Icon name="fa6-solid:cloud" />` (`fa6-regular:`, `fa6-brands:`). No icon CDN
+- Fonts are self-hosted via `@fontsource-variable/*`, imported in `src/layouts/Layout.astro`; stacks are defined in `src/styles/global.css`
+- `public/_headers` CSP only allows self-hosted styles and fonts; adding an external CSS/font source requires updating it
 
 ### Routing & Pagination
 - `/` - Main profile page with all sections
@@ -55,7 +56,7 @@ Profile data is centralized in `src/data/profile-content.ts` and includes:
 ## Creating New Content
 
 ### New Blog Posts
-Use `npm run new-blog` to create a new blog post with proper frontmatter template in `src/content/blog/`
+Create the post in Sanity Studio. It appears on the site at the next build
 
 ### Adding External Content
 RSS feeds are automatically processed, but manual entries can be added to the static arrays in `src/data/profile-content.ts` (books, contributions) or `src/data/blog-entries.ts`

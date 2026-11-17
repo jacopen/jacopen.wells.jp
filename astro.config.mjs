@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 import sanity from "@sanity/astro";
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +12,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [
+    icon(),
     sanity({
       projectId: "wza0icfm",
       dataset: "production",

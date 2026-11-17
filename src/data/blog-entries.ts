@@ -1,145 +1,28 @@
-import { fetchBlogPosts, fetchPresentations } from "./rss-fetcher";
-import fs from "fs/promises";
-import path from "path";
+import { fetchBlogPosts, fetchPresentations, mergeByUrl } from "./rss-fetcher";
+import type { BlogPost, Presentation } from "./rss-fetcher";
+import cachedData from "./blog-data.json";
 
-// ファイルパスを構築（相対パスで明示的に指定）
-const DATA_FILE_PATH = path.resolve(process.cwd(), "src/data/blog-data.json");
+export type { BlogPost, Presentation };
 
-// 型定義
-export type BlogPost = {
-  url: string;
-  title: string;
-  pubDate: Date;
-  source: string;
-  sourceUrl: string;
-};
+// コミット済みのキャッシュ（blog-data.json）を読み込む。
+// このファイルは `npm run update-feeds` だけが書き換える。ビルドでは書き換えない。
+const withDates = <T extends { pubDate: string }>(items: T[]) =>
+  items.map((item) => ({ ...item, pubDate: new Date(item.pubDate) }));
 
-export type Presentation = {
-  url: string;
-  title: string;
-  pubDate: Date;
-  content?: string;
-};
+let allBlogPosts: BlogPost[] = withDates(cachedData.blogPosts);
+let allPresentationEntries: Presentation[] = withDates(cachedData.presentations);
 
-// JSONファイルがない場合の初期データは空の配列とする
-
-// JSONファイルからデータを読み込む関数
-async function loadDataFromFile(): Promise<{
-  blogPosts: BlogPost[];
-  presentations: Presentation[];
-}> {
-  try {
-    const fileData = await fs.readFile(DATA_FILE_PATH, "utf-8");
-    const parsedData = JSON.parse(fileData);
-    
-    // 日付文字列をDateオブジェクトに変換
-    const blogPosts = parsedData.blogPosts.map((post: any) => ({
-      ...post,
-      pubDate: new Date(post.pubDate),
-    }));
-    
-    const presentations = parsedData.presentations.map((pres: any) => ({
-      ...pres,
-      pubDate: new Date(pres.pubDate),
-    }));
-    
-    return { blogPosts, presentations };
-  } catch (error) {
-    console.log("JSONファイルの読み込みに失敗しました。デフォルトデータを使用します。", error);
-    return {
-      blogPosts: [],
-      presentations: [],
-    };
-  }
+// 本番ビルドでは最新のフィードをメモリ上でだけマージし、
+// キャッシュ更新ジョブが走る前でも新着が載るようにする。
+// フィード取得に失敗した場合はキャッシュの内容だけで表示する。
+if (import.meta.env.PROD) {
+  const [newBlogPosts, newPresentations] = await Promise.all([
+    fetchBlogPosts(),
+    fetchPresentations(),
+  ]);
+  allBlogPosts = mergeByUrl(allBlogPosts, newBlogPosts).items;
+  allPresentationEntries = mergeByUrl(allPresentationEntries, newPresentations).items;
 }
-
-// データをJSONファイルに保存する関数
-async function saveDataToFile(blogPosts: BlogPost[], presentations: Presentation[]) {
-  try {
-    const data = {
-      blogPosts,
-      presentations,
-      lastUpdated: new Date().toISOString(),
-    };
-    await fs.writeFile(DATA_FILE_PATH, JSON.stringify(data, null, 2));
-    console.log("データをJSONファイルに保存しました");
-  } catch (error) {
-    console.error("JSONファイルの保存に失敗しました", error);
-  }
-}
-
-// 保存済みのブログ記事データと登壇情報データ
-export let savedBlogPosts: BlogPost[] = [];
-export let savedPresentations: Presentation[] = [];
-
-// 初期化時にJSONファイルからデータを読み込む
-const initializeData = async () => {
-  const loadedData = await loadDataFromFile();
-  savedBlogPosts = loadedData.blogPosts;
-  savedPresentations = loadedData.presentations;
-};
-
-// 初期化を実行
-await initializeData();
-
-// RSSから新しいデータを取得してマージし、JSONファイルに保存する関数
-export async function updateBlogEntries() {
-  try {
-    // ブログ記事を取得
-    const newBlogPosts = await fetchBlogPosts();
-    // 登壇情報を取得
-    const newPresentations = await fetchPresentations();
-
-    let dataUpdated = false;
-
-    // ブログ記事をマージ（URLをキーとして重複を排除）
-    if (newBlogPosts.length > 0) {
-      // 既存のURLのマップを作成
-      const existingUrls = new Map(savedBlogPosts.map(post => [post.url, true]));
-      
-      // 新しい記事で重複しないものだけを追加
-      newBlogPosts.forEach(post => {
-        if (!existingUrls.has(post.url)) {
-          savedBlogPosts.push(post);
-          dataUpdated = true;
-        }
-      });
-      
-      // 日付順に並べ替え
-      savedBlogPosts.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
-    }
-
-    // 登壇情報をマージ（URLをキーとして重複を排除）
-    if (newPresentations.length > 0) {
-      // 既存のURLのマップを作成
-      const existingUrls = new Map(savedPresentations.map(presentation => [presentation.url, true]));
-      
-      // 新しい登壇情報で重複しないものだけを追加
-      newPresentations.forEach(presentation => {
-        if (!existingUrls.has(presentation.url)) {
-          savedPresentations.push(presentation);
-          dataUpdated = true;
-        }
-      });
-      
-      // 日付順に並べ替え
-      savedPresentations.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
-    }
-
-    // データが更新された場合のみJSONファイルに保存
-    if (dataUpdated) {
-      await saveDataToFile(savedBlogPosts, savedPresentations);
-    }
-
-    console.log(`ブログ記事: ${savedBlogPosts.length}件`);
-    console.log(`登壇情報: ${savedPresentations.length}件`);
-  } catch (error) {
-    console.error("データの更新に失敗しました:", error);
-  }
-}
-
-// ビルド時に実行: 新しいデータを取得してマージし、JSONファイルに保存
-await updateBlogEntries();
 
 // 書籍データ（変更なし）
 export const books = [
@@ -238,7 +121,10 @@ export const contributions = [
 ];
 
 // すべてのブログ記事を提供する
-export const blogPosts = savedBlogPosts;
+export const blogPosts = allBlogPosts;
+
+// すべての登壇情報を提供する
+export const allPresentations = allPresentationEntries;
 
 // 表示用に最新6件の登壇情報を提供する
-export const presentations = savedPresentations.slice(0, 6);
+export const presentations = allPresentationEntries.slice(0, 6);

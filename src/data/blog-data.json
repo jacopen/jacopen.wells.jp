@@ -1,6 +1,69 @@
 {
   "blogPosts": [
     {
+      "url": "https://www.pagerduty.co.jp/blog/product-update-oct2026/",
+      "title": "PagerDuty製品アップデート情報 (2026年10月)",
+      "pubDate": "2026-10-23T07:10:24.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/product-update-sep2026/",
+      "title": "PagerDuty製品アップデート情報 (2026年9月)",
+      "pubDate": "2026-09-07T15:29:30.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/product-update-aug2026/",
+      "title": "PagerDuty製品アップデート情報 (2026年8月)",
+      "pubDate": "2026-08-14T01:52:53.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/building-resilience-year-round/",
+      "title": "準備こそが競争優位〜1年を通じてレジリエンス（回復力）を築く",
+      "pubDate": "2026-06-03T02:00:00.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/product-update-jul2026/",
+      "title": "PagerDuty製品アップデート情報 (2026年6月)",
+      "pubDate": "2026-06-01T10:56:10.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/how-to-choose-an-ai-sre-solution/",
+      "title": "AI SREソリューションの選び方：失敗しないための7つの評価基準",
+      "pubDate": "2026-06-01T06:29:45.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/techday-report/",
+      "title": "PagerDuty Tech Day 2026 開催レポート",
+      "pubDate": "2026-05-22T04:57:44.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/product-update-may2026/",
+      "title": "PagerDuty製品アップデート情報 (2026年5月)",
+      "pubDate": "2026-05-01T10:55:54.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
+      "url": "https://www.pagerduty.co.jp/blog/product-update-apr2026/",
+      "title": "PagerDuty製品アップデート情報(2026年4月)",
+      "pubDate": "2026-04-01T10:55:30.000Z",
+      "source": "PagerDuty",
+      "sourceUrl": "https://www.pagerduty.co.jp/blog/"
+    },
+    {
       "url": "https://www.pagerduty.co.jp/blog/product-update-mar2026/",
       "title": "PagerDuty製品アップデート情報(2026年3月)",
       "pubDate": "2026-03-18T05:39:20.000Z",
@@ -458,6 +521,30 @@
   ],
   "presentations": [
     {
+      "url": "https://speakerdeck.com/jacopen/saba-rakku-ha-tsukuru-jidai-3d-purinta-de-tsukuru-10-inchi-rakku-no",
+      "title": "サーバーラックは作る時代！ 3Dプリンターで作る10インチラックのススメ",
+      "pubDate": "2026-11-15T01:44:30.000Z",
+      "content": "自鯖缶で発表した資料です"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/ai-de-kaihatsu-ha-hayaku-nata-noni-naze-genba-ha-raku-ni-naranai-no-ka-anata-no-soshiki-no-botorunekku-o-tsukitomeru-wakushoppu",
+      "title": "AIで開発は速くなったのに、なぜ現場は楽にならないのか 〜あなたの組織のボトルネックを突き止めるワークショップ〜",
+      "pubDate": "2026-09-04T06:16:37.000Z",
+      "content": "DXシステム開発Expo 2026で発表した資料です。\r\nAIで開発は高速化したが組織のアウトプットにはつながっていないことと、その原因。そして解消するためのDevOps, SRE, プラットフォームエンジニアリング、インシデント管理について説明します。"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/qu-wei-deibentopei-xin-woyatuteiruzhe-da",
+      "title": "趣味でイベント配信をやっている者だ",
+      "pubDate": "2026-07-07T17:29:48.000Z",
+      "content": "クラウドネイティブ会議プレイベント in Nagoya × 俺の勉強会1周年祭\r\nで登壇した資料です"
+    },
+    {
+      "url": "https://speakerdeck.com/jacopen/zi-zhai-llmnohua",
+      "title": "自宅LLMの話",
+      "pubDate": "2026-06-20T07:19:43.000Z",
+      "content": "第1回 みんなの自宅鯖LT会で発表した資料です"
+    },
+    {
       "url": "https://speakerdeck.com/jacopen/puratutohuomuenziniaringuhaaishi-dai-nokai-fa-zhe-wodoujiu-unoka",
       "title": "プラットフォームエンジニアリングはAI時代の開発者をどう救うのか",
       "pubDate": "2026-03-17T10:31:32.000Z",
@@ -614,5 +701,5 @@
       "content": "Forkwellさん主催の「今から予測する2024年のPlatform Engineering」で登壇した資料です\r\nhttps://forkwell.connpass.com/event/303922/"
     }
   ],
-  "lastUpdated": "2026-03-25T11:17:31.624Z"
+  "lastUpdated": "2026-11-17T00:46:28.135Z"
 }

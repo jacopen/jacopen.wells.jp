@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Layout from "./Layout.astro";
 
 import ShareButtons from "../components/ShareButtons.astro";
@@ -8,9 +9,28 @@ interface Props {
   pubDate: Date;
   author: string;
   tags?: string[];
+  description?: string;
 }
 
-const { title, pubDate, author, tags = [] } = Astro.props;
+const { title, pubDate, author, tags = [], description } = Astro.props;
+
+const siteUrl = Astro.site!;
+// 検索エンジン向けの記事情報
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  keywords: tags.join(", ") || undefined,
+  mainEntityOfPage: new URL(Astro.url.pathname, siteUrl).href,
+  author: {
+    "@type": "Person",
+    "@id": new URL("/#person", siteUrl).href,
+    name: author,
+    url: siteUrl.href,
+  },
+};
 
 // 日付のフォーマット
 const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${pubDate.getDate()}日`;
@@ -21,17 +41,18 @@ const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${
   title={title}
   useTwoPane={true}
   isProfilePage={false}
-  ogDescription={`${title} - ${author}による記事 ${tags.length > 0 ? `タグ: ${tags.join(', ')}` : ''}`}
+  ogDescription={description || `${title} - ${author}による記事 ${tags.length > 0 ? `タグ: ${tags.join(', ')}` : ''}`}
   ogType="article"
+  jsonLd={articleJsonLd}
 >
   <!-- Breadcrumb -->
   <nav class="flex items-center gap-2 text-sm text-stone-500 mb-6">
     <a href="/" class="hover:text-green-600 transition-colors duration-200">
-      <i class="fas fa-home"></i>
+      <Icon name="fa6-solid:house" />
     </a>
-    <i class="fas fa-chevron-right text-xs text-stone-300"></i>
+    <Icon name="fa6-solid:chevron-right" class="text-xs text-stone-300" />
     <a href="/blog/page/1" class="hover:text-green-600 transition-colors duration-200">ブログ</a>
-    <i class="fas fa-chevron-right text-xs text-stone-300"></i>
+    <Icon name="fa6-solid:chevron-right" class="text-xs text-stone-300" />
     <span class="text-stone-700 font-medium truncate max-w-[200px] sm:max-w-none">{title}</span>
   </nav>
 
@@ -47,11 +68,11 @@ const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${
 
       <div class="flex flex-wrap items-center gap-4 mt-4 text-sm text-stone-500">
         <div class="flex items-center gap-2">
-          <i class="far fa-calendar text-green-600"></i>
+          <Icon name="fa6-regular:calendar" class="text-green-600" />
           <time datetime={pubDate.toISOString()}>{formattedDate}</time>
         </div>
         <div class="flex items-center gap-2">
-          <i class="far fa-user text-green-600"></i>
+          <Icon name="fa6-regular:user" class="text-green-600" />
           <span>{author}</span>
         </div>
       </div>
@@ -60,7 +81,7 @@ const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${
         <div class="flex flex-wrap gap-2 mt-4">
           {tags.map(tag => (
             <span class="inline-flex items-center px-3 py-1.5 text-xs font-semibold bg-white text-green-700 rounded-full border border-green-200 shadow-sm">
-              <i class="fas fa-tag text-green-400 mr-1.5 text-[10px]"></i>
+              <Icon name="fa6-solid:tag" class="text-green-400 mr-1.5 text-[10px]" />
               {tag}
             </span>
           ))}
@@ -84,7 +105,7 @@ const formattedDate = `${pubDate.getFullYear()}年${pubDate.getMonth() + 1}月${
         href="/blog/page/1"
         class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-green-700 hover:text-green-800 bg-white hover:bg-green-50 rounded-xl border border-green-200 hover:border-green-300 transition-all duration-200 group"
       >
-        <i class="fas fa-arrow-left text-xs transform group-hover:-translate-x-0.5 transition-transform duration-200"></i>
+        <Icon name="fa6-solid:arrow-left" class="text-xs transform group-hover:-translate-x-0.5 transition-transform duration-200" />
         ブログ一覧に戻る
       </a>
     </div>

@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Layout from '../../../layouts/Layout.astro';
 import { blogPosts as rssBlogPosts } from '../../../data/blog-entries';
 
@@ -75,9 +76,9 @@ function getSourceStyle(source: string) {
     <!-- Breadcrumb -->
     <nav class="flex items-center gap-2 text-sm text-stone-500 mb-4">
       <a href="/" class="hover:text-green-600 transition-colors duration-200">
-        <i class="fas fa-home"></i>
+        <Icon name="fa6-solid:house" />
       </a>
-      <i class="fas fa-chevron-right text-xs text-stone-300"></i>
+      <Icon name="fa6-solid:chevron-right" class="text-xs text-stone-300" />
       <span class="text-stone-700 font-medium">ブログ</span>
     </nav>
 
@@ -95,7 +96,7 @@ function getSourceStyle(source: string) {
         href="/"
         class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-stone-600 hover:text-green-700 bg-stone-50 hover:bg-green-50 rounded-xl border border-stone-200 hover:border-green-200 transition-all duration-200"
       >
-        <i class="fas fa-arrow-left text-xs"></i>
+        <Icon name="fa6-solid:arrow-left" class="text-xs" />
         ホームに戻る
       </a>
     </div>
@@ -131,7 +132,7 @@ function getSourceStyle(source: string) {
 
             <!-- Arrow Icon -->
             <div class="hidden sm:flex items-center justify-center w-8 h-8 rounded-lg bg-stone-50 text-stone-400 group-hover:bg-green-50 group-hover:text-green-600 transition-all duration-200 shrink-0 self-center">
-              <i class="fas fa-arrow-right text-sm transform group-hover:translate-x-0.5 transition-transform duration-200"></i>
+              <Icon name="fa6-solid:arrow-right" class="text-sm transform group-hover:translate-x-0.5 transition-transform duration-200" />
             </div>
           </div>
         </a>
@@ -152,7 +153,7 @@ function getSourceStyle(source: string) {
             class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-stone-600 hover:text-green-700 hover:bg-white rounded-xl transition-all duration-200"
             aria-label="前のページ"
           >
-            <i class="fas fa-chevron-left text-xs"></i>
+            <Icon name="fa6-solid:chevron-left" class="text-xs" />
             <span class="hidden sm:inline">前へ</span>
           </a>
         )}
@@ -180,7 +181,7 @@ function getSourceStyle(source: string) {
             aria-label="次のページ"
           >
             <span class="hidden sm:inline">次へ</span>
-            <i class="fas fa-chevron-right text-xs"></i>
+            <Icon name="fa6-solid:chevron-right" class="text-xs" />
           </a>
         )}
       </div>
@@ -193,7 +194,7 @@ function getSourceStyle(source: string) {
       href="/"
       class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-stone-600 hover:text-green-700 bg-stone-50 hover:bg-green-50 rounded-xl border border-stone-200 hover:border-green-200 transition-all duration-200"
     >
-      <i class="fas fa-arrow-left text-xs"></i>
+      <Icon name="fa6-solid:arrow-left" class="text-xs" />
       ホームに戻る
     </a>
   </div>
